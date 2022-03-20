@@ -16,6 +16,10 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+<<<<<<< HEAD
 export class AppRoutingModule {
   constructor() {}
 }
+=======
+export class AppRoutingModule {}
+>>>>>>> 157f408 (basic structure + router)
