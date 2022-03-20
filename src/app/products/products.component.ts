@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.sass']
 })
 export class ProductsComponent implements OnInit {
+  pathname = window.location.pathname
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
