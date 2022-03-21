@@ -4,6 +4,7 @@ import { CartBillingComponent } from './cart-billing/cart-billing.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartConfirmationComponent } from './cart-confirmation/cart-confirmation.component';
 import { CartComponent } from './cart.component';
+import { ProductsModule } from '../products/products.module';
 
 
 
@@ -12,10 +13,17 @@ import { CartComponent } from './cart.component';
     CartBillingComponent,
     CartSummaryComponent,
     CartConfirmationComponent,
-    CartComponent
+    CartComponent,
+    
+    
+    
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProductsModule,
+    
+    
+    
   ]
 })
 export class CartModule { }

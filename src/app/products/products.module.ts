@@ -24,6 +24,7 @@ import { StaticNavBotComponent } from './static-nav-bot/static-nav-bot.component
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[StaticNavTopComponent,StaticNavBotComponent]
 })
 export class ProductsModule { }

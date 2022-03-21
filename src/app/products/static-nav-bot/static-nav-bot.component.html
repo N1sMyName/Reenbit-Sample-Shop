@@ -1,1 +1,29 @@
-<p>static-nav-bot works!</p>
+<footer>
+    
+    <div class="footer-info">
+        <ul class="footer-list">
+            <h3 class="footer-list-heading">Get in touch</h3>
+            <a href="" *ngFor="let item of staticData.inTouchInfo" class="footer-list-item inTouch">{{item}}</a>
+        </ul>
+        <ul class="footer-list">
+            <h3 class="footer-list-heading">Connections</h3>
+            <a href="" *ngFor="let item of staticData.conntectionsInfo" class="footer-list-item connections">{{item}}</a>
+
+        </ul>
+        <ul class="footer-list">
+            <h3 class="footer-list-heading">Earning</h3>
+            <a href="" *ngFor="let item of staticData.earningInfo" class="footer-list-item earnign">{{item}}</a>
+        </ul>
+        <ul class="footer-list">
+            <h3 class="footer-list-heading">Account</h3>
+            <a  href=""   *ngFor="let item of staticData.accountInfo" class="footer-list-item account">{{item}}</a>
+        </ul>
+    </div>
+    <h2>Products tags</h2>
+    <div class="footer_tags">
+        <button type="button" *ngFor="let tag of staticData.tags" class="tag-button">{{tag}}</button>
+    </div>
+    
+
+    <p>Copyrigths @ 2020 website.com</p>
+</footer>

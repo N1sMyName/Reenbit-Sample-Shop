@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./static-nav-top.component.sass'],
 })
 export class StaticNavTopComponent implements OnInit {
-  pathname = window.location.pathname.slice(1)
+  
   categories: string[] = [
     'Electronics',
     'Foods',

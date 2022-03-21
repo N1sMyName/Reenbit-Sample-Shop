@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-cart',
@@ -6,9 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.sass']
 })
 export class CartComponent implements OnInit {
-
   constructor() { }
-
+  
   ngOnInit(): void {
   }
 

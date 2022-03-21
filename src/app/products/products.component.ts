@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -7,10 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.sass']
 })
 export class ProductsComponent implements OnInit {
-  pathname = window.location.pathname
+ 
 
   constructor() { }
-
   ngOnInit(): void {
     
   }
