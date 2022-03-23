@@ -4,9 +4,9 @@ export interface Product {
   rating: number;
   freshness: string;
   farm: string;
-  devivery: string;
+  delivery: string;
   inStock: number;
   activePrice: number;
   oldPrice: number;
-  deviveryTime: number;
+  deliveryTime: number;
 }
