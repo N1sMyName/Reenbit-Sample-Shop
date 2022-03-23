@@ -6,9 +6,9 @@
     <div class="product-info">
         <div class="product-info-left">
             <div class="product-info-left-title">
-                <h2>Product title</h2>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <div>*****</div>
+                <h2>{{product.title}}</h2>
+                <p>{{product.description}}</p>
+                <div>{{product.rating}}</div>
             </div>
 
             <div class="description">
@@ -19,10 +19,10 @@
                     <li>Stock</li>
                 </ul>
                 <ul class="description-right">
-                    <li>New</li>
-                    <li>Grosery Farm Field</li>
-                    <li>Europe</li>
-                    <li>320 pcs</li>
+                    <li>{{product.freshness}}</li>
+                    <li>{{product.farm}}</li>
+                    <li>{{product.devivery}}</li>
+                    <li>{{product.inStock}}</li>
                 </ul>
             </div>
     </div>
@@ -30,12 +30,12 @@
         <div class="product-info-right">
             <div class="product-info-right-price">
                 <div class="price">
-                    <h2>32.13 $</h2>
-                    <p>33.54 $</p>
+                    <h2>{{product.activePrice}} $</h2>
+                    <p>{{product.oldPrice}} $</p>
                 </div>
                 <div class="shipping">
                     <div>Free shipping</div>
-                    <div>Delivery in 1 day</div>
+                    <div>Delivery in {{product.deviveryTime}} day</div>
                 </div>
             </div>
             <div class="product-info-bot-buttons">

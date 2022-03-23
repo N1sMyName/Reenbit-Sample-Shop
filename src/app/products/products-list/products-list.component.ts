@@ -7,11 +7,12 @@ import { Product } from 'src/app/Services/Product.model';
   styleUrls: ['./products-list.component.sass']
 })
 export class ProductsListComponent implements OnInit {
-   data:Product[] = []
+   data:Product[] 
   
   constructor(private api:MimicrestService ) { }
   ngOnInit(): void {
-    this.api.getProducts().subscribe(res => this.data = res)  
+    this.api.getProducts().subscribe(res => {this.data = res})
+    
   }
 
 }

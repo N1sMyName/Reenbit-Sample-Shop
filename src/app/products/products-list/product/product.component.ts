@@ -6,7 +6,7 @@ import { Product } from 'src/app/Services/Product.model';
   styleUrls: ['./product.component.sass']
 })
 export class ProductComponent implements OnInit {
-  @Input() products:Product[] = []
+  @Input() product : Product;
   constructor() { }
 
   ngOnInit(): void {
