@@ -7,8 +7,9 @@ import { DescriptionModule } from './description/description.module';
 import { CartModule } from './cart/cart.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MockService } from './Services/mock.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ProductsModule
+    ProductsModule,
+    HttpClientInMemoryWebApiModule.forRoot(MockService),
+    HttpClientModule
     
   ],
   

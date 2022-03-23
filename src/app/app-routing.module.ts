@@ -6,8 +6,9 @@ import { ProductsComponent } from './products/products.component';
 import { Router } from '@angular/router';
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
-  { path: 'cart',component:CartComponent,data:{hideFuter:true} },
-  { path: 'products/:id',component:DescriptionComponent },
+  { path: 'cart', component: CartComponent,
+   data: { hideFooter: true } },
+  { path: 'products/:id', component: DescriptionComponent },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/products', pathMatch: 'full' },
 ];
