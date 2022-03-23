@@ -11,6 +11,7 @@
           "skipTests": true
         },
         "@schematics/angular:application": {
+
           "skipTests": true,
           "strict": true
         },
@@ -23,6 +24,24 @@
           "@schematics/angular:service": {
           "skipTests": true
           }
+
+          "strict": true,
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+        "skipTests": true
+        },
+        "@schematics/angular:directive": {
+        "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+        "skipTests": true
+        },
+        "@schematics/angular:service": {
+        "skipTests": true
+        }
+        
+
       },
       "root": "",
       "sourceRoot": "src",
