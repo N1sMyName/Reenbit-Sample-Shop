@@ -11,20 +11,17 @@ import { MockService } from './Services/mock.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ProductsModule,
     HttpClientInMemoryWebApiModule.forRoot(MockService),
-    HttpClientModule
-    
+    HttpClientModule,
   ],
-  
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

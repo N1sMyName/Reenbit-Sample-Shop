@@ -1,18 +1,46 @@
 <aside class="filters">
-    <div>
-      <ul class="filter-tab">
-        <h3>Categories</h3>
-        <li>CategoryName</li>
-        <li>CategoryName</li>
-        <li>CategoryName</li>
-        <li>CategoryName</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Brands</h3>
+  <div>
+    <ul class="filter-tab">
+      <h3>Categories</h3>
+      <li>CategoryName</li>
+      <li>CategoryName</li>
+      <li>CategoryName</li>
+      <li>CategoryName</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Brands</h3>
+    <ul class="filter-tab brands-filter">
+      <label for="brand" class="cbx-container"
+        >filter by tagname
+        <input
+          type="checkbox"
+          name=""
+          id="brand"
+          class="brand-checkbox"
+          checked
+        />
+      </label>
+      <label for="brand"
+        >filter by tagname
+        <input type="checkbox" name="" id="brand" />
+      </label>
+      <label for="brand"
+        >filter by tagname
+        <input type="checkbox" name="" id="brand" />
+      </label>
+      <label for="brand"
+        >filter by tagname
+        <input type="checkbox" name="" id="brand" />
+      </label>
+    </ul>
+  </div>
+  <div>
+    <ul class="filter-tab">
+      <h3>Rating</h3>
       <ul class="filter-tab brands-filter">
         <label for="brand" class="cbx-container"
-          >filter by tagname
+          >*
           <input
             type="checkbox"
             name=""
@@ -22,71 +50,43 @@
           />
         </label>
         <label for="brand"
-          >filter by tagname
+          >**
           <input type="checkbox" name="" id="brand" />
         </label>
         <label for="brand"
-          >filter by tagname
+          >***
           <input type="checkbox" name="" id="brand" />
         </label>
         <label for="brand"
-          >filter by tagname
+          >****
+          <input type="checkbox" name="" id="brand" />
+        </label>
+        <label for="brand"
+          >*****
           <input type="checkbox" name="" id="brand" />
         </label>
       </ul>
+    </ul>
+  </div>
+  <div>
+    <h3>Price</h3>
+    <div class="slider">
+      <input type="range" name="" id="" max="100" min="10" />
     </div>
-    <div>
-      <ul class="filter-tab">
-        <h3>Rating</h3>
-        <ul class="filter-tab brands-filter">
-          <label for="brand" class="cbx-container"
-            >*
-            <input
-              type="checkbox"
-              name=""
-              id="brand"
-              class="brand-checkbox"
-              checked
-            />
-          </label>
-          <label for="brand"
-            >**
-            <input type="checkbox" name="" id="brand" />
-          </label>
-          <label for="brand"
-            >***
-            <input type="checkbox" name="" id="brand" />
-          </label>
-          <label for="brand"
-            >****
-            <input type="checkbox" name="" id="brand" />
-          </label>
-          <label for="brand"
-            >*****
-            <input type="checkbox" name="" id="brand" />
-          </label>
-        </ul>
-      </ul>
-    </div>
-    <div>
-      <h3>Price</h3>
-      <div class="slider">
-        <input type="range" name="" id="" max="100" min="10" />
+    <div class="price-inputs-flex-container">
+      <div class="price-input-container">
+        <label for="min"
+          >min
+          <input type="text" class="price-input min" id="min" />
+        </label>
       </div>
-      <div class="price-inputs-flex-container">
-        <div class="price-input-container">
-          <label for="min"
-            >min
-            <input type="text" class="price-input min" id="min" />
-          </label>
-        </div>
-        <div class="price-input-container">
-          <label for="max"
-            >max
-            <input type="text" class="price-input max" id="max" />
-          </label>
-          <p>reset</p>
-        </div>
+      <div class="price-input-container">
+        <label for="max"
+          >max
+          <input type="text" class="price-input max" id="max" />
+        </label>
+        <p>reset</p>
       </div>
     </div>
-  </aside>
+  </div>
+</aside>
