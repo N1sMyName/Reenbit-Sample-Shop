@@ -7,24 +7,21 @@ import { ProductsNavTopComponent } from './products-nav-top/products-nav-top.com
 import { ProductsNavBotComponent } from './products-nav-bot/products-nav-bot.component';
 import { StaticNavTopComponent } from './static-nav-top/static-nav-top.component';
 import { StaticNavBotComponent } from './static-nav-bot/static-nav-bot.component';
-
-
+import { ProductComponent } from './products-list/product/product.component';
+import { ProductsRoutingModule } from './products-routing.module';
 
 @NgModule({
   declarations: [
-    
-  
     ProductsComponent,
-            ProductsListComponent,
-            ProductsFiltersComponent,
-            ProductsNavTopComponent,
-            ProductsNavBotComponent,
-            StaticNavBotComponent,
-            StaticNavTopComponent
+    ProductsListComponent,
+    ProductsFiltersComponent,
+    ProductsNavTopComponent,
+    ProductsNavBotComponent,
+    StaticNavBotComponent,
+    StaticNavTopComponent,
+    ProductComponent,
   ],
-  imports: [
-    CommonModule
-  ],
-  exports:[StaticNavTopComponent,StaticNavBotComponent]
+  imports: [CommonModule, ProductsRoutingModule],
+  exports: [StaticNavTopComponent, StaticNavBotComponent],
 })
-export class ProductsModule { }
+export class ProductsModule {}

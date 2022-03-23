@@ -5,19 +5,13 @@ import { DescriptionInfoComponent } from './description-info/description-info.co
 import { DescriptionRelevantTabComponent } from './description-relevant-tab/description-relevant-tab.component';
 import { DescriptionComponent } from './description.component';
 
-
-
 @NgModule({
   declarations: [
-    
-  
     DescriptionImagesComponent,
-            DescriptionInfoComponent,
-            DescriptionRelevantTabComponent,
-            DescriptionComponent
+    DescriptionInfoComponent,
+    DescriptionRelevantTabComponent,
+    DescriptionComponent,
   ],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
 })
-export class DescriptionModule { }
+export class DescriptionModule {}

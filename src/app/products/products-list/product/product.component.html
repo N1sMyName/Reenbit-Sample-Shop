@@ -1,0 +1,47 @@
+<div class="product-container">
+  <div class="product-image-container">
+    <img src="../../../../assets/food-pack.jpg" alt="" class="product-image" />
+  </div>
+
+  <div class="product-info">
+    <div class="product-info-left">
+      <div class="product-info-left-title">
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description }}</p>
+        <div>{{ product.rating }}</div>
+      </div>
+
+      <div class="description">
+        <ul class="description-left">
+          <li>Freshness</li>
+          <li>Farm</li>
+          <li>Delivery</li>
+          <li>Stock</li>
+        </ul>
+        <ul class="description-right">
+          <li>{{ product.freshness }}</li>
+          <li>{{ product.farm }}</li>
+          <li>{{ product.delivery }}</li>
+          <li>{{ product.inStock }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="product-info-right">
+      <div class="product-info-right-price">
+        <div class="price">
+          <h2>{{ product.activePrice }} $</h2>
+          <p>{{ product.oldPrice }} $</p>
+        </div>
+        <div class="shipping">
+          <div>Free shipping</div>
+          <div>Delivery in {{ product.deliveryTime }} day</div>
+        </div>
+      </div>
+      <div class="product-info-bot-buttons">
+        <a href="" class="show-product-details-btn">Product Details</a>
+        <div class="whishlist-btn">Add to whishlist</div>
+      </div>
+    </div>
+  </div>
+</div>
