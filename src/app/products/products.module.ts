@@ -9,6 +9,11 @@ import { StaticNavTopComponent } from './static-nav-top/static-nav-top.component
 import { StaticNavBotComponent } from './static-nav-bot/static-nav-bot.component';
 import { ProductComponent } from './products-list/product/product.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { NavSelectComponent } from './static-nav-top/nav-select/nav-select.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -20,8 +25,16 @@ import { ProductsRoutingModule } from './products-routing.module';
     StaticNavBotComponent,
     StaticNavTopComponent,
     ProductComponent,
+    NavSelectComponent,
   ],
-  imports: [CommonModule, ProductsRoutingModule],
+  imports: [
+    CommonModule,
+    ProductsRoutingModule,
+    MatIconModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
+  ],
   exports: [StaticNavTopComponent, StaticNavBotComponent],
 })
 export class ProductsModule {}

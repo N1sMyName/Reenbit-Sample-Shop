@@ -1,57 +1,56 @@
 <nav class="nav-top">
   <div class="contacts">
     <div class="info">
-      <span>Chat with us</span>
-      <span>+420 336 775 664</span>
-      <span>info@freshnesecom.com</span>
+      <a href="" class="info-element text-green">Chat with us</a>
+      <span class="info-element ">+420 336 775 664</span>
+      <span class="info-element ">info@freshnesecom.com</span>
     </div>
     <div class="about">
-      <a href="">Blog</a>
-      <a href="">About Us</a>
-      <a href="">Careers</a>
+      <a class="about-elem" href="">Blog</a>
+      <a class="about-elem" href="">About Us</a>
+      <a class="about-elem" href="">Careers</a>
     </div>
   </div>
 
   <div class="search-bar">
-    <h2>Freshnesecom</h2>
+    <h2 class="search-bar-title">Freshnesecom</h2>
 
     <div class="search-box-container">
       <label for="categories-drop-down"
         >All Categories
-        <select name="dfadsf" id="categories-drop-down" class="search-select">
+        <select name="select-category" id="categories-drop-down" class="search-select">
           <option value="value1">All Categories</option>
           <option value="value2">1</option>
         </select>
       </label>
-      <div class="batton">|</div>
+     
+       
+     
+      <div class="batton"></div>
       <input
         type="text"
-        placeholder="Seach Products, categories..."
+        placeholder="Search product..."
         class="search-input"
       />
-      <img
-        src="../../../assets/icons8-search-24.png"
-        alt=""
-        class="search-button"
-      />
+      <mat-icon role="button" style="cursor:pointer">search</mat-icon>
     </div>
     <div class="profile">
-      <img src="../../../assets/user.png" alt="user-profile" />
-      <img src="../../../assets/basket.png" alt="cart-icon" />
+      <mat-icon role="button">person</mat-icon> 
+      <mat-icon role="button">shopping_basket</mat-icon> 
     </div>
   </div>
 
   <div class="categories">
     <label *ngFor="let category of categories" for=""
       >{{ category }}
-      <select name="" id="" class="category-select">
+      <select name="" id="" class="category-select" style="text-align: center;">
         <option value=""></option>
         <option value="">all</option>
       </select>
     </label>
   </div>
 
-  <div class="nav-bar">
+  <div class="current-location">
     <p>HomePage /</p>
   </div>
 </nav>

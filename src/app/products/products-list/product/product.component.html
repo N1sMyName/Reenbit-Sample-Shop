@@ -8,7 +8,10 @@
       <div class="product-info-left-title">
         <h2>{{ product.title }}</h2>
         <p>{{ product.description }}</p>
-        <div>{{ product.rating }}</div>
+        <div>
+          <mat-icon *ngFor="let star of [].constructor(product.rating)" class="star filled">star</mat-icon>
+          <mat-icon *ngFor="let star of [].constructor(5 - product.rating)" class="start empty">star_outline</mat-icon>
+        </div>
       </div>
 
       <div class="description">
@@ -40,7 +43,10 @@
       </div>
       <div class="product-info-bot-buttons">
         <a href="" class="show-product-details-btn">Product Details</a>
-        <div class="whishlist-btn">Add to whishlist</div>
+        <div class="whishlist-btn">
+          <mat-icon>favorite_border</mat-icon>
+          <span>Add to whishlist</span>
+        </div>
       </div>
     </div>
   </div>

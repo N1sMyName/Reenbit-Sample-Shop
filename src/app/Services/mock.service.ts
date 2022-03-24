@@ -12,7 +12,7 @@ export class MockService implements InMemoryDbService {
         {
           title: 'Procuct title',
           description: 'space for a small product description',
-          rating: 4,
+          rating: 3,
           freshness: 'new',
           farm: 'Grocery Farm Fields',
           delivery: 'Europe',
@@ -36,7 +36,7 @@ export class MockService implements InMemoryDbService {
         {
           title: 'Procuct title',
           description: 'space for a small product description',
-          rating: 4,
+          rating: 5,
           freshness: 'new',
           farm: 'Grocery Farm Fields',
           delivery: 'Europe',
@@ -48,7 +48,7 @@ export class MockService implements InMemoryDbService {
         {
           title: 'Procuct title',
           description: 'space for a small product description',
-          rating: 4,
+          rating: 1,
           freshness: 'new',
           farm: 'Grocery Farm Fields',
           delivery: 'Europe',

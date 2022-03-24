@@ -10,8 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MockService } from './Services/mock.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsModule,
     HttpClientInMemoryWebApiModule.forRoot(MockService),
     HttpClientModule,
+    
   ],
+  exports:[],
 
   providers: [],
   bootstrap: [AppComponent],

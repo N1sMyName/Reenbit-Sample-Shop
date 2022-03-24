@@ -1,40 +1,87 @@
-// contacts
+
+// CATEGORIES
+
+// VARS
+$special-gren: #6A983C
+$searchbox-bg: #F9F9F9
+
+// INFO & LINKS 
 .contacts
     display: flex
     justify-content: space-between
+    box-shadow: 0 1px 0 0 rgba(21, 21, 21, 10%)
 
-.info>span,a
+.info>*
     padding: 0 .5rem
-// seach-box
+
+.info>a
+    text-decoration: none
+    transition: all 0.5s ease-in-out
+.text-green
+    color: $special-gren
+
+.info>a:hover
+    transition: all 0.5s ease-in-out
+    text-decoration: underline
+
+.about-elem
+    color: $special-gren
+    text-decoration: none
+    margin: 0 0.5rem
+    transition: all 0.5s ease-in-out
+
+.about-elem:hover
+    transition: all 0.5s ease-in-out
+    text-decoration: underline
+
+// SEARCH-BAR
+
 .search-bar
+    margin: 1rem 0
     display: flex
     justify-content: space-between
     align-items: center
 
+.search-bar-title
+    font-weight: 700
+    font-style: italic
+
 .search-box-container
     display: flex
-    background-color: #d3d2d2
-    padding: 1rem 1rem
+    background-color: $searchbox-bg
+    padding: .3rem
     border-radius: 10px
+    border: 1px solid #D1D1D1
 
-.search-box-container>input,
-.search-box-container>img,
-.search-box-container>label,
-.search-box-container>div
+.search-box-container>*
     margin: 0 .25rem
+
 .search-input
-    width: 12rem
-    border: none
-    background-color: #d3d2d2
     outline: none
+    border: none
+    background-color: $searchbox-bg
+
 .search-select
-    border: none
-    background-color: #d3d2d2
     outline: none
+    border-radius: 10px
+    border: none
+    background-color: $searchbox-bg
+
+
 
 // profile
-.profile>img
-    width: 2rem
+.profile>*
+    font-size: 2rem
+    font-weight: 400
+    margin: 0 .75rem
+    cursor: pointer
+    transition: all .5s ease-in-out
+    
+
+.profile>*:hover
+    transition: all .5s ease-in-out
+    font-size: 2.1rem
+    color: #4e4e4e
 
 // categories
 .categories
