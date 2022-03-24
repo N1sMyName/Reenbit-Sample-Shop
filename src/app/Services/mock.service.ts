@@ -117,7 +117,6 @@ export class MockService implements InMemoryDbService {
           oldPrice: 30.99,
           deliveryTime: 1,
         },
-        
       ],
     };
   }

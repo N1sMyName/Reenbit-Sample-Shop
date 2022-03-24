@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './cart/cart.component';
-import { DescriptionComponent } from './description/description.component';
-import { ProductsComponent } from './products/products.component';
-import { Router } from '@angular/router';
+
+import { StaticNavTopComponent } from './static-nav-top/static-nav-top.component';
+import { StaticNavBotComponent } from './static-nav-bot/static-nav-bot.component';
 const routes: Routes = [
-
-  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-  { path: 'cart', component: CartComponent, data: { hideFooter: true } },
-  { path: 'products/:id', component: DescriptionComponent },
-
-  { path: 'products', component: ProductsComponent },
-  { path: 'cart',component:CartComponent,
-   data:{hideFooter:true} 
+  {path:'',component:StaticNavTopComponent,outlet:'header'},
+  {path:'',component:StaticNavBotComponent,outlet:'footer'},
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./products/products.module').then((m) => m.ProductsModule),
   },
-  { path: 'products/:id',component:DescriptionComponent },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
+    data: { hideFooter: true },
+  },
 
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/products', pathMatch: 'full' },

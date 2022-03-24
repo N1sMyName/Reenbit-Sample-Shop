@@ -4,6 +4,7 @@ import { DescriptionImagesComponent } from './description-images/description-ima
 import { DescriptionInfoComponent } from './description-info/description-info.component';
 import { DescriptionRelevantTabComponent } from './description-relevant-tab/description-relevant-tab.component';
 import { DescriptionComponent } from './description.component';
+import { DescriptionRoutingModule } from './description-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { DescriptionComponent } from './description.component';
     DescriptionRelevantTabComponent,
     DescriptionComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule,DescriptionRoutingModule],
 })
 export class DescriptionModule {}

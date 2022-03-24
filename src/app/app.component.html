@@ -1,8 +1,9 @@
-<app-static-nav-top></app-static-nav-top>
 
+
+<router-outlet name="header"></router-outlet>
 <router-outlet></router-outlet>
+<router-outlet name="footer" *ngIf="!loger.hideFooter"></router-outlet>
 
-<app-static-nav-bot></app-static-nav-bot>
 
 
 
