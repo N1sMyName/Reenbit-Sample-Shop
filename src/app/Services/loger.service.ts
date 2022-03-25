@@ -5,11 +5,6 @@ import { ActivatedRoute } from '@angular/router';
   providedIn: 'root',
 })
 export class LogerService {
-
-  hideFooter: boolean = this.route.snapshot.data['hideFooter'];
-
-  hideFuter:boolean = this.route.snapshot.data['hideFooter']
-
-
-  constructor(private route: ActivatedRoute) {}
+  hideFooter: boolean = this.active.snapshot.data['hideFooter'];
+  constructor(private active: ActivatedRoute) {}
 }
