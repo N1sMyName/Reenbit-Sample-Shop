@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsFiltersComponent } from './products-filters/products-filters.component';
@@ -19,7 +18,7 @@ import { CoreModule } from '../core.module';
     ProductsNavBotComponent,
     ProductComponent,
   ],
-  imports: [CommonModule, ProductsRoutingModule, CoreModule],
+  imports: [ ProductsRoutingModule, CoreModule],
   exports: [],
 })
 export class ProductsModule {}

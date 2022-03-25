@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CartBillingComponent } from './cart-billing/cart-billing.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartConfirmationComponent } from './cart-confirmation/cart-confirmation.component';
@@ -13,6 +12,6 @@ import { CartRoutingModule } from './cart-routing.module';
     CartConfirmationComponent,
     CartComponent,
   ],
-  imports: [CommonModule, CartRoutingModule],
+  imports: [ CartRoutingModule],
 })
 export class CartModule {}
