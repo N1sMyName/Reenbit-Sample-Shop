@@ -1,1 +1,85 @@
-<p>description works!</p>
+<div class="description-main">
+  <div class="description-flex-container">
+    <app-description-images></app-description-images>
+
+    <div class="description-body">
+      <div class="body-head">
+        <h2 class="body-title">Product description</h2>
+        <div class="body-rating">
+          <!-- same like in product page -->
+          <mat-icon>star</mat-icon>
+          <mat-icon>star</mat-icon>
+          <mat-icon>star</mat-icon>
+          <mat-icon>star</mat-icon>
+          <mat-icon>star_border</mat-icon>
+        </div>
+        <span class="body-rewiews">(1 customer review) </span>
+        <p class="body-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo at, alias similique ab ipsum sapiente.</p>
+      </div>
+
+      <div class="body-verbose-flex">
+        <ul class="body-verbose-1">
+          <li class="item-container">
+            <span class="item-category">Country: </span>
+            <span class="item-data">65743</span>
+          </li>
+          <li class="item-container">
+            <span class="item-category">Category: </span>
+            <span class="item-data">Vegetables</span>
+          </li>
+          <li class="item-container">
+            <span class="item-category">Stock: </span>
+            <span class="item-data">in Stock</span>
+          </li>
+          <li class="item-container">
+            <span class="item-category">Color: </span>
+            <span class="item-data">Red</span>
+          </li>
+        </ul>
+        <ul class="body-verbose-2">
+          <li class="item-container">
+            <span class="item-category">Size: </span>
+            <span class="item-data">123</span>
+          </li>
+          <li class="item-container">
+            <span class="item-category">Buy by: </span>
+            <span class="item-data">Vegetables</span>
+          </li>
+          <li class="item-container">
+            <span class="item-category">Delivery: </span>
+            <span class="item-data">Poland</span>
+          </li>
+          <li class="item-container">
+            <span class="item-category">Delivery area: </span>
+            <span class="item-data">ttttt</span>
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="purchase-info">
+        <div class="price">
+          <h2 class="cost">56.44 USD</h2>
+          <p class="old-cost">66.45 USD</p>
+        </div>
+        <div class="amount">
+          <input type="text"  value="1"/>
+          <div>|</div>
+          <select>
+            <option value="">Pcs</option>
+          </select>
+        </div>
+        <div class="add-btn"><span class="plus">+</span><span>Add to cart</span></div>
+      </div>
+
+      <div class="wishlist-btn">
+        <mat-icon>favorite_border</mat-icon>
+        <span>Add to my wishlist</span>
+      </div>
+
+      <app-description-info></app-description-info>
+    </div>
+  </div>
+
+  <app-description-relevant-tab></app-description-relevant-tab>
+</div>

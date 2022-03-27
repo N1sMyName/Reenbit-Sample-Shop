@@ -10,6 +10,10 @@ export class DescriptionInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   
+  }
+  ngAfterViewInit() {
+    console.log('fdaf')
   }
 
 }

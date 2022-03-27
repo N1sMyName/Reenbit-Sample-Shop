@@ -4,6 +4,8 @@ import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartConfirmationComponent } from './cart-confirmation/cart-confirmation.component';
 import { CartComponent } from './cart.component';
 import { CartRoutingModule } from './cart-routing.module';
+import { CartProductComponent } from './cart-product/cart-product.component';
+import { CoreModule } from '../core.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { CartRoutingModule } from './cart-routing.module';
     CartSummaryComponent,
     CartConfirmationComponent,
     CartComponent,
+    CartProductComponent,
   ],
-  imports: [ CartRoutingModule],
+  imports: [ CartRoutingModule,CoreModule],
 })
 export class CartModule {}
