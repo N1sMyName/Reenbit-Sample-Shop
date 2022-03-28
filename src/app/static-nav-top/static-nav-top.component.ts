@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Router, UrlTree } from '@angular/router';
+import { UrlSerializer } from '@angular/router';
+
 
 @Component({
   selector: 'app-static-nav-top',
@@ -17,7 +19,15 @@ export class StaticNavTopComponent implements OnInit {
     'Sports and Outdoor',
     'Books',
   ];
-  constructor() {}
-
-  ngOnInit(): void {}
+  constructor(public router:Router) {
+    
+  }
+  breadCrumbsGenerator(url:string) {
+    const urlParsed = url.split('/').filter(item => item !== '')
+    return urlParsed
+  }
+  
+  ngOnInit(): void {
+    
+  }
 }

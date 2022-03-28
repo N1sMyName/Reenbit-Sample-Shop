@@ -47,8 +47,13 @@
       </select>
     </label>
   </div>
-
-  <div class="current-location">
-    <p>HomePage /</p>
+  <!-- bread crumbs -->
+  <div class="bread-crumbs">
+    <span class="home-route">Homepage </span>
+    <span *ngFor="let item of breadCrumbsGenerator(this.router.url)" > 
+      <span class="middle-slash">/</span>
+      <span class="nested-route"> {{item}} </span>
+    </span>
   </div>
 </nav>
+ 
