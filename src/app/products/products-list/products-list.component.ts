@@ -7,7 +7,7 @@ import { Product } from '../../Services/Product.model';
   styleUrls: ['./products-list.component.sass'],
 })
 export class ProductsListComponent implements OnInit {
-  data: Product[];
+  data: Product[];  
 
   constructor(private api: MimicrestService) {}
   ngOnInit(): void {
