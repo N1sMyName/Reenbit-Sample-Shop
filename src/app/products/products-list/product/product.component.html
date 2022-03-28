@@ -41,11 +41,11 @@
           <div>Delivery in {{ product.deliveryTime }} day</div>
         </div>
       </div>
-      <div class="product-info-bot-buttons">
-        <a href="" class="show-product-details-btn">Product Details</a>
+      <div class="product-info-bot-buttons" >
+        <a [routerLink]='showDetails(this.product.id)'  class="show-product-details-btn">Product Details</a>
         <div class="whishlist-btn">
           <mat-icon>favorite_border</mat-icon>
-          <span>Add to whishlist</span>
+          <span>Add to wishlist</span>
         </div>
       </div>
     </div>

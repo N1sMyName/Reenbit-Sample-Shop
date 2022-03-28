@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/Services/Product.model';
+import { Product } from 'src/app/Services/db/Product.model';
+import { MimicrestService } from 'src/app/Services/mimicrest.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -7,7 +8,14 @@ import { Product } from 'src/app/Services/Product.model';
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product;
+  
   constructor() {}
 
-  ngOnInit(): void {}
+  showDetails(id:number | any){
+    return `/products/${id}`
+  }
+
+  ngOnInit(): void {
+  
+  }
 }

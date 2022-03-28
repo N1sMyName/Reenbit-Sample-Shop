@@ -40,15 +40,21 @@
 
   <div class="categories">
     <label *ngFor="let category of categories" for=""
-      >{{ category }}
+      >{{ category.name }}
       <select name="" id="" class="category-select" style="text-align: center">
-        <option value=""></option>
-        <option value="">all</option>
+        
+        <option >
+          
+        </option>
+        <option *ngFor="let subCategory of category.sub" >
+          {{subCategory}}
+        </option>
+        
       </select>
     </label>
   </div>
 
-  
+
 
   <!-- bread crumbs -->
 
