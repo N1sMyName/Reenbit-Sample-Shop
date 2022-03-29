@@ -1,0 +1,58 @@
+// categories
+.categories
+    background-color: #F9F9F9
+    display: flex
+    justify-content: space-around
+    margin: 1rem 0
+    border-radius: 5px
+    
+
+    ul
+        padding: 1rem 0
+        flex-basis: 4rem
+        text-align: center
+        white-space: nowrap
+        display: flex
+        cursor: pointer
+        
+        
+                
+        li
+            font-size: .8rem
+            list-style: none
+            position: relative
+            font-weight: 600
+            
+
+        li:hover
+            color: #6A983C
+            
+
+.expand-more-icon
+    color: #6A983C
+
+.categories-container
+    position: absolute
+    transition: opacity .1s ease-in-out
+    border: 1px solid black
+    background-color: rgba(199, 199, 199,0.1)
+    backdrop-filter: blur(3px)
+    transition: opacity .2s ease-in-out
+    border-radius: 8px
+    top: 11rem
+    
+                   
+.hidden
+    z-index: -1
+    opacity: 0
+    transition: opacity .2s ease-in-out
+               
+    
+.categories>label
+    display: flex
+
+    margin: 0 0.25rem
+.category-select
+    border: none
+.category-select:focus
+    outline: none

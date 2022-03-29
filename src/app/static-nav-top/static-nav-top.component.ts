@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../Services/db/categories.model';
+
 import { MimicrestService } from '../Services/mimicrest.service';
 
 
@@ -10,15 +10,13 @@ import { MimicrestService } from '../Services/mimicrest.service';
 
 })
 export class StaticNavTopComponent implements OnInit {
-  categories: Category[];
+  
   constructor(private api:MimicrestService) {
     
   }
  
   
   ngOnInit(): void {
-    this.api.getCategories().subscribe((res)=> {
-      this.categories = res
-    })
+    
   }
 }
