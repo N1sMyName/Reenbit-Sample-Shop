@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/Services/db/Product.model';
+import { products } from 'src/app/Services/db/products';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
 @Component({
   selector: 'app-product',
@@ -10,13 +12,14 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
   productDetails:string;
   
-  constructor() {}
+  constructor(private router:Router) {}
 
-  composeDetailsUrl(id:number ){
+  showProductDetails(id:number ){
   this.productDetails =  `/products/${id}`
+  this.router.navigateByUrl(this.productDetails)
   }
 
   ngOnInit(): void {
-    this.composeDetailsUrl(this.product.id)
+    
   }
 }

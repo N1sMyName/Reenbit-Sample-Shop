@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="product-info-bot-buttons" >
-        <a [routerLink]='productDetails'  class="show-product-details-btn">Product Details</a>
+        <a (click)="showProductDetails(this.product.id)"  class="show-product-details-btn">Product Details</a>
         <div class="whishlist-btn">
           <mat-icon>favorite_border</mat-icon>
           <span>Add to wishlist</span>
