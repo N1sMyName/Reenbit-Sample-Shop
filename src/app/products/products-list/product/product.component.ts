@@ -8,14 +8,15 @@ import { MimicrestService } from 'src/app/Services/mimicrest.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product: Product;
+  productDetails:string;
   
   constructor() {}
 
-  showDetails(id:number ){
-    return `/products/${id}`
+  composeDetailsUrl(id:number ){
+  this.productDetails =  `/products/${id}`
   }
 
   ngOnInit(): void {
-  
+    this.composeDetailsUrl(this.product.id)
   }
 }
