@@ -11,7 +11,7 @@ export class ProductComponent implements OnInit {
   
   constructor() {}
 
-  showDetails(id:number | any){
+  showDetails(id:number ){
     return `/products/${id}`
   }
 
