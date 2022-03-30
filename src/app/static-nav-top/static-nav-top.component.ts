@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MimicrestService } from '../Services/mimicrest.service';
 
 
@@ -19,4 +18,5 @@ export class StaticNavTopComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
 }

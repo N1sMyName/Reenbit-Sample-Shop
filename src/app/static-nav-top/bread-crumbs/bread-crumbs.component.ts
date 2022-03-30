@@ -6,12 +6,17 @@ import { Router } from '@angular/router';
   templateUrl: './bread-crumbs.component.html',
   styleUrls: ['./bread-crumbs.component.sass']
 })
-export class BreadCrumbsComponent implements OnInit {
+export class BreadCrumbsComponent  {
 
   constructor(public router:Router) { }
-  breadCrumbs:string[] = [] 
-  ngOnInit(): void {
-    this.breadCrumbs = this.breadCrumbsParser(this.router.url)
+  breadCrumbs:string[] = []
+  counter:number= 0 
+  ngDoCheck(): void {
+    if(this.breadCrumbs.toString() !== this.breadCrumbsParser(this.router.url).toString()){
+      this.breadCrumbs = this.breadCrumbsParser(this.router.url)
+    }
+    
+    
   }
   breadCrumbsParser(url:string) {
     const urlParsed = url.split('/').filter(item => item !== '')
@@ -22,10 +27,12 @@ export class BreadCrumbsComponent implements OnInit {
     let route:string;
     if(Number.isNaN(+chunk)) {
        route = `/${chunk}`
+       console.log(this.router.url)
     }else {
       route = `/products/${chunk}`
     }
     this.router.navigateByUrl(route)
+    
      
     // this.router.navigateByUrl(route)
   }
