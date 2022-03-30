@@ -1,0 +1,9 @@
+<div class="bread-crumbs">
+    <span class="home-route" (click)="followCrumb()">Homepage </span>
+    <span *ngFor="let chunk of breadCrumbs" > 
+      <span class="middle-slash">/</span>
+      <span class="nested-route"  (click)="followCrumb(chunk)">
+         {{chunk}} 
+        </span>
+    </span>
+  </div>

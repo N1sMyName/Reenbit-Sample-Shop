@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MimicrestService } from '../../Services/mimicrest.service';
-import { Product } from '../../Services/Product.model';
+import { Product } from '../../Services/db/Product.model';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
@@ -14,5 +14,6 @@ export class ProductsListComponent implements OnInit {
     this.api.getProducts().subscribe((res) => {
       this.data = res;
     });
+    
   }
 }

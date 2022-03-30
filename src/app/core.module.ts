@@ -7,15 +7,28 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { MockService } from './Services/mock.service';
 import { HttpClientModule } from '@angular/common/http';
+import { BreadCrumbsComponent } from './static-nav-top/bread-crumbs/bread-crumbs.component';
+import { NavCategoriesBarComponent } from './static-nav-top/nav-categories-bar/nav-categories-bar.component';
 
 @NgModule({
-  declarations: [StaticNavTopComponent, StaticNavBotComponent],
+  declarations: [
+    StaticNavTopComponent,
+    StaticNavBotComponent,
+    BreadCrumbsComponent,
+    NavCategoriesBarComponent
+  ],
   imports: [
     CommonModule,
     MatIconModule,
     HttpClientInMemoryWebApiModule.forRoot(MockService),
     HttpClientModule,
   ],
-  exports: [StaticNavTopComponent, StaticNavBotComponent, MatIconModule,CommonModule],
+  exports: [
+    StaticNavTopComponent,
+    StaticNavBotComponent,
+    MatIconModule,
+    CommonModule,
+    BreadCrumbsComponent,
+  ],
 })
 export class CoreModule {}

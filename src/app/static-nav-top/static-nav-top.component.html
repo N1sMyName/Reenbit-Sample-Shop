@@ -38,17 +38,12 @@
     </div>
   </div>
 
-  <div class="categories">
-    <label *ngFor="let category of categories" for=""
-      >{{ category }}
-      <select name="" id="" class="category-select" style="text-align: center">
-        <option value=""></option>
-        <option value="">all</option>
-      </select>
-    </label>
-  </div>
+  <!-- nav-categories-bar -->
+  <app-nav-categories-bar ></app-nav-categories-bar>
 
-  <div class="current-location">
-    <p>HomePage /</p>
-  </div>
+
+  <!-- bread crumbs -->
+  <app-bread-crumbs></app-bread-crumbs>
+  
 </nav>
+ 
