@@ -38,22 +38,12 @@
     </div>
   </div>
 
-  <div class="categories">
-    <label *ngFor="let category of categories" for=""
-      >{{ category }}
-      <select name="" id="" class="category-select" style="text-align: center">
-        <option value=""></option>
-        <option value="">all</option>
-      </select>
-    </label>
-  </div>
+  <!-- nav-categories-bar -->
+  <app-nav-categories-bar ></app-nav-categories-bar>
+
+
   <!-- bread crumbs -->
-  <div class="bread-crumbs">
-    <span class="home-route">Homepage </span>
-    <span *ngFor="let item of breadCrumbsGenerator(this.router.url)" > 
-      <span class="middle-slash">/</span>
-      <span class="nested-route"> {{item}} </span>
-    </span>
-  </div>
+  <app-bread-crumbs></app-bread-crumbs>
+  
 </nav>
  

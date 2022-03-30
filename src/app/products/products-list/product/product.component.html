@@ -33,19 +33,19 @@
     <div class="product-info-right">
       <div class="product-info-right-price">
         <div class="price">
-          <h2>{{ product.activePrice }} $</h2>
-          <p>{{ product.oldPrice }} $</p>
+          <h2>{{ product.price }} $</h2>
+          <p>{{ product.price }} $</p>
         </div>
         <div class="shipping">
           <div>Free shipping</div>
           <div>Delivery in {{ product.deliveryTime }} day</div>
         </div>
       </div>
-      <div class="product-info-bot-buttons">
-        <a href="" class="show-product-details-btn">Product Details</a>
+      <div class="product-info-bot-buttons" >
+        <a (click)="showProductDetails(this.product.id)"  class="show-product-details-btn">Product Details</a>
         <div class="whishlist-btn">
           <mat-icon>favorite_border</mat-icon>
-          <span>Add to whishlist</span>
+          <span>Add to wishlist</span>
         </div>
       </div>
     </div>
