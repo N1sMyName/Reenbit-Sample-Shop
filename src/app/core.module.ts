@@ -9,13 +9,15 @@ import { MockService } from './Services/mock.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BreadCrumbsComponent } from './static-nav-top/bread-crumbs/bread-crumbs.component';
 import { NavCategoriesBarComponent } from './static-nav-top/nav-categories-bar/nav-categories-bar.component';
+import { SearchBarComponent } from './static-nav-top/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     StaticNavTopComponent,
     StaticNavBotComponent,
     BreadCrumbsComponent,
-    NavCategoriesBarComponent
+    NavCategoriesBarComponent,
+    SearchBarComponent
   ],
   imports: [
     CommonModule,

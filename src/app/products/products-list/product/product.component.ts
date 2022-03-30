@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Services/db/Product.model';
-import { products } from 'src/app/Services/db/products';
-import { MimicrestService } from 'src/app/Services/mimicrest.service';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',

@@ -10,7 +10,6 @@ import { Product } from './db/Product.model';
 export class MimicrestService {
   private productsUrl = 'api/products/';
   private categoriesUrl = 'api/categories/';
-  private productUrl = 'api/categories/'
 
   constructor(private http: HttpClient) {}
 
@@ -32,13 +31,5 @@ export class MimicrestService {
       })
     );
   }
-  getProduct(id:number | any): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productUrl + id).pipe(
-      retry(2),
-      catchError((error: HttpErrorResponse) => {
-        console.error(error);
-        return throwError(error);
-      })
-    );
-  }
+ 
 }
