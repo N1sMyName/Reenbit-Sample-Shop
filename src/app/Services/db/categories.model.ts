@@ -1,5 +1,11 @@
 export interface Category {
+    id:number;
     name:string;
-    sub:string[];
+    sub:SubCategory[];
 
+}
+
+export interface SubCategory {
+    id:number;
+    name:string;
 }

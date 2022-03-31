@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, throwIfEmpty } from 'rxjs';
 import { catchError, retry } from 'rxjs';
 import { Category } from './db/categories.model';
 import { Product } from './db/Product.model';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -31,5 +33,7 @@ export class MimicrestService {
       })
     );
   }
+  
+ 
  
 }

@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/Services/db/categories.model';
 import { Product } from 'src/app/Services/db/Product.model';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
 
@@ -13,6 +14,7 @@ export class SearchBarComponent  {
 
   @ViewChild('searchRes') searchRes:ElementRef;
   @ViewChild('queryInput') queryInput:ElementRef;
+  @Input() categories:Category[]
 
   public data: Product[] = [];
   public defaultData:Product[] = []
@@ -24,6 +26,7 @@ export class SearchBarComponent  {
       this.defaultData = res;
       
     });
+    console.log(this.categories)
     
     document.addEventListener('keydown',(event:KeyboardEvent)=>{
       if(event.key === 'Escape') this.closeResultWindow()
@@ -57,6 +60,8 @@ export class SearchBarComponent  {
     // checking input value for emptiness
     if(!this.queryInput.nativeElement.value) {
       console.log(`no input`)
+      setTimeout(()=>this.queryInput.nativeElement.classList.remove('noQuery'),600)
+      
       this.queryInput.nativeElement.classList.add('noQuery')
       this.closeResultWindow()
     }

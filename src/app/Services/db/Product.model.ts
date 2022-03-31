@@ -8,6 +8,9 @@ export interface Product {
   farm: string;
   size:string;
   description: string;
+  category:string;
+  subCategory:string;
+  brand:string;
   descriptionSmall: string;
   rating: number;
   country:string;
@@ -16,8 +19,6 @@ export interface Product {
   deliveryArea: string;
   deliveryTime: number;
   buyBy:string[];
-  reviews:Review[];
-  comments:Comment[];
 }
 
 export interface Review {

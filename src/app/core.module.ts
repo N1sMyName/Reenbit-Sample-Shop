@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BreadCrumbsComponent } from './static-nav-top/bread-crumbs/bread-crumbs.component';
 import { NavCategoriesBarComponent } from './static-nav-top/nav-categories-bar/nav-categories-bar.component';
 import { SearchBarComponent } from './static-nav-top/search-bar/search-bar.component';
+import { CategoriesDropDownComponent } from './static-nav-top/search-bar/categories-drop-down.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SearchBarComponent } from './static-nav-top/search-bar/search-bar.compo
     StaticNavBotComponent,
     BreadCrumbsComponent,
     NavCategoriesBarComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    CategoriesDropDownComponent
   ],
   imports: [
     CommonModule,

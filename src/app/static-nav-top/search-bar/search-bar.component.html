@@ -1,22 +1,12 @@
 <div class="search-bar">
   <h2 class="search-bar-title">Freshnescom</h2>
   <div class="search-box-container">
-    <label for="categories-drop-down"
-      >All Categories
-      <select
-        name="select-category"
-        id="categories-drop-down"
-        class="search-select"
-      >
-        <option value="value1">All Categories</option>
-        <option value="value2">1</option>
-      </select>
-    </label>
-
+    
+    <app-categories-drop-down></app-categories-drop-down>
     <div class="batton">|</div>
 
     <div class="search-result-container">
-        <input type="text" placeholder="Enter product name..." class="search-input" #queryInput />
+        <input type="text" placeholder="Enter product name..." class="search-input" #queryInput  />
         <ul  class="search-result invis" #searchRes>
             <li *ngFor="let item of data" (click)="moveToProduct(item.id)">{{item.title}}</li>
             <li>  <mat-icon class="expand-less-icon" (click)="closeResultWindow()">expand_less</mat-icon >  </li>
