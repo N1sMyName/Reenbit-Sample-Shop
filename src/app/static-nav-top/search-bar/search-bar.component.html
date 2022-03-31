@@ -13,17 +13,17 @@
       </select>
     </label>
 
-    <div class="batton"></div>
+    <div class="batton">|</div>
 
-    <div>
-        <input type="text" placeholder="Search product..." class="search-input" #queryInput />
-        <ul  class="search-result " #boxRef>
-            <li *ngFor="let item of data" (click)="moveToProduct(item.id,boxRef)">{{item.title}}</li>
-            <li>  <mat-icon class="expand-less-icon" (click)="closeResultWindow(boxRef)">expand_less</mat-icon >  </li>
+    <div class="search-result-container">
+        <input type="text" placeholder="Enter product name..." class="search-input" #queryInput />
+        <ul  class="search-result invis" #searchRes>
+            <li *ngFor="let item of data" (click)="moveToProduct(item.id)">{{item.title}}</li>
+            <li>  <mat-icon class="expand-less-icon" (click)="closeResultWindow()">expand_less</mat-icon >  </li>
           </ul>
     </div>
 
-    <mat-icon role="button" style="cursor: pointer" (click)="setQuery(queryInput,boxRef)">search</mat-icon>
+    <mat-icon role="button" style="cursor: pointer" (click)="setQuery()">search</mat-icon>
   </div>
   
   <div class="profile">

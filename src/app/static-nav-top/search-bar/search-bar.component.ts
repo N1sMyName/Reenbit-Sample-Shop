@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatIcon } from '@angular/material/icon';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductComponent } from 'src/app/products/products-list/product/product.component';
 import { Product } from 'src/app/Services/db/Product.model';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
 
@@ -10,12 +8,15 @@ import { MimicrestService } from 'src/app/Services/mimicrest.service';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.sass'],
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent  {
   constructor(private api: MimicrestService, private router:Router) {}
+
+  @ViewChild('searchRes') searchRes:ElementRef;
+  @ViewChild('queryInput') queryInput:ElementRef;
+
   public data: Product[] = [];
   public defaultData:Product[] = []
   public searchQuery: string = '';
-  public flag = false
 
   ngOnInit(): void {
     this.api.getProducts().subscribe((res) => {
@@ -24,48 +25,69 @@ export class SearchBarComponent implements OnInit {
       
     });
     
-    document.addEventListener('click',()=>{
-      this.flag = false
+    document.addEventListener('keydown',(event:KeyboardEvent)=>{
+      if(event.key === 'Escape') this.closeResultWindow()
     })
+    
   }
+  
   // alphabet sort
   sortFunction(data: Product[]) {
     // compare function
     function compare(a: Product, b: Product) {
-      if (a.title < b.title) {
-        return -1;
-      }
-      if (a.title > b.title) {
-        return 1;
-      }
+      if (a.title < b.title) return -1;
+      if (a.title > b.title) return 1;
       return 0;
     }
+    // setting sorted data
     this.data = this.data.sort(compare);
   }
-  ngAfterViewChecked() {
-    this.sortFunction(this.data);
-  }
+  ngAfterViewChecked() {this.sortFunction(this.data)}
+  
 
 
-  setQuery(inputRef: HTMLInputElement,boxRef:HTMLUListElement) {
+  setQuery() {
+    // make copy of data
     this.data = this.defaultData
-    this.searchQuery = inputRef.value.toLowerCase()
+    this.searchQuery = this.queryInput.nativeElement.value.toLowerCase()
     if(this.data) {
      this.data =  this.data.filter(e => e.title.toLowerCase().includes(this.searchQuery ))
     }
-    this.flag = true
-    boxRef.classList.toggle('invis')
-    
+    // input validation
+    // checking input value for emptiness
+    if(!this.queryInput.nativeElement.value) {
+      console.log(`no input`)
+      this.queryInput.nativeElement.classList.add('noQuery')
+      this.closeResultWindow()
+    }
+     // checking if data is available for query
+    if(this.queryInput.nativeElement.value && 
+      this.queryInput.nativeElement.value.length && 
+      this.data.length){
+       this.openResultWindow()}
+
+        // setting value to default if no product occur
+        // notify user
+    if(!this.data.length) {
+      console.log('no data')
+      this.queryInput.nativeElement.value = ''
+      this.queryInput.nativeElement.placeholder = 'No such product'
+      this.closeResultWindow()
+    }
+  }
+  openResultWindow(){
+    this.searchRes.nativeElement.classList.remove('invis')
     
   }
-  closeResultWindow(boxRef:HTMLUListElement){
-    boxRef.classList.add('invis')
+  closeResultWindow(){
+    this.searchRes.nativeElement.classList.add('invis')
   }
-  moveToProduct(id:number,boxRef:HTMLUListElement) {
+  moveToProduct(id:number,) {
     const link = `/products/${id}`
     this.router.navigateByUrl(link)
-    this.closeResultWindow(boxRef)
+    this.closeResultWindow()
   }
+
 
 }
 [];
