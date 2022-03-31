@@ -61,9 +61,10 @@ export class SearchBarComponent implements OnInit {
   closeResultWindow(boxRef:HTMLUListElement){
     boxRef.classList.add('invis')
   }
-  moveToProduct(id:number) {
+  moveToProduct(id:number,boxRef:HTMLUListElement) {
     const link = `/products/${id}`
     this.router.navigateByUrl(link)
+    this.closeResultWindow(boxRef)
   }
 
 }
