@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "predeploy":"ng build --prod --base-href https://N1sMyName.github.io/Reenbit-Sample-Shop/",
+    "deploy":"ngh --dir=dist/Reenbit-Sample-Shop",
     "start": "ng serve",
     "build": "ng build",
     "build:stats": "ng build --stats-json",
