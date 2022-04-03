@@ -1,4 +1,4 @@
-<div class="search-bar" #searchBoxContainer>
+<div class="search-bar" #searchBar>
   <h2 class="search-bar-title">Freshnescom</h2>
   <div class="search-box-container">
     <app-categories-drop-down></app-categories-drop-down>
@@ -12,6 +12,7 @@
         (input)="checkValidity()"
         [formControl]="searchQuery"
         (keydown)="handleSearchByEnter($event)"
+        
       />
 
       <div [ngClass]="errorStyles">{{ errorMsg }}</div>
