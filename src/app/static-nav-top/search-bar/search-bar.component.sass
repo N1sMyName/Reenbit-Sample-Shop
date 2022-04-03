@@ -25,16 +25,11 @@ $searchbox-bg: #F9F9F9
     font-weight: 700
     font-style: italic
 
-
-
 .search-input
     width: 100%
     outline: none
     border: none
     background-color: $searchbox-bg
-    
-
-
 
 .search-result-container
     width: 262px
@@ -53,24 +48,25 @@ $searchbox-bg: #F9F9F9
     li
         list-style: none
         cursor: pointer
+        padding: .25rem 0
 
     li:hover
         color: #6A983C
 
 .expand-less-icon
     padding: 0.25rem
-    
+
     color: #6A983C
 
 .expand-less-icon:hover
     color: red
     font-weight: 600
 
-.invis
-    transition: all .25s ease 
+.hidden
+    transition: all .25s ease
     opacity: 0
     z-index: -1
-.invis:hover
+.hidden:hover
     opacity: 0
     trensition: all .25s ease
     z-index: 0
@@ -90,3 +86,22 @@ $searchbox-bg: #F9F9F9
 .profile>*:hover
     transition: all .5s ease-in-out
     color: #6A983C
+
+// error
+
+.error-container
+    
+    position: absolute
+    top: 5.5rem
+    opacity: 0
+    border: 1px solid grey
+    width: max-content
+    padding: .25rem
+    border-radius: 10px
+    backdrop-filter: blur(2px)
+    transition: opacity .5s ease
+    color: #6A983C
+.isError
+    opacity: 100
+    transition: opacity .25s ease
+    color: red

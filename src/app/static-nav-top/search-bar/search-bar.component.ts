@@ -1,9 +1,8 @@
-import { Component, ElementRef, ViewChild, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { Category } from 'src/app/Services/db/categories.model';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ChildActivationEnd, Router } from '@angular/router';
 import { Product } from 'src/app/Services/db/Product.model';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,33 +10,52 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search-bar.component.sass'],
 })
 export class SearchBarComponent {
-  constructor(private api: MimicrestService, private router: Router) {}
+  constructor(
+    private api: MimicrestService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
   public data: Product[] = [];
   public list: Product[] = [];
-  public queryWindowIsClosed: boolean = true;
-  public searchQuery = new FormControl('');
 
-  public classList = {
-    'invis': true,
+  public searchQuery = this.fb.control('', [
+    Validators.required,
+    Validators.minLength(3),
+  ]);
+
+  public errorMsg = '';
+
+  public dropDownResult = {
+    hidden: true,
     'search-result': true,
-    'no-values': false,
-    'no-items': false,
+  };
+  public errorStyles = {
+    'error-container': true,
+    isError: false,
   };
 
   ngOnInit(): void {
     this.api.getProducts().subscribe((res) => {
       this.data = res;
     });
-    console.log(this.searchQuery.value);
 
     document.addEventListener('keydown', this.handleCloseByEsc.bind(this));
   }
+
   ngOnDestroy() {
     document.removeEventListener('keydown', this.handleCloseByEsc);
   }
   handleCloseByEsc(event: KeyboardEvent) {
-    if (event.key === 'Escape') this.closeResultWindow();
+    if (event.key === 'Escape') {
+      this.dropDownResult.hidden = true;
+      this.errorStyles.isError = false;
+    }
+  }
+  handleSearchByEnter(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.search();
+    }
   }
 
   // alphabet sort
@@ -51,33 +69,44 @@ export class SearchBarComponent {
     // setting sorted data
     this.list = data.sort(compare);
   }
+  checkValidity() {
+    if (!this.searchQuery.errors) {
+      this.errorStyles['isError'] = false;
+    }
+  }
 
-  setQuery() {
+  search() {
+    if (this.searchQuery.errors) {
+      this.errorStyles['isError'] = true;
+      this.errorMsg = 'Required min-length 3';
+      this.dropDownResult.hidden = true;
+      return;
+    }
     // make copy of data
     this.list = [...JSON.parse(JSON.stringify(this.data))];
+
     if (this.list) {
-      this.list = this.list.filter(e =>
+      this.list = this.list.filter((e) =>
         e.title.toLowerCase().includes(this.searchQuery.value)
       );
+      this.sortFunction(this.list, 'title');
+      this.dropDownResult.hidden = false;
     }
 
-    this.sortFunction(this.list, 'title');
-
-    this.openResultWindow();
-
-    // input validation
-    // checking input value for emptiness
+    if (!this.list.length) {
+      this.dropDownResult.hidden = true;
+      this.errorStyles.isError = true;
+      this.errorMsg = 'Prodcuct not found';
+    }
   }
-  openResultWindow() {
-    this.classList.invis = false;
-  }
+
   closeResultWindow() {
-    this.classList.invis = true;
+    this.dropDownResult.hidden = true;
   }
   moveToProduct(id: number) {
     const link = `/products/${id}`;
     this.router.navigateByUrl(link);
-    this.closeResultWindow()
+    this.closeResultWindow();
   }
 }
 [];
