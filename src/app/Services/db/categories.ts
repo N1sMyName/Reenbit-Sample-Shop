@@ -11,7 +11,7 @@ export const categories = [
         name:'Tv'},
 ]
     },
-    {name:'Food',
+    {name:'Foods',
     sub:[
         {id:0,
         name:'Alcohol'},

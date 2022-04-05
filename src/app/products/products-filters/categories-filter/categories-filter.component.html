@@ -1,0 +1,19 @@
+<div class="categories-filter">
+  <h3 class="categories-title">Categories</h3>
+  <div class="categories-container">
+    <ul class="categories-tab-items">
+      <li
+        *ngFor="let category of categories"
+        [ngClass]="{'categories-tab-item':true }"
+        (click)="setCategotyToFilter(category.name,$event)"
+        #categoryRef
+      >
+        <span>{{ category.name }}</span>
+        <div styles="font-size: 1.2rem" class="categories-tab-count">
+          {{ category | categoriesSorter: products }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div></div>
