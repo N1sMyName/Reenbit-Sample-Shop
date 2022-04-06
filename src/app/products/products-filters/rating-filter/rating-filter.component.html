@@ -1,43 +1,28 @@
-<div>
-    <div class="filter-tab">
-      <h3>Rating</h3>
-      <div class="filter-tab brands-filter">
-        <label for="rating-1" class="cbx-container"
-          ><mat-icon class="rating-star-gold">star</mat-icon>
-          <input
-            type="checkbox"
-            name=""
-            id="rating-1"
-            class="brand-checkbox"
-            checked
-          />
-        </label>
-        <label for="rating-2">
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <input type="checkbox" name="" id="rating-2" />
-        </label>
-        <label for="rating-3"
-          ><mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <input type="checkbox" name="" id="rating-3" />
-        </label>
-        <label for="rating-4"
-          ><mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <input type="checkbox" name="" id="rating-4" />
-        </label>
-        <label for="rating-5">
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <mat-icon class="rating-star-gold">star</mat-icon>
-          <input type="checkbox" name="" id="rating-5" />
-        </label>
-      </div>
+<form [formGroup]="ratingGroup">
+  <div class="filter-tab">
+    <h3 class="rating-title">Rating</h3>
+    <div class="filter-tab rating-filter" 
+    formArrayName="ratingArray">
+      <label
+        
+        [attr.for]="'input' + (i + 1)"
+        class="cbx-container"
+        *ngFor="let input of loopArray.constructor(ratingMax); let i = index"
+      >
+        <input
+          type="checkbox"
+          name=""
+          [attr.id]="'input' + (i + 1)"
+          #ratingFilter
+          
+        />
+
+        <mat-icon
+          *ngFor="let star of [].constructor(i + 1)"
+          class="rating-star-gold"
+          >star</mat-icon
+        >
+      </label>
     </div>
   </div>
+</form>

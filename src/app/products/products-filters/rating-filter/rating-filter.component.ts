@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { FormArray, FormBuilder,FormControlName, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-rating-filter',
@@ -6,10 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rating-filter.component.sass']
 })
 export class RatingFilterComponent implements OnInit {
+  ratingMax = 5
+  loopArray = []
 
-  constructor() { }
-
+  ratingGroup:FormGroup;
+  @ViewChildren('ratingFilter') ratingFilter:QueryList<any>;
+  constructor(private fb:FormBuilder) {
+    this.ratingGroup = this.fb.group({
+      ratingArray:fb.array([])
+    })  
+   }
+  
   ngOnInit(): void {
+    
+  }
+ 
+
+  ngAfterViewInit(){
+   this.ratingFilter.forEach(e => {
+     console.log(e)
+    
+   })
+     
+   }
+
   }
 
-}
+
