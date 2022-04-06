@@ -19,7 +19,7 @@ import { FilterService } from '../filter.service';
   selector: 'app-categories-filter',
   templateUrl: './categories-filter.component.html',
   styleUrls: ['./categories-filter.component.sass'],
-  
+
 })
 export class CategoriesFilterComponent implements OnInit {
   @ViewChild('categoryRef') categoryRef: ElementRef;
@@ -43,6 +43,5 @@ export class CategoriesFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
-    console.log(this.productS)
   }
 }

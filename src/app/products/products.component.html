@@ -1,8 +1,8 @@
-<div class="main-container">
+<div class="main-container" *ngIf="filteredProducts">
   <app-products-nav-top></app-products-nav-top>
   <main class="products">
-    <app-products-filters class="products-filter"></app-products-filters>
-    <app-products-list class="products-list"></app-products-list>
+    <app-products-filters  [products]="originalProducts" class="products-filter"></app-products-filters>
+    <app-products-list [products]="filteredProducts" class="products-list"></app-products-list>
   </main>
   <app-products-nav-bot></app-products-nav-bot>
 </div>
