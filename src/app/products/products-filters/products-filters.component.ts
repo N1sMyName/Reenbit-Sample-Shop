@@ -12,7 +12,7 @@ export class ProductsFiltersComponent  {
   formattedMessage:string;
   rootForm:FormGroup;
 
-  constructor(private rootFilter:FilterService, private fb:FormBuilder) { }
+  constructor(private rootFilter:FilterService, private fb:FormBuilder,) { }
   
 
 

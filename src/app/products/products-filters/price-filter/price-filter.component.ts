@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Options } from '@angular-slider/ngx-slider';
 @Component({
   selector: 'app-price-filter',
   templateUrl: './price-filter.component.html',
-  styleUrls: ['./price-filter.component.sass']
+  styleUrls: ['./price-filter.component.sass'],
+  encapsulation:ViewEncapsulation.None
 })
 export class PriceFilterComponent implements OnInit {
  

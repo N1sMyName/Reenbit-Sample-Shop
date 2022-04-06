@@ -23,13 +23,7 @@ export class RatingFilterComponent implements OnInit {
   }
  
 
-  ngAfterViewInit(){
-   this.ratingFilter.forEach(e => {
-     console.log(e)
-    
-   })
-     
-   }
+
 
   }
 

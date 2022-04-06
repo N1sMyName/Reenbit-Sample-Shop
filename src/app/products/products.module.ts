@@ -14,6 +14,7 @@ import { PriceFilterComponent } from './products-filters/price-filter/price-filt
 import { RatingFilterComponent } from './products-filters/rating-filter/rating-filter.component';
 import { CategoriesSorterPipe } from './products-filters/categories-filter/categories-sorter.pipe';
 import { ProductsFiltersModule } from './products-filters/products-filters.module';
+import { ProductsService } from '../Services/products.service';
 
 @NgModule({
   declarations: [
@@ -26,5 +27,6 @@ import { ProductsFiltersModule } from './products-filters/products-filters.modul
   ],
   imports: [ProductsRoutingModule, CoreModule,ProductsFiltersModule],
   exports: [],
+  providers: []
 })
 export class ProductsModule {}
