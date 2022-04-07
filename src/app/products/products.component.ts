@@ -26,5 +26,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(){
+    
+  }
+
 
 }

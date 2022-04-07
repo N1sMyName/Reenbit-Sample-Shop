@@ -1,20 +1,17 @@
-<form [formGroup]="ratingGroup">
+<form >
   <div class="filter-tab">
     <h3 class="rating-title">Rating</h3>
-    <div class="filter-tab rating-filter" 
-    formArrayName="ratingArray">
+    <div class="filter-tab rating-filter" formControlName="rating">
       <label
-        
         [attr.for]="'input' + (i + 1)"
         class="cbx-container"
         *ngFor="let input of loopArray.constructor(ratingMax); let i = index"
       >
         <input
           type="checkbox"
-          name=""
           [attr.id]="'input' + (i + 1)"
-          #ratingFilter
-          
+          #checkBoxList
+          (change)="createCheckboxRef()"
         />
 
         <mat-icon
