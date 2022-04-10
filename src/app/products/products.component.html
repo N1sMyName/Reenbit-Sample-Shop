@@ -1,8 +1,15 @@
-<div class="main-container" *ngIf="filteredProducts">
-  <app-products-nav-top></app-products-nav-top>
+<div class="main-container" *ngIf="filteredProducts" >
+  <app-products-nav-top [products]="filteredProducts"></app-products-nav-top>
   <main class="products">
-    <app-products-filters  [products]="originalProducts" class="products-filter"></app-products-filters>
-    <app-products-list [products]="filteredProducts" class="products-list"></app-products-list>
+    <app-products-filters
+      [products]="originalProducts"
+      class="products-filter"
+      (formFilterEvent)="setFilters($event)"
+    ></app-products-filters>
+    <app-products-list
+      [products]="filteredProducts"
+      class="products-list"
+    ></app-products-list>
   </main>
-  <app-products-nav-bot></app-products-nav-bot>
+  <app-products-nav-bot [products]="originalProducts" ></app-products-nav-bot>
 </div>

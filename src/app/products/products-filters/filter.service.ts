@@ -5,37 +5,104 @@ import { Product } from 'src/app/Services/db/Product.model';
   providedIn: 'root',
 })
 export class FilterService {
-  public price: number;
   public category: string = 'All Products';
-  public rating: number[] = [1,2,3,4,5];
-  public brand: string[];
 
   constructor() {}
 
-  rootFilter(
-    products:Product[],
-    category: string ,
-    price: number,
-    brand:  string[],
-    rating:  number[] 
-  ):Product[]  {
-    let res = products
-    // 
-    if(category !== 'All Products') {
-    res = products.filter(p => p.category === category)
-    console.log(res)
+  // price Range
+  countPriceRange(products: Product[]) {
+    // high
+    if (products) {
+      let highestVal = 0;
+      products.forEach((p) => {
+        if (p.price > highestVal) {
+          highestVal = Math.round(p.price);
+        }
+      });
+      // high
+
+      let lowestVal = highestVal;
+      products.forEach((p) => {
+        if (p.price < lowestVal) {
+          lowestVal = Math.floor(p.price);
+        }
+      });
+
+      return [lowestVal, highestVal];
+    } else {
+      return [0, 0];
     }
-    if(price) {
-      res = products.filter(p => p.price <= price)
+  }
+  // count Brands
+  countBrands(products: Product[]) {
+    let brands: string[] = [];
+    for (let p of products) {
+      if (!brands.includes(p.brand) && p.brand) {
+        brands.push(p.brand);
+      }
+    }
+    console.log(brands);
+    return brands;
+  }
+
+  // count Categories
+  countCategories(products: Product[]) {
+    let categoriesNames: string[] = [];
+    for (let p of products) {
+      if (!categoriesNames.includes(p.category) && p.category) {
+        categoriesNames.push(p.category);
+      }
+    }
+    let categories = [];
+    for (let n of categoriesNames) {
+      let count = 0;
+      for (let p of products) {
+        if (n === p.category) {
+          count++;
+        }
+      }
+      categories.push({ name: n, count: count });
+    }
+    return categories;
+  }
+
+  // root
+  rootFilter(
+    products: Product[],
+    categoryName?: string,
+    price?: number[],
+    brands?: { [key: string]: boolean },
+    ratings?: { [key: number]: boolean }
+  ): Product[] {
+    let res = products;
+
+    if (categoryName) {
+      res = res.filter((p) => p.category === categoryName);
+    } else {
+      console.log(`no category included`);
     }
     
-    if(brand){
-     res = brand.flatMap(b => products.filter(p => p.brand === b)) 
+    if (price) {
+      res = res.filter((p) => p.price <= price[1] && p.price >= price[0]);
+    } else {
+      console.log(`there is no price range`);
     }
 
-    if(rating) {
-      res = rating.flatMap(r => products.filter(p => p.rating === +r)) 
+    if (brands && Object.entries(brands).filter((b) => b[1] === true).length) {
+      const brandsArray = Object.entries(brands).filter((b) => b[1] === true);
+      res = brandsArray.flatMap((b) => res.filter((p) => p.brand === b[0]));
+      console.log(res);
+    } else {
+      console.log(`there is no brands to filter`);
     }
-    return res
+    
+    if (ratings && Object.entries(ratings).filter((b) => b[1] === true).length) {
+      const ratingsArray = Object.entries(ratings).filter((b) => b[1]);
+      res = ratingsArray.flatMap((r) => res.filter((p) => p.rating === +r[0]));
+    } else {
+      console.log(`all ratings included `);
+    }
+    
+    return res;
   }
 }

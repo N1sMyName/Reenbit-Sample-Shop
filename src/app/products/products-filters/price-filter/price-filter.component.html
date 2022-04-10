@@ -1,25 +1,34 @@
 <div class="price-filter">
   <h3 class="price-title">Price</h3>
   <div class="slider">
-
     <ngx-slider
-      [options]="options"
       formControlName="price"
+      [(value)]="form.controls['price'].value[0]"
+      [(highValue)]="form.controls['price'].value.max"
+      [options]="options"
     ></ngx-slider>
-
-    <!-- <input type="range" name="" id="" max="100" min="10" /> -->
   </div>
   <div class="price-inputs-flex-container">
     <div class="price-input-containe min">
       <label for="min"
-      >min
-        <input type="text" class="price-input min" id="min" [value]="form.controls['price']?.value[0] "/>
+        >min
+        <input
+          type="text"
+          class="price-input min"
+          id="min"
+          [value]="form.controls['price'].value[0]"
+        />
       </label>
     </div>
     <div class="price-input-container max">
       <label for="max"
-      >max
-        <input type="text" class="price-input max" id="max" [value]="form.controls['price']?.value[1]"/>
+        >max
+        <input
+          type="text"
+          class="price-input max"
+          id="max"
+          [value]="form.get('price')?.value[1]"
+        />
       </label>
     </div>
   </div>

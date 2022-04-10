@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError, throwIfEmpty } from 'rxjs';
 import { catchError, retry } from 'rxjs';
-import { Brand } from './db/brand.model';
 import { Category } from './db/categories.model';
 import { Product } from './db/Product.model';
 
@@ -36,16 +35,9 @@ export class MimicrestService {
       })
     );
   }
-  getBrands(): Observable<Brand[]> {
-    return this.http.get<Brand[]>(this.brandsUrl).pipe(
-      retry(2),
-      catchError((error: HttpErrorResponse) => {
-        console.error(error);
-        return throwError(error);
-      })
-    );
+  
  
-  }
+  
   
  
  

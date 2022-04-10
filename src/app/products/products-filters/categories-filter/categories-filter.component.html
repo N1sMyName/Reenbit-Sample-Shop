@@ -5,15 +5,14 @@
       <li
         *ngFor="let category of categories"
         [ngClass]="{ 'categories-tab-item': true }"
-        #categoryRef
       >
         <div
           class="categories-tab-item-flex-container"
-          (click)="setCategoryToFilter(category.name)"
+         
         >
-          <span>{{ category.name }}</span>
+          <span  (click)="setCategoryName(category.name)">{{ category.name }}</span>
           <div class="categories-tab-count">
-            {{ category | categoriesSorter: products }}
+            {{category.count}}
           </div>
         </div>
       </li>

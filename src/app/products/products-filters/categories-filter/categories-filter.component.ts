@@ -1,17 +1,13 @@
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
-import { Category } from 'src/app/Services/db/categories.model';
+  ControlContainer,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+} from '@angular/forms';
+
 import { Product } from 'src/app/Services/db/Product.model';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
-import { ProductsService } from '../../../Services/products.service';
 
 import { FilterService } from '../filter.service';
 
@@ -19,29 +15,28 @@ import { FilterService } from '../filter.service';
   selector: 'app-categories-filter',
   templateUrl: './categories-filter.component.html',
   styleUrls: ['./categories-filter.component.sass'],
-
+  viewProviders: [
+    { provide: ControlContainer, useExisting: FormGroupDirective },
+  ],
 })
 export class CategoriesFilterComponent implements OnInit {
-  @ViewChild('categoryRef') categoryRef: ElementRef;
+  @Input() categories: { name: string; count: number; }[];
 
-  public categories: Category[];
   public products: Product[];
+  form: FormGroup;
 
   constructor(
-    private productS: ProductsService,
     public api: MimicrestService,
-    public filterS: FilterService
+    public f: FilterService,
+    private parent: FormGroupDirective
   ) {}
 
-  fetchCategories() {
-    this.api.getCategories().subscribe((res) => (this.categories = res));
-  }
-
-  setCategoryToFilter(name: string) {
-    this.filterS.category = name;
+  setCategoryName(name:string){
+    this.form.get('categoryName')?.setValue(name)
   }
 
   ngOnInit(): void {
-    this.fetchCategories();
+    this.form = this.parent.form;
+    this.form.addControl('categoryName', new FormControl(''));
   }
 }

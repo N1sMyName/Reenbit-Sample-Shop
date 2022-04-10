@@ -12,7 +12,6 @@ import { CategoriesFilterComponent } from './products-filters/categories-filter/
 import { BrandFilterComponent } from './products-filters/brand-filter/brand-filter.component';
 import { PriceFilterComponent } from './products-filters/price-filter/price-filter.component';
 import { RatingFilterComponent } from './products-filters/rating-filter/rating-filter.component';
-import { CategoriesSorterPipe } from './products-filters/categories-filter/categories-sorter.pipe';
 import { ProductsFiltersModule } from './products-filters/products-filters.module';
 import { ProductsService } from '../Services/products.service';
 

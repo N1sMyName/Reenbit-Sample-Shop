@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from 'src/app/Services/db/Product.model';
 
 @Component({
   selector: 'app-products-nav-bot',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products-nav-bot.component.sass']
 })
 export class ProductsNavBotComponent implements OnInit {
-
+  @Input() products:Product[]
   constructor() { }
 
   ngOnInit(): void {
