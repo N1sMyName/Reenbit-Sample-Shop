@@ -1,14 +1,32 @@
 .sort-nav-container
-    margin: .5rem 0
-    
+    margin-top: 24px
+    margin-bottom: 17px
+
+.sort-nav-title
+    color: #151515
+    font-family: 'Poppins', semi-bold
+    font-size: 32px
+    line-height: 48px
 
 .sort-nav-flex
     display: flex
     justify-content: space-between
 
+    .description
+        font-size: 12px
+
 .sort-drop-down
+    background-color: #F9F9F9
     display: flex
+    justify-content: center
+    align-items: center
     margin-top: .5rem
+    font-family: 'Open Sans', sans-serif
+    border-radius: 12px
+    width: 181px
+    height: 38px
+    border: 1px solid #D1D1D1
+    white-space: nowrap
 
 .count
     color: #6A983C
@@ -19,4 +37,38 @@
 .products
     color: #A9A9A9
     padding: .5rem
-    
+
+.select-sort
+    ul
+        cursor: pointer
+        font-family: 'Poppins', semi-bold
+        font-size: 14px 
+        li
+            list-style: none
+            transition: all 0.5s ease
+            opacity: 0
+            
+            ul
+                position: absolute
+                border: 1px solid black
+                border-radius: 10px
+                backdrop-filter: blur(2px)
+                
+                
+                li
+                    transition: all 0.5s ease
+                    list-style: none
+
+                li:hover
+                    color: #6A983C
+.select-sort
+    ul:hover
+        li
+            opacity: 100
+
+ul
+    font-family: 'Open Sans', sans-serif
+
+
+.middle
+    color: #D1D1D1

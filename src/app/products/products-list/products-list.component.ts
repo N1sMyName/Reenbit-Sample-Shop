@@ -1,20 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MimicrestService } from '../../Services/mimicrest.service';
-import { Product } from '../../Services/db/Product.model';
+import {Component, Input} from '@angular/core';
+import {Product} from '../../Services/db/Product.model';
+import {ProductsService} from '../../Services/products.service';
+
+
+
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.sass'],
+  providers: [ProductsService]
 })
-export class ProductsListComponent implements OnInit {
-  data: Product[];  
+export class ProductsListComponent {
+  @Input() products: Product[] = []
 
-  constructor(private api: MimicrestService) {}
-  ngOnInit(): void {
-    this.api.getProducts().subscribe((res) => {
-      this.data = res;
-    });
-  
+  constructor(
     
+  ) {
   }
+
+
+  ngOnInit(): void {
+
+
+  }
+
 }
