@@ -13,7 +13,8 @@ import { Form } from './form.model';
 export class ProductsComponent implements OnInit {
   public filteredProducts: Product[];
   public originalProducts: Product[];
-  private filters: Form;
+  public filters: Form;
+  sortBy:string = ''
 
   constructor(
     private mimicrestService: MimicrestService,
@@ -22,9 +23,13 @@ export class ProductsComponent implements OnInit {
 
   setFilters(event: Form) {
     this.filters = event;
-    console.log(this.filters.brands);
     this.filteredProducts = cloneDeep(this.originalProducts);
     this.filteredProducts = this.filterWrapper(this.filteredProducts);
+  }
+
+  setSort(c:string){
+    this.sortBy = c
+    this.filteredProducts = this.f.sortBy(this.sortBy,this.filteredProducts)
   }
 
   ngOnInit(): void {

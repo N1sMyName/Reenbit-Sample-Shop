@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FilterService } from './filter.service';
 import { Product } from '../../Services/db/Product.model';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
@@ -27,21 +27,29 @@ export class ProductsFiltersComponent {
   ngOnInit(): void {
     this.buildForm();
     this.onFormChanges();
-
     this.priceRange = this.f.countPriceRange(this.products);
     this.brands = this.f.countBrands(this.products);
     this.categories = this.f.countCategories(this.products);
+  }
+  ngOnDestroy() {
+    this.unsubscribeAll.next('end');
+    this.unsubscribeAll.complete();
   }
 
   buildForm() {
     this.form = this.formBuilder.group({});
   }
   resetForm() {
-    this.form.get('price')?.reset([this.priceRange[0],this.priceRange[1]])
-    this.form.get('categoryName')?.reset('')
-    this.form.get('brands')?.reset([])
-    this.form.get('ratings')?.reset({})
-    console.log(this.form.value)
+    const low = this.priceRange[0];
+    const high = this.priceRange[1];
+    this.form.reset({
+      price: [low, high],
+      categoryName: '',
+      brands: [],
+      ratings: [],
+    });
+    console.log(this.priceRange);
+    console.log(this.form.get('price'));
   }
 
   onFormChanges() {
@@ -52,8 +60,4 @@ export class ProductsFiltersComponent {
       });
   }
 
-  ngOnDestroy() {
-    this.unsubscribeAll.next('end');
-    this.unsubscribeAll.complete();
-  }
 }

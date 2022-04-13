@@ -1,8 +1,7 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   ControlContainer,
-  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -18,8 +17,7 @@ import {
   ],
 })
 export class RatingFilterComponent implements OnInit {
-  ratingMax = 5;
-  loopArray = [];
+  stars =[5,4,3,2,1]
 
   constructor(private fb: FormBuilder, private parent: FormGroupDirective) {}
 
