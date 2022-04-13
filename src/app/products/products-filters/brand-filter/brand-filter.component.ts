@@ -20,11 +20,7 @@ import { FilterService } from '../filter.service';
 export class BrandFilterComponent implements OnInit {
   @Input() brands: string[];
 
-  constructor(
-    private f: FilterService,
-    private fb: FormBuilder,
-    private parent: FormGroupDirective
-  ) {}
+  constructor(private parent: FormGroupDirective) {}
 
   ngOnInit(): void {
     this.parent.form.addControl(
@@ -42,9 +38,5 @@ export class BrandFilterComponent implements OnInit {
   }
   get gBrands() {
     return this.parent.form.get('brands')?.value;
-  }
-  showWTF() {
-    // console.log( Object.entries(this.gBrands).filter(e => e[1] ));
-    console.log(this.gBrands)
   }
 }

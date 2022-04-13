@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/Services/db/Product.model';
+import { products } from 'src/app/Services/db/products';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,8 @@ export class FilterService {
   // price Range
   countPriceRange(products: Product[]) {
     // high
+    let highestVal = 0;
     if (products) {
-      let highestVal = 0;
       products.forEach((p) => {
         if (p.price > highestVal) {
           highestVal = Math.round(p.price);
@@ -21,17 +22,14 @@ export class FilterService {
       });
       // high
 
+    } 
       let lowestVal = highestVal;
       products.forEach((p) => {
         if (p.price < lowestVal) {
           lowestVal = Math.floor(p.price);
         }
       });
-
-      return [lowestVal, highestVal];
-    } else {
-      return [0, 0];
-    }
+    return [lowestVal, highestVal];
   }
   // count Brands
   countBrands(products: Product[]) {
@@ -41,7 +39,6 @@ export class FilterService {
         brands.push(p.brand);
       }
     }
-    console.log(brands);
     return brands;
   }
 
@@ -81,8 +78,8 @@ export class FilterService {
     } else {
       console.log(`no category included`);
     }
-    
-    if (price) {
+    if (price && price[0] && price[1] ) {
+
       res = res.filter((p) => p.price <= price[1] && p.price >= price[0]);
     } else {
       console.log(`there is no price range`);
@@ -91,18 +88,38 @@ export class FilterService {
     if (brands && Object.entries(brands).filter((b) => b[1] === true).length) {
       const brandsArray = Object.entries(brands).filter((b) => b[1] === true);
       res = brandsArray.flatMap((b) => res.filter((p) => p.brand === b[0]));
-      console.log(res);
     } else {
       console.log(`there is no brands to filter`);
     }
-    
-    if (ratings && Object.entries(ratings).filter((b) => b[1] === true).length) {
+    if (
+      ratings &&
+      Object.entries(ratings).filter((b) => b[1] === true).length
+    ) {
       const ratingsArray = Object.entries(ratings).filter((b) => b[1]);
       res = ratingsArray.flatMap((r) => res.filter((p) => p.rating === +r[0]));
     } else {
       console.log(`all ratings included `);
     }
-    
     return res;
+  }
+
+  sortBy(method: string, products: Product[]): Product[] {
+    const sortHelper = (key: keyof Product) => {
+      const p = products.sort((a: Product, b: Product) => {
+        return +a[key] - +b[key];
+      });
+      console.log(p)
+      return p;
+    };
+    switch (method) {
+      case 'Price(asc)':
+        return sortHelper('price');
+      case 'Price(desc)':
+        return sortHelper('price').reverse();
+      case 'Rating':
+        return sortHelper('rating').reverse();
+      default :
+      return products
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 import { Product } from 'src/app/Services/db/Product.model';
 import { FilterService } from '../products-filters/filter.service';
 
@@ -9,6 +9,17 @@ import { FilterService } from '../products-filters/filter.service';
 })
 export class ProductsNavTopComponent {
   @Input() products: Product[] = [];
-  constructor(public filter: FilterService) {}
+  @Output() sortEvent:EventEmitter<string> = new EventEmitter()
 
+  sortMethod = 'All Products';
+  sortList = [ 'Rating', 'Price(asc)', 'Price(desc)'];
+
+  constructor(public f: FilterService) {}
+
+  setCurrentSortMethod(s: string) {
+    this.sortMethod = s;
+    this.sortEvent.emit(s)
+  
+  }
+  
 }
