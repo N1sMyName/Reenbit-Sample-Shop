@@ -1,42 +1,99 @@
-::ng-deep 
-  .ngx-slider .ngx-slider-span ngx-slider-bar-wrapper ngx-slider-selection-bar
-      color: red
-      background-color: red
-  
-    
+
 // price
 .price-filter
-    margin-top: 53.6px
+    margin-top: 51.6px
     font-family: 'Open Sans', sans-serif
+    
 
 .price-title
     font-family: 'Poppins', semi-bold
+    font-size: 18px 
 
 .price-inputs-flex-container
     display: flex
-    width: min-content
-    justify-content: space-between
-    margin-bottom: 44px
+    align-items: center
+    margin-top: 35px
+
+    margin-bottom: 47px
 
 .price-input
+    box-sizing: border-box
     width: 109px
     height: 42px
     border: 1px solid #D1D1D1
     background-color: #F9F9F9
     border-radius: 12px
+    
+.separator
+    color: #A9A9A9
+    height: 100%
+    font-family: 'Open-Sans',sans-serif
+    font-weight: 400
+    font-size: 14px
+    margin: 0 14px
+    align-self: center
 
 .price-input-container
+    position: relative
+    width: 109px
+    font-family: 'Poppins'
+    font-weight: 600
+    font-size: 12px
 
-.min
-    margin-right: 33px
-
+.price-input-container ::placeholder
+    margin: 12px 21px
+    
+.label
+    position: absolute
+    top: -18px
+    
 .slider
-    margin-top: 23px
-    margin-bottom: 30px
+    height: 20px
+    margin-bottom: 16px
     width: 268px
     input
         width: 100%
-    input[type=range]
-        accent-color: #6A983C
+        font-size: 14px
+
+    
+input[type=text]
+    font-family: 'Open Sans',sans-serif
+    font-size: 14px
+    color: #A9A9A9
+    
+
+.slider .ngx-slider .ngx-slider-selection
+    background-color: #6A983C
+    height: 6px
+
+.slider
+    margin-top: 10px
+
+.slider .ngx-slider
+    margin: 0
 
 
+.slider .ngx-slider .ngx-slider-pointer
+    background-color: #fff
+    border: 1px solid #D1D1D1 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15)
+    width: 20px
+    height: 20px
+    top: -10px
+
+.slider .ngx-slider .ngx-slider-pointer.ngx-slider-active:after
+    display: none
+    
+.slider .ngx-slider .ngx-slider-pointer:after
+    display: none
+
+.ngx-sider:focus-visible
+    outline: none
+
+.slider .ngx-slider .ngx-slider-pointer .ngx-slider-active
+   border: 1px solid #D1D1D1
+
+.slider  .ngx-slider-bubble
+    display: none
+   
+    

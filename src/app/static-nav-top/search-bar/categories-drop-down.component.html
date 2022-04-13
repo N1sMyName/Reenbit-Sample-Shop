@@ -1,12 +1,18 @@
-<nav class="categories-drop-down"  (click)="showMenu()">
-  <ul class="search-select">
-    All Categories
-
-    <li class="first invis" #dropDownRef>
-      <ul class="second">
-        <li *ngFor="let category of categories" class="third" (click)="showID(category)">{{category.name}}</li>
-      </ul>
-    </li>
-  </ul>
-  <mat-icon class="expand-more-icon">expand_more</mat-icon>
-</nav>
+<div class="wrapper">
+  <nav class="categories-drop-down"  (click)="showMenu()">
+    <ul class="search-select">
+      <p>All categories</p>
+  
+      <li class="first invis" #dropDownRef>
+        <ul class="second">
+          <li *ngFor="let category of categories" class="third" (click)="showID(category)">{{category.name}}</li>
+        </ul>
+      </li>
+    </ul>
+    <!-- <mat-icon class="expand-more-icon">expand_more</mat-icon> -->
+    <svg  class="expand-more-icon" width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.31348 1.53326L4.05348 4.27326C4.17838 4.39743 4.34735 4.46712 4.52348 4.46712C4.6996 4.46712 4.86857 4.39743 4.99348 4.27326L7.66014 1.6066" stroke="#6A983C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="bevel"/>
+      </svg>
+  
+  </nav>
+</div>

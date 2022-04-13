@@ -1,6 +1,10 @@
 // brands
 .brands-wraper
     margin-top: 18.5px
+    overflow-y: scroll
+    scroll-behavior: smooth
+    height: 163px
+
 
 .brand-filter-title
     font-family: 'Poppins', semi-bold
@@ -12,7 +16,7 @@
     font-family:  'Open Sans', sans-serif
     display: flex
     flex-direction: column
-    margin-top: 48px
+    margin-top: 32px
     margin-bottom: 50.5px
 
 .filter-tab
@@ -23,10 +27,13 @@
     input
         width: 20px
         height: 20px
+        margin: 0
         margin-right: 10px
+        
 
     input[type=checkbox] 
         accent-color: #6A983C
+        border: 1.5px solid #D1D1D1
         
 
 
@@ -36,3 +43,16 @@
 
 .brand-checkbox
     cursor: pointer
+
+// scrollbar
+
+.brands-wraper::-webkit-scrollbar
+    position: relative
+.brands-wraper::-webkit-scrollbar-thumb 
+  background-color: #A9A9A9
+  outline: 1px solid #6A983C
+  border-radius: 10px
+.brands-wraper::-webkit-scrollbar-track
+    background-color: #F4F8EC
+    border-radius: 12px
+    border: 1px solid #6A983C

@@ -3,33 +3,31 @@
   <div class="slider">
     <ngx-slider
       formControlName="price"
-      [(value)]="form.controls['price'].value[0]"
-      [(highValue)]="form.controls['price'].value.max"
       [options]="options"
+      #slider
     ></ngx-slider>
   </div>
   <div class="price-inputs-flex-container">
-    <div class="price-input-containe min">
-      <label for="min"
-        >min
-        <input
-          type="text"
-          class="price-input min"
-          id="min"
-          [value]="form.controls['price'].value[0]"
-        />
-      </label>
+    <div class="price-input-container min">
+      <p class="label min">Min</p>
+
+      <input
+        type="text"
+        class="price-input min"
+        id="min"
+        [(value)]="form.get('price')?.value[0]"
+      />
     </div>
+    <div class="separator">-</div>
     <div class="price-input-container max">
-      <label for="max"
-        >max
-        <input
-          type="text"
-          class="price-input max"
-          id="max"
-          [value]="form.get('price')?.value[1]"
-        />
-      </label>
+      <p class="label max">Max</p>
+
+      <input
+        type="text"
+        class="price-input max"
+        id="max"
+        [(value)]="form.get('price')?.value[1]"
+      />
     </div>
   </div>
 </div>

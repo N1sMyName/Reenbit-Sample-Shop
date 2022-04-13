@@ -11,7 +11,7 @@ export const categories = [
         name:'Tv'},
 ]
     },
-    {name:'Foods',
+    {name:'Food',
     sub:[
         {id:0,
         name:'Alcohol'},
@@ -35,7 +35,7 @@ export const categories = [
         
 ]
     },
-    {name:'Skin & Care',
+    {name:'Skin and Care',
     sub:[
         {id:0,
         name:'Face'},
@@ -47,6 +47,18 @@ export const categories = [
         name:'Covid'},
 ]
     },
+
+{name:'Toys',
+sub:[
+    {id:0,
+    name:'Cars'},
+    {id:1,
+    name:'Dols'},
+    {id:2,
+    name:'Guns'},
+    
+]
+},
     {name:'Special Nutrition',
     sub:[
         {id:0,
@@ -58,7 +70,7 @@ export const categories = [
         
 ]
     },
-    {name:'Sport & Outdoor',
+    {name:'Sport and Outdoors',
     sub:[
         {id:0,
         name:'Suits'},
@@ -81,16 +93,5 @@ export const categories = [
         {id:3,
         name:'Historical'},
 ]
-    },
-    {name:'Toys',
-    sub:[
-        {id:0,
-        name:'Cars'},
-        {id:1,
-        name:'Dols'},
-        {id:2,
-        name:'Guns'},
-        
-]
-    },
+    }
 ]

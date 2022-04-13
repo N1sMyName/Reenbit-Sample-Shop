@@ -12,6 +12,7 @@ import { SearchBarComponent } from './static-nav-top/search-bar/search-bar.compo
 import { CategoriesDropDownComponent } from './static-nav-top/search-bar/categories-drop-down.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { CSlicePipe } from './products/c-slice.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     BreadCrumbsComponent,
     NavCategoriesBarComponent,
     SearchBarComponent,
-    CategoriesDropDownComponent
+    CategoriesDropDownComponent,
+    CSlicePipe
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     CommonModule,
     BreadCrumbsComponent,
     ReactiveFormsModule,
-    NgxSliderModule
+    NgxSliderModule,
+    CSlicePipe
     
   ],
 })
