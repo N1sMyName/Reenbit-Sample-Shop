@@ -1,5 +1,5 @@
 <div class="main-container" *ngIf="filteredProducts" >
-  <app-products-nav-top [products]="filteredProducts"></app-products-nav-top>
+  <app-products-nav-top [products]="filteredProducts"  (sortEvent)="setSort($event)"></app-products-nav-top>
   <main class="products">
     <app-products-filters
       [products]="originalProducts"

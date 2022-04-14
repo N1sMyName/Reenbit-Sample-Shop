@@ -1,4 +1,5 @@
 .sort-nav-container
+    margin: 0 45px
     margin-top: 24px
     margin-bottom: 17px
 
@@ -8,19 +9,35 @@
     font-size: 32px
     line-height: 48px
 
-.sort-nav-flex
+.wrapper
+    // margin-bottom: 16px
     display: flex
     justify-content: space-between
+    align-items: center
 
-    .description
-        font-size: 12px
+.sort-nav-products-count
+    height: 18px
+    font-family: 'Open Sans',sans-serif
+    font-weight: 400
+    font-size: 12px
+    line-height: 16px
+
+.sort-nav-flex
+    margin-bottom: 17px
+    margin-top: 24px
+    margin-left: 3.5px
+    display: flex
+    justify-content: space-between
+    align-items: center
+
 
 .sort-drop-down
+    position: relative
+    box-sizing: border-box
     background-color: #F9F9F9
     display: flex
     justify-content: center
     align-items: center
-    margin-top: .5rem
     font-family: 'Open Sans', sans-serif
     border-radius: 12px
     width: 181px
@@ -28,33 +45,59 @@
     border: 1px solid #D1D1D1
     white-space: nowrap
 
+.description
+    position: absolute
+    left: 15px
+    font-family: 'Open Sans',sans-serif
+    font-size: 14px
+    
+
+.middle
+    margin: 0 auto
+   
+
+
+    
+
+
 .count
+    text-align: center
+    display: inline-block
     color: #6A983C
     background-color: #F4F8EC
-    padding: .5rem
+    width: 32px
+    height: 18px
     border-radius: 12px
+    margin-right: 4px
+    
 
 .products
+    
+    display: inline-block
     color: #A9A9A9
-    padding: .5rem
+    height: 16px
 
 .select-sort
+    width: 80px
+    position: absolute
+    right: 5px
     ul
         cursor: pointer
         font-family: 'Poppins', semi-bold
-        font-size: 14px 
+        font-size: 12px
+        font-weight: 600
+
         li
             list-style: none
             transition: all 0.5s ease
             opacity: 0
-            
+
             ul
                 position: absolute
                 border: 1px solid black
                 border-radius: 10px
                 backdrop-filter: blur(2px)
-                
-                
+
                 li
                     transition: all 0.5s ease
                     list-style: none
@@ -68,7 +111,6 @@
 
 ul
     font-family: 'Open Sans', sans-serif
-
 
 .middle
     color: #D1D1D1

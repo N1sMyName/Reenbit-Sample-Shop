@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild,ViewEncapsulation } from '@angular/core';
 import {
   ControlContainer,
   FormControl,
@@ -17,7 +17,9 @@ import { FilterService } from '../filter.service';
   styleUrls: ['./categories-filter.component.sass'],
   viewProviders: [
     { provide: ControlContainer, useExisting: FormGroupDirective },
+    
   ],
+  encapsulation:ViewEncapsulation.None
 })
 export class CategoriesFilterComponent implements OnInit {
   @Input() categories: { name: string; count: number; }[];

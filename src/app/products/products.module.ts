@@ -15,6 +15,7 @@ import { RatingFilterComponent } from './products-filters/rating-filter/rating-f
 import { ProductsFiltersModule } from './products-filters/products-filters.module';
 import { ProductsService } from '../Services/products.service';
 
+
 @NgModule({
   declarations: [
     ProductsComponent,

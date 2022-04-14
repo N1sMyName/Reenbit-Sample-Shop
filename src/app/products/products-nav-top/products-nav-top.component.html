@@ -1,26 +1,26 @@
 <div class="sort-nav-container" >
-    <h1 class="sort-nav-title">{{filter.category}}</h1>
+    <div class="wrapper">
+      <h1 class="sort-nav-title">All Products</h1>
+      <div class="sort-nav-products-count">
+        <span class="count"  >{{products.length}}</span>
+        <span class="products">Products</span>
+       </div>
+    </div>
 
     <div class="sort-nav-flex">
         <div class="sort-drop-down">
             <span class="description">Sort by</span>
             <div class="middle">|</div>
             <div class="select-sort">
-                <ul>Recommended
+                <ul>{{sortMethod}}
                   <li>
                     <ul>
-                      <li>Recommended</li>
-                      <li>Newest</li>
-                      <li>Popular</li>
-                      <li>By Rating</li>
+                      <li (click)="setCurrentSortMethod(s)" *ngFor="let s of sortList ">{{s}}</li>
                     </ul>
                   </li>
                 </ul>
               </div>
         </div>
-        <div class="sort-nav-products-count">
-             <span class="count"  >{{products.length}}</span>
-             <span class="products">Products</span>
-        </div>
+        
     </div>
 </div>

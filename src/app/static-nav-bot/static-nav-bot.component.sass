@@ -1,9 +1,22 @@
 .footer-info
+    margin: 0 45px
+    margin-top: 84px
     display: flex
     justify-content: space-between
 
 .footer-list
-    text-align: center
+    font-family: 'Open Sans'
+    font-weight: 400
+    font-size: 14px
+
+.footer-list-heading
+    font-family: 'Poppins'
+    font-weight: 600
+    font-size: 18px
+    margin-bottom: 16px
+
+.footer-list a:not(:last-child)
+    margin-bottom: 16px
 
 .footer-list-item
     color: #6A983C
@@ -11,22 +24,50 @@
     display: block
     text-decoration: none
     border-radius: 10px
-    padding: 0 .25rem
+    transition: all .5s ease
 
 .footer-list-item:hover
+    transition: all .5s ease
     color: black
-    border-left: 1px solid black
-    border-right: 1px solid black
+
 .footer_tags
-    margin: 1rem 0
+    margin-top: 16px
+
+.footer_tags button:not(:last-child)
+    margin-right: 16px
+
 .tag-button
+    margin-bottom: 16px
+    padding: 6px 4px
+    color: #151515
+    font-family: 'Poppins'
+    font-size: 12px
+    font-weight: 600
     border-radius: 10px
-    margin: 0 .5rem
     border: none
     font-weight: 600
-    padding: 0.25rem
     transition: all .25s ease-out
+
 .tag-button:hover
     cursor: pointer
     box-shadow: 1px 1px 1px 1px
     transition: all .25s ease-out
+
+.pTags
+    margin-top: 48px
+    font-family: 'Poppins'
+    font-weight: 600
+    font-size: 18px
+
+.pTags,.footer_tags,.copy
+    margin-left: 45px
+    margin-right: 45px
+
+.copy
+    margin-top: 32px
+    font-family: 'Open Sans',regular
+    font-size: 14px
+    font-weight: 400px
+
+footer
+    margin-bottom: 64px

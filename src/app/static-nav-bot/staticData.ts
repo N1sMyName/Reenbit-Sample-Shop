@@ -39,7 +39,7 @@ export const  tags : string[] = [
   export const  accountInfo : string[] = [
     'Your account',
     'Returns Centre',
-    '100 % purchase',
+    '100 % purchase protection',
     'Chat with us',
     'Help'
   ];
