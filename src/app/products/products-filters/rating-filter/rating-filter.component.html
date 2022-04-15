@@ -3,14 +3,14 @@
     <h3 class="rating-title">Rating</h3>
     <div class="filter-tab rating-filter" formGroupName="ratings">
       <label
-        [attr.for]="'rating-' + (i + 1)"
+        [attr.for]="'rating-' + (l - i) "
         class="cbx-container"
-        *ngFor="let input of stars; let i = index"
+        *ngFor="let input of stars; let i = index;let l = count"
       >
         <input
           type="checkbox"
-          [attr.id]="'rating-' + (i + 1)"
-          [formControlName]="i + 1"
+          [attr.id]="'rating-' + (l - i)"
+          [formControlName]="l - i"
         />
 
         <svg

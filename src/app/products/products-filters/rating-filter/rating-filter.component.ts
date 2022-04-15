@@ -25,7 +25,7 @@ export class RatingFilterComponent implements OnInit {
     this.parent.form.addControl(
       'ratings',
       new FormGroup(
-        [1, 2, 3, 4, 5].reduce(
+        this.stars.reduce(
           (group: { [key: string]: AbstractControl }, rating: number) => {
             group[ rating] = new FormControl(false);
             return group;
