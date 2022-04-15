@@ -257,7 +257,7 @@ export const products = [
   },
 
   {
-    id: 6,
+    id: 12,
     title: 'iPhone X',
     inStock: 320,
     freshness: 'fresh',
@@ -278,7 +278,7 @@ export const products = [
   },
 
   {
-    id: 7,
+    id: 13,
     title: 'Nike FreeRun',
     inStock: 10000,
     freshness: 'realy fresh',
@@ -298,7 +298,7 @@ export const products = [
     buyBy: ['pcs', 'kgs', 'box'],
   },
   {
-    id: 8,
+    id: 14,
     title: 'Running suit',
     inStock: 320,
     freshness: 'fresh',
@@ -319,7 +319,7 @@ export const products = [
   },
 
   {
-    id: 10,
+    id: 15,
     title: 'Fruits',
     inStock: 320,
     freshness: 'fresh',
@@ -340,7 +340,7 @@ export const products = [
   },
 
   {
-    id: 11,
+    id: 16,
     title: 'Coffee',
     inStock: 10000,
     freshness: 'realy fresh',
@@ -359,7 +359,7 @@ export const products = [
     buyBy: ['pcs', 'kgs', 'box'],
   },
   {
-    id: 12,
+    id: 17,
     title: 'Neapolitan Pizza',
     inStock: 320,
     freshness: 'fresh',
@@ -380,7 +380,7 @@ export const products = [
   },
 
   {
-    id: 13,
+    id: 18,
     title: 'Greece Salad',
     inStock: 200,
     freshness: '-',
@@ -400,7 +400,7 @@ export const products = [
   },
 
   {
-    id: 14,
+    id: 19,
     title: 'Fruits',
     inStock: 320,
     freshness: 'fresh',
@@ -420,7 +420,7 @@ export const products = [
   },
 
   {
-    id: 15,
+    id: 20,
     title: 'Harry Potter BOOK',
     inStock: 10000,
     freshness: 'realy fresh',
@@ -439,7 +439,7 @@ export const products = [
     buyBy: ['pcs', 'kgs', 'box'],
   },
   {
-    id: 16,
+    id: 21,
     title: 'Shoe',
     inStock: 320,
     freshness: 'fresh',
@@ -459,7 +459,7 @@ export const products = [
   },
 
   {
-    id: 17,
+    id: 22,
     title: 'Face Cream',
     inStock: 200,
     freshness: 'fresh',
@@ -479,7 +479,7 @@ export const products = [
   },
 
   {
-    id: 18,
+    id: 23,
     title: 'Game of Thrones',
     inStock: 320,
     freshness: 'fresh',
@@ -499,7 +499,7 @@ export const products = [
   },
 
   {
-    id: 19,
+    id: 24,
     title: 'GUN',
     inStock: 10000,
     freshness: 'realy fresh',
@@ -517,7 +517,7 @@ export const products = [
     deliveryTime: 1,
   },
   {
-    id: 19,
+    id: 25,
     title: 'Doll',
     inStock: 10000,
     freshness: 'realy fresh',

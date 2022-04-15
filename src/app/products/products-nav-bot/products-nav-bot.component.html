@@ -1,13 +1,14 @@
 <div class="pagination">
   <div class="pages-pagination">
-    <span >Page:</span>
-    <span>1</span>
-    <span>2</span>
-    <span>3</span>
-    <span>4</span>
+    <span>Page:</span>
+    <span
+      (click)="pag.getPage(products, i)"
+      *ngFor="let page of [].constructor(pages); let i = index"
+      >{{ i + 1 }}</span
+    >
   </div>
   <div class="show-more-btn">
-    <div >Show More Products</div>
+    <div (click)="pag.showMore(products,pag.index)">Show More Products</div>
     <div>
       <svg
         class="down-arrow"
