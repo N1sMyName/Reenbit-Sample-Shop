@@ -1,23 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/Services/db/Product.model';
-import { PaginationService } from 'src/app/Services/pagination.service';
 
 @Component({
   selector: 'app-products-nav-bot',
   templateUrl: './products-nav-bot.component.html',
-  styleUrls: ['./products-nav-bot.component.sass'],
+  styleUrls: ['./products-nav-bot.component.sass']
 })
 export class ProductsNavBotComponent implements OnInit {
-  @Input() products: Product[];
-  pages: number = this.pag.available;
+  @Input() products:Product[]
+  constructor() { }
 
-  constructor(public pag: PaginationService) {}
-  setGreen(e:Event){
-    const t = e.target as HTMLSpanElement
-    
-  }
   ngOnInit(): void {
-    this.pag.getPage(this.products, 0);
-    this.pages = this.pag.available
   }
+
 }

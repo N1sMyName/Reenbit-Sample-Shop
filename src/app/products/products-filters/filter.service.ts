@@ -75,23 +75,31 @@ export class FilterService {
 
     if (categoryName) {
       res = res.filter((p) => p.category === categoryName);
-    } 
+    } else {
+      console.log(`no category included`);
+    }
     if (price && price[0] && price[1] ) {
 
       res = res.filter((p) => p.price <= price[1] && p.price >= price[0]);
-    } 
+    } else {
+      console.log(`there is no price range`);
+    }
 
     if (brands && Object.entries(brands).filter((b) => b[1] === true).length) {
       const brandsArray = Object.entries(brands).filter((b) => b[1] === true);
       res = brandsArray.flatMap((b) => res.filter((p) => p.brand === b[0]));
-    } 
+    } else {
+      console.log(`there is no brands to filter`);
+    }
     if (
       ratings &&
       Object.entries(ratings).filter((b) => b[1] === true).length
     ) {
       const ratingsArray = Object.entries(ratings).filter((b) => b[1]);
       res = ratingsArray.flatMap((r) => res.filter((p) => p.rating === +r[0]));
-    } 
+    } else {
+      console.log(`all ratings included `);
+    }
     return res;
   }
 

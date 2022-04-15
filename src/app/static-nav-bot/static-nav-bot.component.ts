@@ -9,7 +9,7 @@ import * as staticData from './staticData'
 })
 export class StaticNavBotComponent  {
   
-  constructor(public route:Router,public active:ActivatedRoute) {}
+  constructor(private log: LogerService,public route:Router,public active:ActivatedRoute) {}
   staticData = staticData
   ngOnInit(): void {
       
