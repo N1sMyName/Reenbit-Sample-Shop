@@ -1,17 +1,18 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit,ChangeDetectionStrategy } from '@angular/core';
 import { MimicrestService } from '../Services/mimicrest.service';
 import { Product } from '../Services/db/Product.model';
 import { FilterService } from './products-filters/filter.service';
 import { cloneDeep } from 'lodash';
 import { Form } from './form.model';
 import { PaginationService } from '../Services/pagination.service';
-import { skip, Subject, takeUntil } from 'rxjs';
+import {  skip, Subject, takeUntil } from 'rxjs';
 
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.sass'],
+  
 })
 export class ProductsComponent implements OnInit {
   public filteredProducts: Product[];
@@ -19,6 +20,7 @@ export class ProductsComponent implements OnInit {
   public filters: Form;
 
   sortBy: string = '';
+
   unsubscribeAll = new Subject();
   constructor(
     private mimicrestService: MimicrestService,
@@ -41,12 +43,14 @@ export class ProductsComponent implements OnInit {
       .subscribe((res) => {
         this.filteredProducts = res;
         this.originalProducts = res;
+        this.pag.getPage(this.filteredProducts,this.pag.step)
       });
   }
   setFilters(event: Form) {
     this.filters = event;
     this.filteredProducts = cloneDeep(this.originalProducts);
     this.filteredProducts = this.filterWrapper(this.filteredProducts);
+    
   }
   filterWrapper(p: Product[]) {
     return this.f.rootFilter(
@@ -58,13 +62,12 @@ export class ProductsComponent implements OnInit {
     );
   }
   setPagination() {
-    this.pag.products.pipe(skip(1)).subscribe({
-      next: (val) => (this.filteredProducts = val),
-      error: (err) =>
-        (this.filteredProducts = this.filteredProducts.slice(
+    this.pag.products.pipe(skip(2)).subscribe({
+      next: (val) => this.filteredProducts = val,
+      error: (err) =>{this.filteredProducts = this.filteredProducts.slice(
           0,
           this.pag.step + 1
-        )),
+        )},
     });
   }
 
