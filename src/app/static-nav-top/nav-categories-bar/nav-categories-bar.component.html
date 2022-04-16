@@ -1,38 +1,38 @@
-<!-- <div class="categories">
-  <label *ngFor="let category of categories" for="category"
-    >{{ category.name }}
-    <select name="" id="category" class="category-select" style="text-align: center">
-      <option></option>
-      <option *ngFor="let subCategory of category.sub">
-        {{ subCategory }}
-      </option>
-    </select>
-  </label>
-</div> -->
-
-<!-- <div class="categories">
-  <ul *ngFor="let category of categories" class="category"  (click)="showCategory(elem)" >
-      {{category.name}} <mat-icon class="expand-more-icon">expand_more</mat-icon>
-      <div [class]="categoriesClassList"   #elem>
-        
-        <li *ngFor="let subCategory of category.sub" >
-            {{subCategory}}
-        </li>
-      </div>
-  </ul>
-</div> -->
-
 <nav class="categories">
-  <ul class="category" *ngFor="let category of categories">
-    {{category.name}}<mat-icon class="expand-more-icon">expand_more</mat-icon>
-    <li class="sub-categories-container">
-      <ul 
-      class="sub-categories" *ngFor="let subCategory of category.sub" #myRef
-      >
-        <li class="sub-category"> 
-        {{subCategory.name}}
-        </li>
+  <div class="flex-wrapper">
+    <ul class="category" *ngFor="let category of categories">
+      {{
+        category.name
+      }}
+      <div class="svg-wrapper">
+        <svg
+          class="expand-more-icon"
+          width="9"
+          height="6"
+          viewBox="0 0 9 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.31348 1.53326L4.05348 4.27326C4.17838 4.39743 4.34735 4.46712 4.52348 4.46712C4.6996 4.46712 4.86857 4.39743 4.99348 4.27326L7.66014 1.6066"
+            stroke="#6A983C"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="bevel"
+          />
+        </svg>
+      </div>
+      <li class="sub-categories-container">
+        <ul
+          class="sub-categories"
+          *ngFor="let subCategory of category.sub"
+          #myRef
+        >
+          <li class="sub-category">
+            {{ subCategory.name }}
+          </li>
+        </ul>
+      </li>
     </ul>
-  </li>
-  </ul>
+  </div>
 </nav>

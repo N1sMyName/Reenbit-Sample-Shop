@@ -12,6 +12,8 @@ import { Product } from './db/Product.model';
 export class MimicrestService {
   private productsUrl = 'api/products/';
   private categoriesUrl = 'api/categories/';
+  private brandsUrl = 'api/brands/';
+
 
   constructor(private http: HttpClient) {}
 
@@ -33,6 +35,9 @@ export class MimicrestService {
       })
     );
   }
+  
+ 
+  
   
  
  

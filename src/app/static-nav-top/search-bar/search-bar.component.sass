@@ -2,34 +2,67 @@
 $searchbox-bg: #F9F9F9
 // general
 .search-bar
-    margin: 1rem 0
+    background-color: #FDFDFD
+    width: 1259px
     display: flex
     justify-content: space-between
     align-items: center
 
-.search-box-container
+.search-box-wrapper
+    position: relative
     width: 500px
+    height: 42px
+
+.search-box-container
+    box-sizing: border-box
+    position: absolute
+    right: 47px
+    bottom: 2px
+    width: 500px
+    height: 42px
     white-space: nowrap
     display: flex
     justify-content: space-between
-    background-color: $searchbox-bg
-    padding: .3rem
+    align-items: center
     border-radius: 10px
     border: 1px solid #D1D1D1
+    background-color: $searchbox-bg
 
-.search-box-container>*
-    margin: 0 .25rem
 
+.seach-select
+    display: flex
+    align-items: center
+.seacrh-select p
+    font-family: 'Poppins', sans-serif
+    font-weight: 700
 // title
 .search-bar-title
-    font-weight: 700
-    font-style: italic
+    width: 178px
+    height: 18px
+    margin-left: 62px
+    margin-top: 29px
+    margin-bottom: 26px
 
 .search-input
     width: 100%
+    padding: 0
     outline: none
     border: none
     background-color: $searchbox-bg
+    font-family: "Open Sans", sans-serif
+    font-size: 14px
+
+.batton-wraper
+    position: relative
+    height: 20px
+    width: 0
+.batton
+    position: absolute
+    border-radius: 10px
+    height: 20px
+    border: 1px solid #D1D1D1
+    top: -10px
+    width: 0
 
 .search-result-container
     width: 262px
@@ -41,7 +74,6 @@ $searchbox-bg: #F9F9F9
     display: flex
     flex-direction: column
     text-align: center
-    top: 6rem
     border: 1px solid black
     border-radius: 8px
     backdrop-filter: blur(2px)
@@ -76,10 +108,40 @@ $searchbox-bg: #F9F9F9
     color: red
 
 // profile
+.profile
+    display: flex
+    align-items: center
+    margin-right: 27px
+
+.user
+    margin-right: 42.06px
+
+.cart-container
+    height: 1.5rem
+    width: 1.5rem
+    display: inline-block
+
+.cart-wrapper
+    height: 1.5rem
+    width: 1.5rem
+    position: relative
+
+.cart-counter
+    display: flex
+    justify-content: center
+    align-items: center
+    position: absolute
+    color: #ffffff
+    bottom: -4px
+    right: 13px
+    width: 16px
+    height: 16px
+    background-color: #E5704B
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15)
+    border-radius: 12px
+    text-align: center
+
 .profile>*
-    font-size: 2rem
-    font-weight: 400
-    margin: 0 .75rem
     cursor: pointer
     transition: all .5s ease-in-out
 
@@ -87,12 +149,14 @@ $searchbox-bg: #F9F9F9
     transition: all .5s ease-in-out
     color: #6A983C
 
+.search-button
+    margin: 13px 0 
+    margin-right: 16px
+
 // error
 
 .error-container
-    
     position: absolute
-    top: 5.5rem
     opacity: 0
     border: 1px solid grey
     width: max-content

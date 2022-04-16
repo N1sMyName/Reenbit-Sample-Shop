@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductComponent } from '../products/products-list/product/product.component';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LogerService {
-  hideFooter: boolean = this.active.snapshot.data['hideFooter'];
-  constructor(private active: ActivatedRoute) {}
+
+  constructor(private prod:ProductsService) {}
 }

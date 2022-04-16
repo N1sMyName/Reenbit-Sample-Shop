@@ -1,0 +1,22 @@
+<div class="categories-filter">
+  <h3 class="categories-title">Categories</h3>
+  <div class="categories-container">
+    <ul class="categories-tab-items">
+      <li
+        *ngFor="let category of categories"
+        [ngClass]="{ 'categories-tab-item': true }"
+      >
+        <div
+          class="categories-tab-item-flex-container"
+         
+        >
+          <span  (click)="setCategoryName(category.name)">{{ category.name }}</span>
+          <div class="categories-tab-count">
+            {{category.count}}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div></div>

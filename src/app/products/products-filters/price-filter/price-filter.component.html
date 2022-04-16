@@ -1,0 +1,33 @@
+<div class="price-filter">
+  <h3 class="price-title">Price</h3>
+  <div class="slider">
+    <ngx-slider
+      formControlName="price"
+      [options]="options"
+      #slider
+    ></ngx-slider>
+  </div>
+  <div class="price-inputs-flex-container">
+    <div class="price-input-container min">
+      <p class="label min">Min</p>
+
+      <input
+        type="text"
+        class="price-input min"
+        id="min"
+        [(value)]="form.get('price')?.value[0]"
+      />
+    </div>
+    <div class="separator">-</div>
+    <div class="price-input-container max">
+      <p class="label max">Max</p>
+
+      <input
+        type="text"
+        class="price-input max"
+        id="max"
+        [(value)]="form.get('price')?.value[1]"
+      />
+    </div>
+  </div>
+</div>
