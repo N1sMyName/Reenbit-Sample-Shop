@@ -7,8 +7,8 @@
       >{{ i + 1 }}</span
     >
   </div>
-  <div class="show-more-btn">
-    <div (click)="pag.showMore(products,pag.index)">Show More Products</div>
+  <div class="show-more-btn" (click)="pag.showMore(products,pag.indexGlobal)">
+    <div >Show More Products</div>
     <div>
       <svg
         class="down-arrow"

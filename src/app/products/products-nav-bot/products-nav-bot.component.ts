@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { Product } from 'src/app/Services/db/Product.model';
 import { PaginationService } from 'src/app/Services/pagination.service';
 
@@ -12,10 +13,7 @@ export class ProductsNavBotComponent implements OnInit {
   pages: number = this.pag.available;
 
   constructor(public pag: PaginationService) {}
-  setGreen(e:Event){
-    const t = e.target as HTMLSpanElement
-    
-  }
+  
   ngOnInit(): void {
     this.pag.getPage(this.products, 0);
     this.pages = this.pag.available

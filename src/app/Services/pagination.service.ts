@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from './db/Product.model';
-import { cloneDeep,  } from 'lodash';
-import { AsyncSubject, BehaviorSubject, Subject} from 'rxjs';
-import { MimicrestService } from './mimicrest.service';
+import { cloneDeep } from 'lodash';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,7 @@ export class PaginationService {
   // number of pages painted in the page
   available = 0;
   // number that indicate last index of products currently in use
-  index = 0;
+  indexGlobal = 0;
   //  number of products that paint in the page in one time
   step = 5;
   // number of products that can be added or subtracted by user interaction in one action
@@ -19,11 +18,10 @@ export class PaginationService {
   // accumulator of products that button showMore accumulating
   cached: Product[] = [];
 
-  subject = new BehaviorSubject<Product[]>([])
- 
+  subject = new BehaviorSubject<Product[]>([]);
   products = this.subject.asObservable();
 
-  constructor(private m:MimicrestService) {}
+  constructor() {}
 
   paginationPages(p: Product[], step: number = this.step) {
     return Math.ceil(p.length / step) - (this.onScreen - step);
@@ -34,14 +32,20 @@ export class PaginationService {
     this.cached = [];
     let res = cloneDeep(p);
     const pointer = step * (index + 1);
-    this.index = pointer;
+    this.indexGlobal = pointer;
     res = res.slice(pointer - step, pointer);
     this.cached = res;
     this.setPagination(res);
+    console.log(res);
   }
-
-  setDefault(){
-
+  initialPage(p: Product[], index: number, step: number = this.step) {
+    this.available = this.paginationPages(p);
+    let res = cloneDeep(p);
+    const pointer = step * (index + 1);
+    this.indexGlobal = pointer;
+    res = res.slice(pointer - step, pointer);
+    console.log(res);
+    return res;
   }
 
   setOnScreen(num: number) {
@@ -49,17 +53,15 @@ export class PaginationService {
   }
 
   setPagination(val: Product[]) {
-    
     this.subject.next(val);
-    this.subject.complete()
   }
 
   showMore(p: Product[], index: number, step: number = this.step) {
     this.available = this.paginationPages(p);
     let res = cloneDeep(p);
     const pointer = step + index;
-    this.index = pointer;
-    
+    this.indexGlobal = pointer;
+
     if (this.cached.length) {
       console.log(`if`);
       res = [...this.cached, ...res.slice(pointer - step, pointer)];
@@ -68,7 +70,6 @@ export class PaginationService {
       console.log(res);
 
       if (res.length) this.setPagination(res);
-
     } else {
       console.log(`else`);
       res = [
