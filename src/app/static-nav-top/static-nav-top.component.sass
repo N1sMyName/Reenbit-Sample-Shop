@@ -4,23 +4,30 @@
 .nav-top
     background-color:#FDFDFD
 .contacts
+    box-sizing: border-box
     display: flex
     justify-content: space-between
-    box-shadow: 0 1px 0 0 rgba(21, 21, 21, 10%)
-    font-family: "Open Sans", sans-serif
+
+    border-bottom: 1px solid rgba(21, 21, 21, 10%)
+    font-family: "Open Sans", regular
+
     font-size: 12px
-    margin: 16px 45px
+    margin: 0 45px
+    padding: 16px 0
     font-weight: 400
+    line-height: 16px
+    border-bottom: 1px solid rgba(21, 21, 21, 10%)
     
 // info
 .info
     width: 375px
-    height: 16px
     top: 16px
+    align-items: center
 .info *:not(:last-child)
     margin-right: 33px
 
 .info>a
+    line-height: 16px
     text-decoration: none
     transition: all 0.5s ease-in-out
 

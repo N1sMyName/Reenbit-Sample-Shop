@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Product } from 'src/app/Services/db/Product.model';
-import { PaginationService } from 'src/app/Services/pagination.service';
 
 @Component({
   selector: 'app-products-nav-bot',
@@ -10,12 +9,10 @@ import { PaginationService } from 'src/app/Services/pagination.service';
 })
 export class ProductsNavBotComponent implements OnInit {
   @Input() products: Product[];
-  pages: number = this.pag.available;
+  @Output() paginationEmitter: EventEmitter<number> = new EventEmitter();
 
-  constructor(public pag: PaginationService) {}
-  
+  constructor() {}
+
   ngOnInit(): void {
-    this.pag.getPage(this.products, 0);
-    this.pages = this.pag.available
   }
 }

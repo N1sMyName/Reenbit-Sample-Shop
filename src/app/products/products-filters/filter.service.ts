@@ -100,7 +100,6 @@ export class FilterService {
       const p = products.sort((a: Product, b: Product) => {
         return +a[key] - +b[key];
       });
-      console.log(p)
       return p;
     };
     switch (method) {

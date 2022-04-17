@@ -1,11 +1,11 @@
 // general
 
 .product-container
+    
     font-family: 'Open Sans',sans-serif
     font-size: 14px
-    box-sizing: content-box
     display: flex
-    border-radius: 10px
+    border-radius: 11px
     border: 1px solid #D1D1D1
     width: 869px
     height: 280px
@@ -14,18 +14,20 @@
 // image container
 .product-image-container
     position: relative
+
     background-color: #A9A9A9
     width: 268px
     height: 280px
-    border-radius: 12px
+    border-radius: 10px
     margin-right: 32px
 
 .image
-
+    left: 0
     background-color: #A9A9A9
     width: 268px
     height: 280px
     border-radius: 12px
+    
 
 // info container
 
@@ -52,7 +54,7 @@
     line-height: 16px
     margin-bottom: 12px
 // descriptions
-    
+
     // rating 
 .rating-container
     margin-bottom: 25px
@@ -60,7 +62,6 @@
 
 .rating-container .star:not(:last-child)
     margin-right: 3px
-
 
 .description
     display: flex
@@ -76,17 +77,15 @@
 .description>ul li:not(:last-child)
     margin-bottom: 12px
 
-
 .description-left
     margin-right: 32px
 
 .description-right
-    
 
 // right
 
 .product-info-right
-    
+
 // price
 .price
     margin-bottom: 16px
@@ -137,14 +136,34 @@
     color: black
 
 .whishlist-btn
+    cursor: pointer
     display: flex
-    justify-content: center
+    justify-content: space-between
+    align-items: center
     background-color: #F5F5F5
     color: black
     font-weight: 600
     white-space: nowrap
     border-radius: 12px
     padding: 6px 12px
+    transition: all .25s ease-in-out
+
+
+.whishlist-btn:hover
+    cursor: pointer
+
+.whishlist-btn:active
+    transition: all .1s ease-in-out
+    animation-name: heart
+    animation-duration: 1s
+    
+@keyframes heart
+    0%
+        transform: scale(1)
+        
+    100%
+        transform: scale(1.1)
+        
 
 .wishlist-desc
     font-family: 'Poppins',bold
@@ -152,5 +171,8 @@
     font-size: 15px
     line-height: 22.5px
     color: #151515
+    margin-left: 9px
 
-
+.whishlist-btn:hover
+    box-shadow: 1px 3px 2px 0 rgba(0, 0, 0, .1 )
+    transition: all .25s ease-in-out
