@@ -4,9 +4,7 @@ import { Product } from '../Services/db/Product.model';
 import { FilterService } from './products-filters/filter.service';
 import { cloneDeep } from 'lodash';
 import { Form } from './form.model';
-import { PaginationService } from '../Services/pagination.service';
 import { skip, Subject, takeUntil } from 'rxjs';
-
 
 @Component({
   selector: 'app-products',
@@ -17,18 +15,21 @@ export class ProductsComponent implements OnInit {
   public filteredProducts: Product[];
   public originalProducts: Product[];
   public filters: Form;
-
+  lastPagData: { page: number; stack: number } = { page: 1, stack: 5 };
+  paginationData: { page: number; stack: number } = { page: 1, stack: 5 };
+  receivePaginationData(event: { page: number; stack: number }) {
+    this.paginationData = event;
+    this.lastPagData = event;
+  }
   sortBy: string = '';
   unsubscribeAll = new Subject();
   constructor(
     private mimicrestService: MimicrestService,
     private f: FilterService,
-    private pag: PaginationService,
     private cd: ChangeDetectorRef
   ) {}
   ngOnInit(): void {
     this.getProducts();
-    this.setPagination();
   }
   ngOnDestroy() {
     this.unsubscribeAll.next('');
@@ -47,6 +48,7 @@ export class ProductsComponent implements OnInit {
     this.filters = event;
     this.filteredProducts = cloneDeep(this.originalProducts);
     this.filteredProducts = this.filterWrapper(this.filteredProducts);
+    this.receivePaginationData({ page: 1, stack: this.lastPagData.stack });
   }
   filterWrapper(p: Product[]) {
     return this.f.rootFilter(
@@ -56,16 +58,6 @@ export class ProductsComponent implements OnInit {
       this.filters.brands,
       this.filters.ratings
     );
-  }
-  setPagination() {
-    this.pag.products.pipe(skip(1)).subscribe({
-      next: (val) => (this.filteredProducts = val),
-      error: (err) =>
-        (this.filteredProducts = this.filteredProducts.slice(
-          0,
-          this.pag.step + 1
-        )),
-    });
   }
 
   setSort(c: string) {

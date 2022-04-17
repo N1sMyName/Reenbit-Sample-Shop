@@ -48,17 +48,13 @@ export class ProductsFiltersComponent {
       brands: [],
       ratings: [],
     });
-    console.log(this.priceRange);
-    console.log(this.form.get('price'));
   }
 
   onFormChanges() {
     this.form.valueChanges
       .pipe(takeUntil(this.unsubscribeAll), debounceTime(300))
       .subscribe(() => {
-        console.log(this.form.value.ratings)
         this.formFilterEvent.emit(this.form.value);
       });
   }
-
 }

@@ -14,7 +14,7 @@ import { PriceFilterComponent } from './products-filters/price-filter/price-filt
 import { RatingFilterComponent } from './products-filters/rating-filter/rating-filter.component';
 import { ProductsFiltersModule } from './products-filters/products-filters.module';
 import { ProductsService } from '../Services/products.service';
-
+import {NgxPaginationModule} from 'ngx-pagination'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ProductsService } from '../Services/products.service';
     ProductComponent,
     
   ],
-  imports: [ProductsRoutingModule, CoreModule,ProductsFiltersModule],
+  imports: [ProductsRoutingModule, CoreModule,ProductsFiltersModule,NgxPaginationModule],
   exports: [],
   providers: []
 })
