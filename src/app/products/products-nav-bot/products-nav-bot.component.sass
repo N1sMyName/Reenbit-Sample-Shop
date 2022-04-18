@@ -1,6 +1,7 @@
 
 // pagination
 .pagination
+    position: relative
     margin: 0 45px
     margin-top: 10px
     margin-bottom: 17px
@@ -32,7 +33,11 @@
 
 .down-arrow
     margin-left: 10px
-
+.show-more-wrapper
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 .show-more-btn:hover
     box-shadow: 1px 3px 2px 0 rgba(0, 0, 0, .3)
     transition: all .5s ease
@@ -41,6 +46,7 @@
     cursor: pointer
     padding: 10px 14px
     display: flex
+    align-items: center
     border: 2px solid #46760A
     border-radius: 10px
     background-color: #6A983C
