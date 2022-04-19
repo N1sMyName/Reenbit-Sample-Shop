@@ -1,23 +1,35 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Product } from 'src/app/Services/db/Product.model';
-import { PaginationService } from 'src/app/Services/pagination.service';
 
 @Component({
   selector: 'app-products-nav-bot',
   templateUrl: './products-nav-bot.component.html',
   styleUrls: ['./products-nav-bot.component.sass'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ProductsNavBotComponent implements OnInit {
   @Input() products: Product[];
-  pages: number = this.pag.available;
+  @Output() paginationEvent: EventEmitter<{ page: number; stack: number }> =
+    new EventEmitter();
+  page: number = 1;
+  stack: number = 5;
+  constructor() {}
 
-  constructor(public pag: PaginationService) {}
-  setGreen(e:Event){
-    const t = e.target as HTMLSpanElement
-    
+  sendPaginationData() {
+    this.paginationEvent.emit({ page: this.page, stack: this.stack });
+    console.log(this.page);
   }
-  ngOnInit(): void {
-    this.pag.getPage(this.products, 0);
-    this.pages = this.pag.available
+  showMore() {
+    this.stack = this.stack + 5;
+    this.paginationEvent.emit({ page: this.page, stack: this.stack });
+    console.log(this.page);
   }
+  ngOnInit(): void {}
 }

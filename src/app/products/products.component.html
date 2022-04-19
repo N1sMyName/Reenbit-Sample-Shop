@@ -1,5 +1,8 @@
-<div class="main-container" *ngIf="filteredProducts" >
-  <app-products-nav-top [products]="filteredProducts"  (sortEvent)="setSort($event)"></app-products-nav-top>
+<div class="main-container" *ngIf="filteredProducts">
+  <app-products-nav-top
+    [products]="originalProducts"
+    (sortEvent)="setSort($event)"
+  ></app-products-nav-top>
   <main class="products">
     <app-products-filters
       [products]="originalProducts"
@@ -7,9 +10,13 @@
       (formFilterEvent)="setFilters($event)"
     ></app-products-filters>
     <app-products-list
+      [paginationData]="paginationData"
       [products]="filteredProducts"
       class="products-list"
     ></app-products-list>
   </main>
-  <app-products-nav-bot [products]="originalProducts" ></app-products-nav-bot>
+  <app-products-nav-bot
+    [products]="originalProducts"
+    (paginationEvent)="receivePaginationData($event)"
+  ></app-products-nav-bot>
 </div>

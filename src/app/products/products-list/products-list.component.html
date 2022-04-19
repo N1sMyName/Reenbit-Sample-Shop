@@ -1,3 +1,13 @@
 <aside class="products-list">
-  <app-product  [product]="product" *ngFor="let product of products"></app-product>
+  <app-product
+    [product]="product"
+    *ngFor="
+      let product of products
+        | paginate
+          : {
+              itemsPerPage: paginationData.stack,
+              currentPage: paginationData.page
+            }
+    "
+  ></app-product>
 </aside>

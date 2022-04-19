@@ -1,18 +1,16 @@
 <div class="pagination">
   <div class="pages-pagination">
     <span>Page:</span>
-    <span
-      (click)="pag.getPage(products, i)"
-      *ngFor="let page of [].constructor(pages); let i = index"
-      >{{ i + 1 }}</span
-    >
+    <pagination-controls
+      (pageChange)="page = $event"
+      (click)="sendPaginationData()"
+    ></pagination-controls>
   </div>
-  <div class="show-more-btn">
-
-    <div (click)="pag.showMore(products,pag.index)">Show More Products</div>
-
-
-    <div>
+  <div class="show-more-wrapper">
+    <div class="show-more-btn" (click)="showMore()">
+      <div>Show More Products</div>
+      <div>
+  </div>
       <svg
         class="down-arrow"
         width="9"

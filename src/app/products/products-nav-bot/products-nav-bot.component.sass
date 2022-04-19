@@ -1,8 +1,7 @@
 
-
-
 // pagination
 .pagination
+    position: relative
     margin: 0 45px
     margin-top: 10px
     margin-bottom: 17px
@@ -14,24 +13,31 @@
     font-size: 12px
     color: #151515
 
-.green
-    color: green
-.pages-pagination span
-    cursor: pointer
+.pages-pagination
+    display: flex
+    align-items: center
+.pages-pagination .ngx-pagination
+    margin-bottom: 0
 
-.pages-pagination span:hover
-    text-decoration: underline
-    
-.pages-pagination span:first-child
-    color: #A9A9A9
+.pages-pagination .ngx-pagination .pagination-previous
+    display: none
+.pages-pagination .ngx-pagination .pagination-next
+    display: none
 
-.pages-pagination span:not(:last-child)
-    margin-right: 8px    
+.pages-pagination .ngx-pagination .current
+    background-color: #fff
+    color: #6A983C
+.ngx-pagination a:hover, .ngx-pagination button:hover
+    background: #e6e6e6
+    border-radius: 10px
 
 .down-arrow
     margin-left: 10px
-   
-
+.show-more-wrapper
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 .show-more-btn:hover
     box-shadow: 1px 3px 2px 0 rgba(0, 0, 0, .3)
     transition: all .5s ease
@@ -40,10 +46,10 @@
     cursor: pointer
     padding: 10px 14px
     display: flex
+    align-items: center
     border: 2px solid #46760A
     border-radius: 10px
     background-color: #6A983C
-
 
 .show-more-btn>div
     font-family: 'Poppins'
@@ -52,18 +58,14 @@
     font-weight: 700
     color: #fff
 
-
-
-
 .counter
     color: #6A983C
     background-color: #F4F8EC
     border-radius: 12px
     padding: 0 8px
     font-family: 'Poppins'
-    font-weight: 600 
+    font-weight: 600
 
 .counter-desc
     color: #A9A9A9
     margin-left: 4px
-    
