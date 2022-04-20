@@ -1,8 +1,10 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, SimpleChange, ViewChild } from '@angular/core';
 import { ChildActivationEnd, Router } from '@angular/router';
 import { Product } from 'src/app/Services/db/Product.model';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { CartService } from 'src/app/cart/cart.service';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -13,11 +15,14 @@ export class SearchBarComponent {
   constructor(
     private api: MimicrestService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public cart: CartService
   ) {}
-
+  public unsubscribeAll = new Subject();
   public data: Product[] = [];
   public list: Product[] = [];
+
+  productsInCart = +JSON.parse(<string>localStorage.getItem('productsCount'));
 
   public searchQuery = this.fb.control('', [
     Validators.required,
@@ -36,15 +41,27 @@ export class SearchBarComponent {
   };
 
   ngOnInit(): void {
-    this.api.getProducts().subscribe((res) => {
-      this.data = res;
-    });
-
+    this.api
+      .getProducts()
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe((res) => {
+        this.data = res;
+      });
+    this.cart.notifyObs
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe(
+        () =>
+          (this.productsInCart = +JSON.parse(
+            <string>localStorage.getItem('productsCount')
+          ))
+      );
     document.addEventListener('keydown', this.handleCloseByEsc.bind(this));
   }
 
   ngOnDestroy() {
     document.removeEventListener('keydown', this.handleCloseByEsc);
+    this.unsubscribeAll.next('');
+    this.unsubscribeAll.complete();
   }
   handleCloseByEsc(event: KeyboardEvent) {
     if (event.key === 'Escape') {
@@ -105,8 +122,11 @@ export class SearchBarComponent {
   }
   moveToProduct(id: number) {
     const link = `/products/${id}`;
+    console.log(link);
     this.router.navigateByUrl(link);
     this.closeResultWindow();
   }
+  moveToCart() {
+    this.router.navigateByUrl('/cart');
+  }
 }
-[];
