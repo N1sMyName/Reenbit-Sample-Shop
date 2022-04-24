@@ -12,8 +12,5 @@ export class DescriptionInfoComponent implements OnInit {
   ngOnInit(): void {
    
   }
-  ngAfterViewInit() {
-    console.log('fdaf')
-  }
 
 }

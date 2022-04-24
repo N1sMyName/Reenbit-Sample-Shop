@@ -129,4 +129,7 @@ export class SearchBarComponent {
   moveToCart() {
     this.router.navigateByUrl('/cart');
   }
+  toProducts(){
+    this.router.navigate(['/products'])
+  }
 }

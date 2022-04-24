@@ -162,7 +162,7 @@ export const products = [
     description:
       'What is a fruit? In a botanical sense, a fruit is the fleshy or dry ripened ovary of a flowering plant, enclosing the seed or seeds. Apricots, bananas, and grapes, as well as bean pods, corn grains, tomatoes, cucumbers, and (in their shells) acorns and almonds, are all technically fruits.',
     descriptionSmall: 'What is a fruit? In a botanical sense...',
-    rating: 5,
+    rating: 2,
     category: 'Foods',
     country: 'Africa',
     brand:'Ashan',
@@ -526,7 +526,7 @@ export const products = [
     description:
       'One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted',
     descriptionSmall: 'Neapolitan pizza, or pizza Napoletana.',
-    rating: 3,
+    rating: 1,
     category: 'Toys',
     country: 'Morocco',
     delivery: 'Global',

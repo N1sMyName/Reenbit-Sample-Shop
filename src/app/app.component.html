@@ -1,7 +1,15 @@
-
-
+<img *ngIf="isLoading"
+src="../../assets/loading.gif"
+alt="loading-spinner"
+style="
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+"
+/>
 <router-outlet name="header"></router-outlet>
-<router-outlet></router-outlet>
+<router-outlet ></router-outlet>
 <router-outlet name="footer"></router-outlet>
 
 

@@ -40,5 +40,6 @@ export class CategoriesFilterComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.parent.form;
     this.form.addControl('categoryName', new FormControl(''));
+    
   }
 }

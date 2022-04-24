@@ -1,28 +1,28 @@
 <div class="price-calc">
     <div class="subtotal-container">
         <div class="subtotal">
-            <h4>Subtotal</h4>
-            <p>73.55 USD</p>
+            <h4 class="subtotal-title">Subtotal</h4>
+            <p class="subtotal-amount">{{this.subtotal}} USD</p>
         </div>
         <div class="tax">
-            <h4>Tax</h4>
-            <p><span>17%</span>
-                <span>17.55 USD</span>
+            <h4 class="tax-title">Tax</h4>
+            <p><span class="rate">{{this.rate * 100}}%</span>
+                <span class="tax-dispay">{{this.tax}} USD</span>
             </p>
         </div>
     </div>
 <!-- promo -->
     <div class="promo">
-        <input type="text">
-        <button>Apply now</button>
+        <input type="text" placeholder="Apply promo code ">
+        <h3>Apply now</h3>
     </div>
 <!-- total -->
     <div class="total-container">
         <div class="total-desc">
-            <p>Total order</p>
-            <p>Guaranteed delivery day </p>
+            <p >Total order</p>
+            <p style="color: #6A983C;">Guaranteed delivery day: June 12, 2020</p>
         </div>
-        <h3>{{sum}} USD</h3>
+        <h3 class="sum">{{sum}}USD</h3>
     </div>
 
 </div>

@@ -1,0 +1,108 @@
+.cart-form-left
+    margin-bottom: 64px
+    display: flex
+    justify-content: space-between
+    width: 670px
+.cart-left
+    margin-top: 10px
+
+.input-container
+    position: relative
+    margin-top: 32px
+    width: 319px
+
+
+
+.cart-form-left label
+    font-family: 'Poppins'
+    font-size: 12px
+    font-weight: 600
+    line-height: 18px
+
+.cart-form-left input
+    width: 280px
+    display: block
+    border: 1px solid #D1D1D1
+    background-color: #F9F9F9
+    border-radius: 12px
+    color: #A9A9A9
+    font-family: 'Open Sans'
+    font-size: 14px
+    font-weight: 400
+    padding: 11px 16px 12px 22px
+
+.cart-form-left input::-webkit-outer-spin-button,
+.cart-form-left input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+  margin: 0
+
+
+.cart-form-left input:focus
+    outline: none
+
+.left
+    
+
+.invalid
+    border: 2px solid red
+
+.country-container ul::-webkit-scrollbar
+    width: 10px
+.country-container ul::-webkit-scrollbar-thumb
+    background-color: #A9A9A9
+    outline: 1px solid #D1D1D1
+    border-radius: 7px
+.country-container ul::-webkit-scrollbar-track
+    background-color: #F4F8EC
+    border: 1px solid #D1D1D1
+    border-radius: 7px
+    
+    
+
+.country-container ul
+    backdrop-filter: blur(1px)
+    max-height: 245px
+    overflow-y: scroll
+    overflow-x: hidden 
+    opacity: 0
+    z-index: -1
+
+    li
+        margin: 10px 0
+        margin-right: 2px
+        border-radius: 7px
+        border: 1px solid #D1D1D1
+        width: 319px
+        background-color: #F9F9F9
+        
+        transition: all .25s ease !important
+        color: #6A983C
+
+    li:hover
+        transition: all .25s ease !important
+        color: #46760A    
+        font-weight: 600    
+        cursor: pointer
+
+.countryVisible
+    opacity: 100 !important
+    z-index: 1 !important
+
+.country-container ul:hover
+    opacity: 100
+    z-index: 1
+
+.err
+    margin-top: 0
+    font-family: 'Poppins'
+    font-size: 12px
+    color: red
+    border-radius: 10px
+    font-size: 12px
+    transition: all .25s ease-in-out
+    white-space: nowrap
+    position: relative
+
+.error-container
+    position: absolute
+

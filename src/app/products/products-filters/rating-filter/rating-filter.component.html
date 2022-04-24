@@ -3,9 +3,9 @@
     <h3 class="rating-title">Rating</h3>
     <div class="filter-tab rating-filter" formGroupName="ratings">
       <label
-        [attr.for]="'rating-' + (l - i) "
+        [attr.for]="'rating-' + (l - i)"
         class="cbx-container"
-        *ngFor="let input of stars; let i = index;let l = count"
+        *ngFor="let input of stars; let i = index; let l = count"
       >
         <input
           type="checkbox"

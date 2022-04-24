@@ -56,27 +56,27 @@
         </ul>
       </div>
 
-
+<!--  -->
       <div class="purchase-info">
         <div class="price">
           <h2 class="cost">56.44 USD</h2>
           <p class="old-cost">66.45 USD</p>
         </div>
         <div class="amount">
-          <input type="text"  value="1"/>
+          <input [formControl]="form" type="number" style="width: 40px;" (input)="isValid()"  placeholder="0"/>
           <div>|</div>
           <select>
-            <option value="">Pcs</option>
+            <option *ngFor="let p of product.buyBy" [value]='p' >{{p}}</option>
           </select>
         </div>
-        <div class="add-btn"><span class="plus">+</span><span>Add to cart</span></div>
+        <div class="add-btn" (click)="cart.populateCartStore(product)"><span class="plus">+</span><span>Add to cart</span></div>
       </div>
 
       <div class="wishlist-btn">
         <mat-icon>favorite_border</mat-icon>
         <span>Add to my wishlist</span>
       </div>
-
+<!--  -->
       <app-description-info></app-description-info>
     </div>
   </div>
