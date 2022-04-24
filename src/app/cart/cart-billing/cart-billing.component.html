@@ -1,1 +1,327 @@
-<p>cart-billing works!</p>
+<form class="cart-form-left" formGroupName="billing">
+  <div class="left">
+    <!--  -->
+
+    <div class="first-name-container input-container">
+      <label for="first-name"
+        >First name
+        <input
+          formControlName="first-name"
+          type="text"
+          placeholder="first-name"
+          id="first-name"
+          class="form-item first-name"
+        />
+      </label>
+      <div class="relative-wrapper" style="position: absolute">
+        <div
+          *ngIf="
+        
+            firstName?.invalid &&
+            firstNameErrors?.['nonValidInput']
+          "
+          class="err"
+        >
+          name can't contain numeric
+        </div>
+        <div
+          *ngIf="firstName?.invalid && firstNameErrors?.['minlength']"
+          class="err"
+        >
+          min length 3 required
+        </div>
+        <div
+          *ngIf="firstName?.invalid && firstNameErrors?.['required']"
+          class="err"
+        >
+          *required field
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+
+    <div class="email-container input-container">
+      <label for="email"
+        >Email address
+        <input
+          formControlName="email"
+          type="text"
+          placeholder="Email address"
+          id="email-address"
+          class="form-item email"
+        />
+      </label>
+
+      <div class="error-container">
+        <div class="relative-wrapper" style="position: absolute">
+          <div
+            *ngIf="
+              email?.invalid &&
+              emailErrors?.['required']
+            "
+            class="err"
+          >
+          *required field
+          </div>
+          <div
+            *ngIf="
+              email?.invalid &&
+              emailErrors?.['pattern']
+            "
+            class="err"
+          >
+            non valid email
+          </div>
+          <div
+            *ngIf="
+          
+              email?.invalid &&
+              emailErrors?.['minlength']
+            "
+            class="err"
+          >
+            required length{{emailErrors?.['minlength'].requiredLength ? emailErrors?.['minlength'].requiredLength : null }}
+            your
+            {{emailErrors?.['minlength'].actualLength}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+
+    <div class="address-container input-container">
+      <label for="address"
+        >Address
+        <input
+          formControlName="address"
+          type="text"
+          placeholder="Address"
+          id="address"
+          class="form-item address"
+        />
+      </label>
+
+      <div class="relative-wrapper" style="position: absolute">
+        <div
+          *ngIf="
+          address?.invalid &&
+          addressErrors?.['required']
+        "
+          class="err"
+        >
+          *required field
+        </div>
+        <div
+          *ngIf="
+          address?.invalid &&
+          addressErrors?.['minlength']
+        "
+          class="err"
+        >
+          required length{{addressErrors?.['minlength'].requiredLength}} your
+          {{addressErrors?.['minlength'].actualLength}}
+        </div>
+      </div>
+    </div>
+    <div class="country-container input-container" style="position: relative">
+      <label for="country"
+        >State/Country
+        <input
+          (click)="setCountryListVisible()"
+          #countryRef
+          formControlName="country"
+          (input)="filterCountries()"
+          type="text"
+          placeholder="Chose a state of country"
+          id="first-name"
+          class="form-item state"
+        />
+      </label>
+      <div class="relative-wrapper" style="position: absolute">
+        <div
+          *ngIf=" country?.invalid && countryErrors?.['required']"
+          class="err"
+        >
+           *required field
+        </div>
+        <div
+          *ngIf=" country?.invalid && countryErrors?.['countryErr']"
+          class="err"
+        >
+          {{ "chose country from list" }}
+        </div>
+        <ul [ngClass]="styles" style="position: absolute">
+          <li
+            (click)="setCountry(country, countryRef)"
+            style="list-style: none; white-space: nowrap"
+            *ngFor="let country of countryListFiltered"
+          >
+            {{ country }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--  -->
+
+  <div class="right">
+    <div class="last-name-container input-container">
+      <label for="last-name"
+        >Last name
+        <input
+          formControlName="last-name"
+          type="text"
+          placeholder="Last-name"
+          id="last-name"
+          class="form-item last-name"
+        />
+      </label>
+      <div class="relative-wrapper" style="position: absolute">
+        <div
+          *ngIf="
+          lastName?.invalid &&
+          lastNameErrors?.['required']
+        "
+          class="err"
+        >
+          *required field
+        </div>
+        <div
+          *ngIf="
+        lastName?.invalid &&
+        lastNameErrors?.['minlength']
+        "
+          class="err"
+        >
+          min length 3 required
+        </div>
+        <div
+          *ngIf="
+        lastName?.invalid &&
+        lastNameErrors?.['nonValidInput']
+            "
+          class="err"
+        >
+          last name can't contain numeric
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-container input-container">
+      <label for="phone"
+        >Phone number
+        <input
+          #phoneRef
+          (input)="preventInputWrongValue(phoneRef, 9)"
+          formControlName="phone"
+          type="number"
+          placeholder="Phone number"
+          id="phone"
+          class="form-item phone"
+          
+        />
+      </label>
+      <div class="relative-wrapper" style="position: absolute">
+        <div
+          *ngIf="
+          phone?.invalid &&
+          phoneErrors?.['required']
+          "
+          class="err"
+        >
+          *required field
+        </div>
+        <div
+          *ngIf="
+          phone?.dirty &&
+          phone?.invalid &&
+          phoneErrors?.['lengthErr']
+          "
+          class="err"
+        >
+          required length {{ this.phoneErrors?.['lengthErr'].required }} your
+          {{ phoneRef.value.length }}
+        </div>
+      </div>
+      <!-- <div *ngIf="phone?.dirty && phone?.invalid" class="err">
+        {{ this.phoneErrors | json }}
+      </div> -->
+    </div>
+    <div class="city-container input-container">
+      <label for="city"
+        >Town/city
+        <input
+          formControlName="city"
+          type="text"
+          placeholder="Town/city"
+          id="city"
+          class="form-item city"
+        />
+      </label>
+      <div class="relative-wrapper" style="position: absolute">
+        <div
+          *ngIf="
+            city?.invalid &&
+            cityErrors?.['required']
+          "
+          class="err"
+        >
+          *required field
+        </div>
+        <div>
+          <div
+            *ngIf="
+              city?.invalid &&
+              cityErrors?.['minlength']
+            "
+            class="err"
+          >
+            required length
+            {{  this.cityErrors?.['minlength'].requiredLength }} your length
+            {{ this.cityErrors?.['minlength'].actualLength }}
+          </div>
+          <div
+            *ngIf="
+              city?.dirty &&
+              city?.invalid &&
+              cityErrors?.['nonValidInput']
+            "
+            class="err"
+          >
+            city name can't contain numeric
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="zip-container input-container">
+      <label for="zip"
+        >ZIP/Postal code
+        <input
+          #zipRef
+          (input)="preventInputWrongValue(zipRef, 5)"
+          formControlName="zip"
+          type="number"
+          placeholder="Postal code or zip"
+          id="zip"
+          class="form-item zip"
+        />
+      </label>
+
+      <div class="relative-wrapper" style="position: absolute">
+        <div *ngIf="zip?.invalid && zipErrors?.['required']" class="err">
+          *required field
+        </div>
+        <div
+          *ngIf="zip?.dirty && zip?.invalid && zipErrors?.['lengthErr']"
+          class="err"
+        >
+          required {{ zipErrors?.['lengthErr'].required }} your
+          {{ zipRef.value.length }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

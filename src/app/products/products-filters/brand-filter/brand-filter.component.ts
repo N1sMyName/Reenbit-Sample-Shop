@@ -7,7 +7,6 @@ import {
   FormGroup,
   FormGroupDirective,
 } from '@angular/forms';
-import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'app-brand-filter',

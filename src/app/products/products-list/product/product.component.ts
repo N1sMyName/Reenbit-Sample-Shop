@@ -16,8 +16,8 @@ export class ProductComponent implements OnInit {
   constructor(private router:Router) {}
 
   showProductDetails(id:number ){
-  this.productDetails =  `/products/${id}`
-  this.router.navigateByUrl(this.productDetails)
+  this.productDetails =  `/products`
+  this.router.navigate([this.productDetails,id])
   }
 
   ngOnInit(): void {

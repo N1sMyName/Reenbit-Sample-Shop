@@ -1,43 +1,141 @@
-<div class="left">
-        <img src="" alt="image-placeholder">
-        <div class="wishlist-btn">
-            <mat-icon>favorite_border</mat-icon>
-            Wishlist
-        </div>
-        <div class="remove btn">
-            <mat-icon>close</mat-icon>
-            Remove
-        </div>
-    
-</div>
+<section class="cart-product">
+  <div class="left">
+    <div class="image-placeholder"></div>
+    <div class="wishlist img-alt" style="margin-bottom: 8px; margin-top: 12px">
+      <svg
+        width="12"
+        height="10"
+        viewBox="0 0 12 10"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M6.65559 1.44502C7.13297 0.967627 7.78045 0.699432 8.45559 0.699432C9.13072 0.699432 9.7782 0.967627 10.2556 1.44502C10.733 1.92241 11.0012 2.56988 11.0012 3.24502C11.0012 3.92015 10.733 4.56763 10.2556 5.04502L9.60059 5.70001L6.00059 9.30001L2.40058 5.70001L1.74558 5.04502C1.26819 4.56763 1 3.92015 1 3.24502C1 2.56988 1.26819 1.92241 1.74558 1.44502C2.22297 0.967627 2.87045 0.699432 3.54558 0.699432C4.22072 0.699432 4.86819 0.967627 5.34558 1.44502L6.00059 2.10002L6.65559 1.44502Z"
+          stroke="#E6704B"
+          stroke-linecap="round"
+          stroke-linejoin="bevel"
+        />
+      </svg>
 
-<div class="right">
-<h3>Product title</h3>
-<table>
-    <tr>
-        <td>1</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>4</td>
-    </tr>
-</table>
-<div class="rating">
-    <mat-icon>star</mat-icon>
-    <mat-icon>star</mat-icon>
-    <mat-icon>star</mat-icon>
-    <mat-icon>star</mat-icon>
-</div>
-<h3>44.67 USD</h3>
-</div>
+      Wishlist
+    </div>
+    <div class="remove img-alt" (click)="removeProduct(product.id)">
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.18031 9.17999L2.82031 2.81999"
+          stroke="#151515"
+          stroke-linecap="round"
+          stroke-linejoin="bevel"
+        />
+        <path
+          d="M9.18031 2.81999L2.82031 9.17999"
+          stroke="#151515"
+          stroke-linecap="round"
+          stroke-linejoin="bevel"
+        />
+      </svg>
 
-<div class="amount">
-    <input type="text" placeholder="1pcs">
-    <label for="amount-type">
-        <select>
-            <option value="">Pcs</option>
-        </select>
-    </label>
-</div>
+      Remove
+    </div>
+  </div>
 
+  <div class="right">
+    <h3 class="pTitle">{{ product.title }}</h3>
+    <table>
+      <tr>
+        <td class="desc-type">farm:</td>
+        <td class="desc-self">{{ product.farm }}</td>
+      </tr>
+      <tr>
+        <td class="desc-type">freshness:</td>
+        <td class="desc-self">{{ product.freshness }}</td>
+      </tr>
+    </table>
+    <div class="rating">
+      <!-- <mat-icon *ngFor="let star of [].constructor(product.rating)"
+        >star</mat-icon
+      > -->
+      <div class="rating-container">
+        <svg
+          *ngFor="let star of [].constructor(product.rating)"
+          width="15"
+          height="14"
+          viewBox="0 0 15 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M6.94835 1.12663C6.9944 0.980602 7.08581 0.853056 7.20929 0.762519C7.33277 0.671982 7.4819 0.623169 7.63502 0.623169C7.78814 0.623169 7.93727 0.671982 8.06075 0.762519C8.18423 0.853056 8.27564 0.980602 8.32169 1.12663L9.56169 4.93996H13.5617C13.7203 4.93397 13.8765 4.98006 14.0064 5.07119C14.1363 5.16232 14.2329 5.29348 14.2812 5.44464C14.3296 5.5958 14.3272 5.75863 14.2743 5.90827C14.2214 6.0579 14.121 6.18611 13.9884 6.2733L10.7417 8.62663L11.9817 12.4466C12.0307 12.5921 12.032 12.7495 11.9852 12.8958C11.9385 13.042 11.8462 13.1695 11.7218 13.2596C11.5975 13.3497 11.4476 13.3977 11.2941 13.3966C11.1405 13.3954 10.9913 13.3452 10.8684 13.2533L7.61502 10.8733L4.36835 13.2333C4.24536 13.3252 4.0962 13.3754 3.94265 13.3766C3.7891 13.3777 3.63921 13.3297 3.51487 13.2396C3.39052 13.1495 3.29824 13.022 3.25149 12.8758C3.20474 12.7295 3.20598 12.5721 3.25502 12.4266L4.49502 8.60663L1.24835 6.2533C1.11574 6.16611 1.01532 6.0379 0.962434 5.88827C0.909546 5.73863 0.9071 5.5758 0.95547 5.42464C1.00384 5.27348 1.10037 5.14232 1.2303 5.05119C1.36023 4.96006 1.51643 4.91397 1.67502 4.91996H5.67502L6.94835 1.12663Z"
+            fill="#FDBC15"
+          />
+        </svg>
+
+        <svg
+          *ngFor="let star of [].constructor(5 - product.rating)"
+          width="15"
+          height="14"
+          viewBox="0 0 15 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M6.94835 1.12663C6.9944 0.980602 7.08581 0.853056 7.20929 0.762519C7.33277 0.671982 7.4819 0.623169 7.63502 0.623169C7.78814 0.623169 7.93727 0.671982 8.06075 0.762519C8.18423 0.853056 8.27564 0.980602 8.32169 1.12663L9.56169 4.93996H13.5617C13.7203 4.93397 13.8765 4.98006 14.0064 5.07119C14.1363 5.16232 14.2329 5.29348 14.2812 5.44464C14.3296 5.5958 14.3272 5.75863 14.2743 5.90827C14.2214 6.0579 14.121 6.18611 13.9884 6.2733L10.7417 8.62663L11.9817 12.4466C12.0307 12.5921 12.032 12.7495 11.9852 12.8958C11.9385 13.042 11.8462 13.1695 11.7218 13.2596C11.5975 13.3497 11.4476 13.3977 11.2941 13.3966C11.1405 13.3954 10.9913 13.3452 10.8684 13.2533L7.61502 10.8733L4.36835 13.2333C4.24536 13.3252 4.0962 13.3754 3.94265 13.3766C3.7891 13.3777 3.63921 13.3297 3.51487 13.2396C3.39052 13.1495 3.29824 13.022 3.25149 12.8758C3.20474 12.7295 3.20598 12.5721 3.25502 12.4266L4.49502 8.60663L1.24835 6.2533C1.11574 6.16611 1.01532 6.0379 0.962434 5.88827C0.909546 5.73863 0.9071 5.5758 0.95547 5.42464C1.00384 5.27348 1.10037 5.14232 1.2303 5.05119C1.36023 4.96006 1.51643 4.91397 1.67502 4.91996H5.67502L6.94835 1.12663Z"
+            stroke="#D1D1D1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+    <h3 class="amout-calc">
+      {{ this.form.controls[product.id].value }}X {{ product.price }} USD
+    </h3>
+  </div>
+
+  <div class="amount">
+    <input
+      type="number"
+      placeholder="1pcs"
+      min="1"
+      [formControlName]="product.id"
+    />
+    <div style="height: min-content">|</div>
+    <ul>
+      {{
+        this.measureBy
+      }}
+      <ul >
+        <li *ngFor="let item of product.buyBy" (click)="setMeasureBy(item)">
+          {{ item }}
+        </li>
+      </ul>
+    </ul>
+    <svg
+      width="9"
+      height="7"
+      viewBox="0 0 9 7"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.31348 2.03333L4.05348 4.77332C4.17838 4.89749 4.34735 4.96719 4.52348 4.96719C4.6996 4.96719 4.86857 4.89749 4.99348 4.77332L7.66014 2.10666"
+        stroke="black"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="bevel"
+      />
+    </svg>
+  </div>
+</section>

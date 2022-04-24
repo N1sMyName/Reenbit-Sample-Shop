@@ -1,10 +1,18 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MimicrestService } from '../Services/mimicrest.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../Services/db/Product.model';
 import { FilterService } from './products-filters/filter.service';
 import { cloneDeep } from 'lodash';
 import { Form } from './form.model';
-import { skip, Subject, takeUntil } from 'rxjs';
+import {
+  ActivatedRoute,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
+import { LoadingService } from '../Services/loading.service';
+import { MimicrestService } from '../Services/mimicrest.service';
 
 @Component({
   selector: 'app-products',
@@ -12,39 +20,55 @@ import { skip, Subject, takeUntil } from 'rxjs';
   styleUrls: ['./products.component.sass'],
 })
 export class ProductsComponent implements OnInit {
+  // generic variables
+
+  // products instances
   public filteredProducts: Product[];
   public originalProducts: Product[];
+  // filters stack
   public filters: Form;
+
+  // pagination
   lastPagData: { page: number; stack: number } = { page: 1, stack: 5 };
   paginationData: { page: number; stack: number } = { page: 1, stack: 5 };
+
+  // sort method instance
+  sortBy: string = '';
+  isLoading = false;
+  constructor(
+    private f: FilterService,
+    private aRoute: ActivatedRoute,
+    private router: Router,
+    private loading:LoadingService,
+  ) {}
+  // METHODS
+  // lifecycle
+  ngOnInit(): void {
+    console.log(this.isLoading)
+    this.loading.loadingObs.subscribe(res => this.isLoading = res)
+    this.aRoute.snapshot.data['products'];
+    this.getProducts();
+    
+    
+  }
+
+  // generic
+
+  // pagination
   receivePaginationData(event: { page: number; stack: number }) {
     this.paginationData = event;
     this.lastPagData = event;
   }
-  sortBy: string = '';
-  unsubscribeAll = new Subject();
-  constructor(
-    private mimicrestService: MimicrestService,
-    private f: FilterService,
-    private cd: ChangeDetectorRef
-  ) {}
-  ngOnInit(): void {
-    this.getProducts();
-  }
-  ngOnDestroy() {
-    this.unsubscribeAll.next('');
-    this.unsubscribeAll.complete();
-  }
+
   getProducts() {
-    this.mimicrestService
-      .getProducts()
-      .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe((res) => {
-        this.filteredProducts = res;
-        this.originalProducts = res;
-      });
+    const data = this.aRoute.snapshot.data['products'];
+    this.originalProducts = data;
+    this.filteredProducts = data;
   }
+
+  // filter
   setFilters(event: Form) {
+
     this.filters = event;
     this.filteredProducts = cloneDeep(this.originalProducts);
     this.filteredProducts = this.filterWrapper(this.filteredProducts);
@@ -60,6 +84,7 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  // sort
   setSort(c: string) {
     this.sortBy = c;
     this.filteredProducts = this.f.sortBy(this.sortBy, this.filteredProducts);

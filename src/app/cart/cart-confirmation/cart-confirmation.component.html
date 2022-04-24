@@ -1,1 +1,23 @@
-<p>cart-confirmation works!</p>
+<div class="comfirmation ">
+  <h2 class="cart-title">Confirmation</h2>
+  <h3 class="cart-subtitle">We are getting to the end,just few clicks and your order is ready!</h3>
+  <form class="confirmation-container" formGroupName="conditionTerms">
+    <div class="confirm-box">
+      <input type="checkbox" formControlName="condition1" />
+      <p>I agree with receiving an Marketing and newsletter emails.</p>
+      <div *ngIf="child?.get('condition1')?.errors" class="err-msg">
+        *required
+      </div>
+    </div>
+    <div class="confirm-box" style="margin-top:12px;">
+      <input type="checkbox" formControlName="condition2" />
+      <p>I agree with our terms and conditions and privacy policy</p>
+      <div *ngIf="child?.get('condition2')?.errors" class="err-msg">
+        *required
+      </div>
+    </div>
+  </form>
+  <button [disabled]="form.invalid" (click)="addValidators()" class="complete-btn">
+    Complete order
+  </button>
+</div>
