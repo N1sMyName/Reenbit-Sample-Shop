@@ -16,7 +16,7 @@ export class MimicrestService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl).pipe(
-      delay(1000),
+      // delay(500),
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);
@@ -26,7 +26,7 @@ export class MimicrestService {
 
   getProduct(id:number): Observable<Product> {
     return this.http.get<Product>(this.productsUrl + id).pipe(
-      // delay(1000),
+      // delay(500),
       catchError((error: HttpErrorResponse) => {
         console.error(error);
         return throwError(error);

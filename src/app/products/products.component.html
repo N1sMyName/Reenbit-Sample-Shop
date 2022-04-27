@@ -1,33 +1,25 @@
-
-<img *ngIf="isLoading"
-src="../../assets/loading.gif"
-alt="loading-spinner"
-style="
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(50%, 50%);
-"
-/>
-<div class="main-container" > 
-  <app-products-nav-top
-    [products]="originalProducts"
-    (sortEvent)="setSort($event)"
-  ></app-products-nav-top>
-  <main class="products">
-    <app-products-filters
+<div class="save-height">
+  
+  <div class="main-container" *ngIf="!this.loading.isLoading">
+    <app-products-nav-top
       [products]="originalProducts"
-      class="products-filter"
-      (formFilterEvent)="setFilters($event)"
-    ></app-products-filters>
-    <app-products-list
-      [paginationData]="paginationData"
-      [products]="filteredProducts"
-      class="products-list"
-    ></app-products-list>
-  </main>
-  <app-products-nav-bot
-    [products]="originalProducts"
-    (paginationEvent)="receivePaginationData($event)"
-  ></app-products-nav-bot>
+      (sortEvent)="setSort($event)"
+    ></app-products-nav-top>
+    <main class="products">
+      <app-products-filters
+        [products]="originalProducts"
+        class="products-filter"
+        (formFilterEvent)="setFilters($event)"
+      ></app-products-filters>
+      <app-products-list
+        [paginationData]="paginationData"
+        [products]="filteredProducts"
+        class="products-list"
+      ></app-products-list>
+    </main>
+    <app-products-nav-bot
+      [products]="originalProducts"
+      (paginationEvent)="receivePaginationData($event)"
+    ></app-products-nav-bot>
+  </div>
 </div>

@@ -11,22 +11,18 @@
           "skipTests": true
         },
         "@schematics/angular:application": {
-
           "skipTests": true,
           "strict": true
         },
         "@schematics/angular:directive": {
           "skipTests": true
-          },
-          "@schematics/angular:pipe": {
+        },
+        "@schematics/angular:pipe": {
           "skipTests": true
-          },
-          "@schematics/angular:service": {
+        },
+        "@schematics/angular:service": {
           "skipTests": true
-          }
-
-        
-
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -120,9 +116,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "Reenbit-Sample-Shop"
+  "defaultProject": "Reenbit-Sample-Shop",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

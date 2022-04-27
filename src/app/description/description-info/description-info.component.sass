@@ -2,20 +2,48 @@
     display: flex
     border-bottom: 1px solid #f5f5f5
     justify-content: space-between
+    padding-bottom: 16px
+    margin-bottom: 48px
     .tab
+        box-sizing: border-box
+        position: relative
         display: flex
         align-items: center
-        span
-            color: #6A983C 
-            font-size: .75rem
-            margin: 0 .5rem
+        font-family: Poppins
+        font-size: 18px
+        font-weight: 600
+        line-height: 27px
+        letter-spacing: 0em
+        text-align: left
+        cursor: pointer
+    .tab:hover
+        color: #6A983C
+    .tab:hover > span
+        color: #151515
+    div
+        position: absolute
+    .underline
+        height: 1px
+        width: 100%
+        background-color: #151515
+        position: absolute
+        bottom: -65%
+    span
+        color: #6A983C
+        margin: 0 .5rem
+        font-family: Poppins
+        font-size: 12px
+        font-weight: 600
+        line-height: 18px
+        letter-spacing: 0em
+        text-align: left
 
-
+    // display: flex
+    // align-items: center
+    // position: absolute
 
 .tab-active
     border-bottom: 1px solid black
 
 .tabs-data
-    width: 50%
-    div
-        margin: .5rem 0
+  

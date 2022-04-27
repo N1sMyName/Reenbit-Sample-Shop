@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { LoadingService } from '../Services/loading.service';
 import { CartItem } from './cart-item.model';
 import { CartService } from './cart.service';
 
@@ -15,7 +16,8 @@ export class CartComponent {
   constructor(
     public route: ActivatedRoute,
     private cart: CartService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public loader:LoadingService
   ) {}
   public form: FormGroup;
   public products: CartItem[] =

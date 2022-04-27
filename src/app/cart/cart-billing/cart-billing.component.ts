@@ -7,6 +7,7 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { cloneDeep } from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
 import { CartValidationService } from '../cart-validation.service';
@@ -15,7 +16,6 @@ import {
   countryValidator,
   minLengthPattern,
   stringValidator,
-  zipValidator,
 } from './validators.directive';
 
 @Component({
@@ -25,13 +25,13 @@ import {
   viewProviders: [
     { provide: ControlContainer, useExisting: FormGroupDirective },
   ],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class CartBillingComponent implements OnInit {
   constructor(
-    private fb: FormBuilder,
-    private parent: FormGroupDirective,
-    private cartValidation: CartValidationService
+    public parent: FormGroupDirective,
+    private cartValidation: CartValidationService,
+    private router: Router
   ) {}
   public styles = {
     countryVisible: false,
@@ -41,6 +41,7 @@ export class CartBillingComponent implements OnInit {
   public form: FormGroup;
   public childForm: FormGroup;
   public unsubscribeAll = new Subject();
+  orderIsFinished = false
 
   ngOnDestroy() {
     this.unsubscribeAll.next('');
@@ -69,7 +70,7 @@ export class CartBillingComponent implements OnInit {
     this.localStateChanges();
     this.cartValidation.formObs
       .pipe(takeUntil(this.unsubscribeAll))
-      .subscribe(()=> this.isValidBilling());
+      .subscribe(() => this.isValidBilling());
     // this.childForm.valueChanges.subscribe((v) => console.log(v.zip));
   }
   localValueChanges() {
@@ -123,16 +124,14 @@ export class CartBillingComponent implements OnInit {
     this.childForm.get('country')?.setValue(c);
     ref.value = c;
   }
-  debug() {
-    console.log(this.childForm.get('zip'));
-  }
+
   preventInputWrongValue(ref: HTMLInputElement, l: number) {
     if (ref.value.length > l) {
       ref.value = ref.value.slice(0, l);
     }
   }
   isValidBilling() {
-    console.log(`billing run `)
+  
     this.firstName?.addValidators([
       Validators.required,
       stringValidator(),
@@ -178,12 +177,8 @@ export class CartBillingComponent implements OnInit {
 
     this.zip?.addValidators([Validators.required, minLengthPattern(5)]);
     this.zip?.updateValueAndValidity();
-    if (this.childForm.valid) {
-      console.log(`form valid`);
-    }
-    for (let i in this.childForm.controls) {
-      // this.childForm.controls[i].clearValidators()
-    }
+   
+    
   }
 
   // GETTERS
@@ -247,4 +242,5 @@ export class CartBillingComponent implements OnInit {
   get zipErrors() {
     return this.zip?.errors;
   }
+
 }

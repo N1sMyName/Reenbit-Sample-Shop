@@ -1,85 +1,181 @@
-<div class="description-main">
-  <div class="description-flex-container">
-    <app-description-images></app-description-images>
-
-    <div class="description-body">
-      <div class="body-head">
-        <h2 class="body-title">Product description</h2>
-        <div class="body-rating">
-          <!-- same like in product page -->
-          <mat-icon>star</mat-icon>
-          <mat-icon>star</mat-icon>
-          <mat-icon>star</mat-icon>
-          <mat-icon>star</mat-icon>
-          <mat-icon>star_border</mat-icon>
+<div class="description-main" >
+  <div *ngIf="!this.loading.isLoading">
+    <div class="description-flex-container">
+      <app-description-images></app-description-images>
+      <app-redirect-modal [style]="style"></app-redirect-modal>
+      <div class="description-body">
+        <div class="body-head">
+          <h2 class="body-title">{{ this.product.title }}</h2>
+          <div class="body-rating">
+            <!-- same like in product page -->
+            <div class="stars">
+              <svg
+                width="18"
+                height="16"
+                viewBox="0 0 18 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                *ngFor="let start of [].constructor(product.rating)"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.42397 0.658288C8.48153 0.475753 8.59578 0.316321 8.75014 0.203149C8.90449 0.0899781 9.0909 0.0289612 9.2823 0.0289612C9.4737 0.0289612 9.66011 0.0899781 9.81446 0.203149C9.96882 0.316321 10.0831 0.475753 10.1406 0.658288L11.6906 5.42495H16.6906C16.8889 5.41746 17.0841 5.47507 17.2465 5.58899C17.409 5.7029 17.5296 5.86686 17.5901 6.0558C17.6505 6.24474 17.6475 6.44829 17.5814 6.63533C17.5153 6.82238 17.3897 6.98263 17.224 7.09162L13.1656 10.0333L14.7156 14.8083C14.7769 14.9902 14.7785 15.1869 14.72 15.3697C14.6616 15.5526 14.5463 15.7119 14.3908 15.8245C14.2354 15.9371 14.048 15.9971 13.8561 15.9957C13.6642 15.9943 13.4777 15.9315 13.324 15.8166L9.2573 12.8416L5.19897 15.7916C5.04522 15.9065 4.85877 15.9693 4.66684 15.9707C4.4749 15.9721 4.28754 15.9121 4.13211 15.7995C3.97668 15.6869 3.86133 15.5276 3.80289 15.3447C3.74445 15.1619 3.746 14.9652 3.8073 14.7833L5.3573 10.0083L1.29897 7.06662C1.1332 6.95763 1.00768 6.79738 0.941567 6.61033C0.875458 6.42329 0.872401 6.21975 0.932863 6.0308C0.993325 5.84186 1.11398 5.6779 1.2764 5.56398C1.43881 5.45007 1.63406 5.39246 1.8323 5.39995H6.8323L8.42397 0.658288Z"
+                  fill="#151515"
+                />
+              </svg>
+              <svg
+                *ngFor="let start of [].constructor(5 - product.rating)"
+                width="19"
+                height="18"
+                viewBox="0 0 19 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.42397 1.65829C8.48153 1.47575 8.59578 1.31632 8.75014 1.20315C8.90449 1.08998 9.0909 1.02896 9.2823 1.02896C9.4737 1.02896 9.66011 1.08998 9.81446 1.20315C9.96882 1.31632 10.0831 1.47575 10.1406 1.65829L11.6906 6.42495H16.6906C16.8889 6.41746 17.0841 6.47507 17.2465 6.58899C17.409 6.7029 17.5296 6.86686 17.5901 7.0558C17.6505 7.24474 17.6475 7.44829 17.5814 7.63533C17.5153 7.82238 17.3897 7.98263 17.224 8.09162L13.1656 11.0333L14.7156 15.8083C14.7769 15.9902 14.7785 16.1869 14.72 16.3697C14.6616 16.5526 14.5463 16.7119 14.3908 16.8245C14.2354 16.9371 14.048 16.9971 13.8561 16.9957C13.6642 16.9943 13.4777 16.9315 13.324 16.8166L9.2573 13.8416L5.19897 16.7916C5.04522 16.9065 4.85877 16.9693 4.66684 16.9707C4.4749 16.9721 4.28754 16.9121 4.13211 16.7995C3.97668 16.6869 3.86133 16.5276 3.80289 16.3447C3.74445 16.1619 3.746 15.9652 3.8073 15.7833L5.3573 11.0083L1.29897 8.06662C1.1332 7.95763 1.00768 7.79738 0.941567 7.61033C0.875458 7.42329 0.872401 7.21975 0.932863 7.0308C0.993325 6.84186 1.11398 6.6779 1.2764 6.56399C1.43881 6.45007 1.63406 6.39246 1.8323 6.39995H6.8323L8.42397 1.65829Z"
+                  stroke="#EBEBEB"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <span class="body-rewiews">(1 customer review) </span>
+          </div>
+          <p class="body-description">
+            {{ this.product.description }}
+          </p>
         </div>
-        <span class="body-rewiews">(1 customer review) </span>
-        <p class="body-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo at, alias similique ab ipsum sapiente.</p>
-      </div>
 
-      <div class="body-verbose-flex">
-        <ul class="body-verbose-1">
-          <li class="item-container">
-            <span class="item-category">Country: </span>
-            <span class="item-data">65743</span>
-          </li>
-          <li class="item-container">
-            <span class="item-category">Category: </span>
-            <span class="item-data">Vegetables</span>
-          </li>
-          <li class="item-container">
-            <span class="item-category">Stock: </span>
-            <span class="item-data">in Stock</span>
-          </li>
-          <li class="item-container">
-            <span class="item-category">Color: </span>
-            <span class="item-data">Red</span>
-          </li>
-        </ul>
-        <ul class="body-verbose-2">
-          <li class="item-container">
-            <span class="item-category">Size: </span>
-            <span class="item-data">123</span>
-          </li>
-          <li class="item-container">
-            <span class="item-category">Buy by: </span>
-            <span class="item-data">Vegetables</span>
-          </li>
-          <li class="item-container">
-            <span class="item-category">Delivery: </span>
-            <span class="item-data">Poland</span>
-          </li>
-          <li class="item-container">
-            <span class="item-category">Delivery area: </span>
-            <span class="item-data">ttttt</span>
-          </li>
-        </ul>
-      </div>
-
-<!--  -->
-      <div class="purchase-info">
-        <div class="price">
-          <h2 class="cost">56.44 USD</h2>
-          <p class="old-cost">66.45 USD</p>
+        <div class="body-verbose-flex">
+          <ul class="body-verbose-1 body-v">
+            <li class="item-container">
+              <span class="item-category">Country: </span>
+              <span class="item-data">{{ this.product.country }}</span>
+            </li>
+            <li class="item-container">
+              <span class="item-category">Category: </span>
+              <span class="item-data">{{ this.product.category }}</span>
+            </li>
+            <li class="item-container">
+              <span class="item-category">Stock:</span>
+              <span class="item-data">{{ this.product.inStock }}</span>
+            </li>
+            <li class="item-container">
+              <span class="item-category">Brand: </span>
+              <span class="item-data">{{ this.product.brand }}</span>
+            </li>
+          </ul>
+          <ul class="body-verbose-2 body-v">
+            <li class="item-container">
+              <span class="item-category">Size: </span>
+              <span class="item-data">{{ this.product.size }}</span>
+            </li>
+            <li class="item-container">
+              <span class="item-category">Buy by: </span>
+              <span class="item-data">{{ this.product.buyBy }} </span>
+            </li>
+            <li class="item-container">
+              <span class="item-category">Delivery: </span>
+              <span class="item-data">{{ this.product.delivery }}</span>
+            </li>
+            <li class="item-container">
+              <span class="item-category">Delivery area: </span>
+              <span class="item-data">{{ this.product.deliveryArea }}</span>
+            </li>
+          </ul>
         </div>
-        <div class="amount">
-          <input [formControl]="form" type="number" style="width: 40px;" (input)="isValid()"  placeholder="0"/>
-          <div>|</div>
-          <select>
-            <option *ngFor="let p of product.buyBy" [value]='p' >{{p}}</option>
-          </select>
-        </div>
-        <div class="add-btn" (click)="cart.populateCartStore(product)"><span class="plus">+</span><span>Add to cart</span></div>
-      </div>
 
-      <div class="wishlist-btn">
-        <mat-icon>favorite_border</mat-icon>
-        <span>Add to my wishlist</span>
+        <!--  -->
+        <div class="purchase-info">
+          <div class="price">
+            <h2 class="cost">{{ this.noTaxPrice }} USD</h2>
+            <p class="old-cost">{{ this.product.price }} USD</p>
+          </div>
+          <div class="amount-desc">
+            <input
+              [formControl]="form"
+              type="number"
+              style="width: 40px"
+              min="1"
+              placeholder="1`"
+            />
+            <div>|</div>
+
+            <ul>
+              {{
+                this.currentAmount
+              }}
+              <ul>
+                <li
+                  *ngFor="let p of product.buyBy"
+                  [value]="p"
+                  (click)="setCurrentBuyBy(p)"
+                >
+                  {{ p }}
+                </li>
+              </ul>
+            </ul>
+          </div>
+          <div class="add-btn" (click)="addItemToCart(product)">
+            <div [ngClass]="stylePresent">Product already in cart</div>
+            <svg
+              class="plus"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.1608 7H1.49414"
+                stroke="#92C064"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="bevel"
+              />
+              <path
+                d="M6.82812 12.3333V1.66663"
+                stroke="#92C064"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="bevel"
+              />
+            </svg>
+            <span>Add to cart</span>
+          </div>
+        </div>
+
+        <div class="wishlist-btn">
+          <svg
+            width="17"
+            height="14"
+            viewBox="0 0 17 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.13062 2.26001C9.76714 1.62349 10.6304 1.2659 11.5306 1.2659C12.4308 1.2659 13.2941 1.62349 13.9306 2.26001C14.5671 2.89653 14.9247 3.75984 14.9247 4.66001C14.9247 5.56019 14.5671 6.42349 13.9306 7.06001L13.0573 7.93334L8.25729 12.7333L3.45729 7.93334L2.58396 7.06001C1.94744 6.42349 1.58984 5.56019 1.58984 4.66001C1.58984 3.75984 1.94744 2.89653 2.58396 2.26001C3.22048 1.62349 4.08378 1.2659 4.98396 1.2659C5.88413 1.2659 6.74744 1.62349 7.38396 2.26001L8.25729 3.13334L9.13062 2.26001Z"
+              stroke="#151515"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <span>Add to my wishlist</span>
+        </div>
+        <!--  -->
+        <app-description-info></app-description-info>
       </div>
-<!--  -->
-      <app-description-info></app-description-info>
     </div>
-  </div>
 
-  <app-description-relevant-tab></app-description-relevant-tab>
+    <app-description-relevant-tab [relevantProducts]="relevantProducts">
+    </app-description-relevant-tab>
+  </div>
 </div>

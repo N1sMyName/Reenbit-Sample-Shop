@@ -14,7 +14,6 @@ import { MimicrestService } from '../Services/mimicrest.service';
 export class ProductsResolver implements Resolve<Product[]> {
   constructor(private memApi:MimicrestService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product[]> {
-    console.log(state)
     return this.memApi.getProducts()
   }
 }

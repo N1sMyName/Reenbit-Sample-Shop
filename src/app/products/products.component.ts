@@ -1,18 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Product } from '../Services/db/Product.model';
 import { FilterService } from './products-filters/filter.service';
 import { cloneDeep } from 'lodash';
 import { Form } from './form.model';
 import {
   ActivatedRoute,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  NavigationStart,
   Router,
 } from '@angular/router';
 import { LoadingService } from '../Services/loading.service';
-import { MimicrestService } from '../Services/mimicrest.service';
 
 @Component({
   selector: 'app-products',
@@ -34,22 +29,20 @@ export class ProductsComponent implements OnInit {
 
   // sort method instance
   sortBy: string = '';
-  isLoading = false;
+  
   constructor(
     private f: FilterService,
     private aRoute: ActivatedRoute,
-    private router: Router,
-    private loading:LoadingService,
-  ) {}
+    public loading:LoadingService
+  ) {
+    
+  }
   // METHODS
   // lifecycle
   ngOnInit(): void {
-    console.log(this.isLoading)
-    this.loading.loadingObs.subscribe(res => this.isLoading = res)
+
     this.aRoute.snapshot.data['products'];
     this.getProducts();
-    
-    
   }
 
   // generic
@@ -68,7 +61,6 @@ export class ProductsComponent implements OnInit {
 
   // filter
   setFilters(event: Form) {
-
     this.filters = event;
     this.filteredProducts = cloneDeep(this.originalProducts);
     this.filteredProducts = this.filterWrapper(this.filteredProducts);

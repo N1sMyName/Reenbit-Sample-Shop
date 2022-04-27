@@ -1,94 +1,168 @@
 // general
+.description-main
+    margin: 0 42.5px
+    min-height: 1214px
 
 .description-flex-container
+    margin-bottom: 16px
     display: flex
 
 .description-body
-    margin: 0 1rem
+    margin-left: 32px
 
 // head
 
+//  body
+
+.body-title
+    font-size: 32px
+    font-family: 'Poppins'
+    font-weight: 600
+    color: #151515
+
 .body-head
-    margin: 1rem 0
+    // body rating
+
+.body-rating
+    display: flex
+    align-items: center
+    margin-bottom: 40px
+.stars
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-right: 8px
 
 // body-verbose
 
-.body-verbose-flex 
+.body-description
+    font-size: 17px
+    margin-bottom: 40px
+.body-v
+    width: max-content
+.body-verbose-flex
     display: flex
-    justify-content: space-
-    
-.body-verbose-1
-    flex: 1 1 0
-
-.body-verbose-2
-    flex: 3 1 0    
+    justify-content: space-between
+    margin-bottom: 40px
 
 .item-container
     list-style: none
-    margin: .5rem 0 
+    display: flex
+    justify-content: space-between
+    text-align: left
 
 .item-category
-    color: #A9A9A9   
-    margin-right:  1rem
-
+    width: 102px
+    color: #A9A9A9
+    margin-right: 16px
+    font-size: 14px
+.item-data
+    width: 102px
+    color: #151515
+    font-size: 14px
 // purchase info
 
 .purchase-info
     display: flex
     justify-content: space-between
     align-items: center
-    margin: 1rem 0 
+    margin-bottom: 30px
 
-    .amount
+    .amount-desc
+        padding: 10px
         display: flex
         align-items: center
         background-color: #F9F9F9
         border-radius: 10px
         border: 1px solid #d1d1d1
-        padding: .25rem
 
-        
         *
-            margin: 0 0.25rem
             border: none
             background-color: #F9F9F9
-        
+
         input
             width: 2rem
             outline: none
             text-align: center
 
-        select
-            outline: none
-            font-weight: 600
+        ul
+            width: 2rem
+            cursor: pointer
+            position: relative
+            border-radius: 10px
+            text-align: center
+
+
+        ul>ul
+            opacity: 0
+            position: absolute
+           
+            border-radius: 10px
+
+        ul:hover > ul
+            opacity: 100
+            transition: all .25s ease
+
+        ul>ul>li:hover
+            cursor: pointer
+            color: #6A983C
+            transition: all .25s ease
+
+        li
+            list-style: none
+            padding: 0 5px
+            border-radius: 10px
+            margin-top: 12px
+.cost
+    font-size: 26px
+    font-family: 'Poppins'
+    font-weight: 600
 
 .old-cost
-    font-size: .75rem
+    font-size: 12px
+    font-family: 'Poppins'
+    font-weight: 600
     color: #A9A9A9
 
-
 .add-btn
+    position: relative
     background-color: #6A983C
-    padding: .75rem
     border-radius: 10px
     border: 2px solid #46760A
     color: #fff
     display: flex
+    align-items: center
     cursor: pointer
+    padding: 10px
 
     span
-        margin: 0 .5rem
-
-    .plus
-        font-size: 2rem
-
+        font-family: 'Poppins'
+        font-weight: 700
+        font-size: 15px
+.add-btn:hover > span
+    color: black
 .wishlist-btn
     display: flex
     align-items: center
+    margin-bottom: 60px
 
-    *
-        margin: 0 .25rem
+    span
+        font-family: 'Poppins'
+        font-style: normal
+        font-weight: 700
+        font-size: 15px
 
 
+.present
+    font-family: 'Open Sans'
+    font-size: 14px
+    font-weight: 600
+    position: absolute
+    color: red
+    top: -50%
+    white-space: nowrap
 
+.hiddenP
+
+    opacity: 0
 

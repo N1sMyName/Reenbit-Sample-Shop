@@ -8,6 +8,7 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CartValidationService } from '../cart-validation.service';
 
 @Component({
@@ -17,14 +18,16 @@ import { CartValidationService } from '../cart-validation.service';
   viewProviders: [
     { provide: ControlContainer, useExisting: FormGroupDirective },
   ],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class CartConfirmationComponent implements OnInit {
   form: FormGroup;
+  isReady = false;
   constructor(
-    private parent: FormGroupDirective,
+    public parent: FormGroupDirective,
     private fb: FormBuilder,
-    private cartValidator: CartValidationService
+    private cartValidator: CartValidationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,15 +51,28 @@ export class CartConfirmationComponent implements OnInit {
   addValidators() {
     this.cartValidator.formSub.next('');
 
-    const child = this.form.get('conditionTerms') as FormGroup
-    for(let i in child.controls) {
-      child.controls[i].addValidators(Validators.requiredTrue)
-      child.controls[i].updateValueAndValidity()
+    const child = this.form.get('conditionTerms') as FormGroup;
+    for (let i in child.controls) {
+      child.controls[i].addValidators(Validators.requiredTrue);
+      child.controls[i].updateValueAndValidity();
     }
-    console.log(this.form.value)
-
+    this.parent.form.updateValueAndValidity()
+    this.checkValidity
+      
   }
-  get child () {
-    return this.form.get('conditionTerms')
+  checkValidity(){
+    if (this.parent.form.valid && this.parent.form.dirty) {
+      this.isReady = true
+    }
+  }
+
+  get child() {
+    return this.form.get('conditionTerms');
+  }
+  backHome() {
+    localStorage.clear();
+    this.router.navigate(['/products']);
+    setTimeout(()=>{this.isReady = false;},1000)
+    
   }
 }

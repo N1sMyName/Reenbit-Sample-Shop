@@ -28,7 +28,7 @@ export class ProductsNavBotComponent implements OnInit {
   }
   showMore() {
     this.stack = this.stack + 5;
-    this.paginationEvent.emit({ page: this.page, stack: this.stack });
+    this.paginationEvent.emit({ page: 1, stack: this.stack });
     console.log(this.page);
   }
   ngOnInit(): void {}

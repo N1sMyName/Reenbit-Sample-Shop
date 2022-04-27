@@ -6,6 +6,7 @@ import { DescriptionRelevantTabComponent } from './description-relevant-tab/desc
 import { DescriptionComponent } from './description.component';
 import { DescriptionRoutingModule } from './description-routing.module';
 import { CoreModule } from '../core.module';
+import { RedirectModalComponent } from './redirect-modal/redirect-modal.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { CoreModule } from '../core.module';
     DescriptionInfoComponent,
     DescriptionRelevantTabComponent,
     DescriptionComponent,
+    RedirectModalComponent,
   ],
   imports: [CommonModule,DescriptionRoutingModule,CoreModule],
 })

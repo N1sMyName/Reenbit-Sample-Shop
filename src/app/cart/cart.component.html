@@ -1,43 +1,45 @@
-<section class="cart" [formGroup]="form">
-  <div class="cart-left">
-    <div class="title">
-      <h2 class="cart-title">Billing info</h2>
-      <h3 class="cart-subtitle">Please enter your billing info</h3>
+<div class="save-height-cart">
+  <section class="cart" [formGroup]="form" *ngIf="!this.loader.isLoading">
+    <div class="cart-left">
+      <div class="title">
+        <h2 class="cart-title">Billing info</h2>
+        <h3 class="cart-subtitle">Please enter your billing info</h3>
+      </div>
+  
+      <!-- cart-form -->
+  
+      <app-cart-billing></app-cart-billing>
+  
+      <!-- additional information -->
+  
+     <app-additional-info></app-additional-info>
+  
+      <!-- confirmation -->
+      <app-cart-confirmation></app-cart-confirmation>
     </div>
-
-    <!-- cart-form -->
-
-    <app-cart-billing></app-cart-billing>
-
-    <!-- additional information -->
-
-   <app-additional-info></app-additional-info>
-
-    <!-- confirmation -->
-    <app-cart-confirmation></app-cart-confirmation>
-  </div>
-
-  <div class="cart-right">
-    <div class="order-summary">
-      <h2 class="cart-title">Order summary</h2>
-      <h3 class="cart-subtitle" style="margin-bottom: 40px">
-        Price can change depending on shipment method and taxes of your state
-      </h3>
-      <div class="cart-items-wrapper">
-        <div class="empty" *ngIf="!products || !products.length">
-          Shopping cart is empty
-        </div>
-        <div class="cart-item-container">
-          <app-cart-product
-          class="app-cart-product"
-            *ngFor="let prod of products"
-            [product]="prod.product"
-            [products]="products"
-          ></app-cart-product>
+  
+    <div class="cart-right">
+      <div class="order-summary">
+        <h2 class="cart-title">Order summary</h2>
+        <h3 class="cart-subtitle" style="margin-bottom: 40px">
+          Price can change depending on shipment method and taxes of your state
+        </h3>
+        <div class="cart-items-wrapper">
+          <div class="empty" *ngIf="!products || !products.length">
+            Shopping cart is empty
+          </div>
+          <div class="cart-item-container">
+            <app-cart-product
+            class="app-cart-product"
+              *ngFor="let prod of products"
+              [product]="prod.product"
+              [products]="products"
+            ></app-cart-product>
+          </div>
         </div>
       </div>
+  
+      <app-cart-summary [sum]="sum"></app-cart-summary>
     </div>
-
-    <app-cart-summary [sum]="sum"></app-cart-summary>
-  </div>
-</section>
+  </section>
+</div>

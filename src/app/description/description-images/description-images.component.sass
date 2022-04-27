@@ -1,24 +1,40 @@
+.desc-container
+    background-color: #A9A9A9
+    border-radius: 10px
 .description-images-container
-     
-    
-    
-
-.desc-card
-    background-repeat: no-repeat
-
-
-.desc-img
-    border-radius: 10px  
-    
-.desc-img-large
-    width: 22rem
-    margin: .5rem 0
-        
-
-.desc-img-small
-    width: 10rem
-    margin: 0 .5rem
-
-
+    height: min-content
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-template-rows: 1fr auto
+    gap: 20px
+    justify-items: center
 .desc-container-small
-    display: flex
+    width: 265px
+    height: 218px
+.desc-container-large
+    width: 569px
+    height: 418px
+.first
+    grid-column: 1 / 3
+    grid-row: 1
+.first-small
+    grid-column: 1 / 2
+    grid-row: 2 / 3
+
+.second-small
+    grid-column: 2 / 3
+    grid-row: 2 / 3
+
+    // discount-box
+.discount-box
+    margin-bottom: 10px
+
+.discount-item
+    margin-right: 10px
+    color: #6A983C
+    background-color: #F4F8EC
+    border-radius: 10px
+    font-family: 'Poppins'
+    font-size: 14px
+    font-weight: 500
+    padding: 5px 

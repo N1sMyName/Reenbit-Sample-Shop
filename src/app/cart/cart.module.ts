@@ -7,6 +7,7 @@ import { CartRoutingModule } from './cart-routing.module';
 import { CartProductComponent } from './cart-product/cart-product.component';
 import { CoreModule } from '../core.module';
 import { AdditionalInfoComponent } from './additional-info/additional-info.component';
+import { TotalsComponent } from './cart-billing/totals/totals.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AdditionalInfoComponent } from './additional-info/additional-info.compo
     CartComponent,
     CartProductComponent,
     AdditionalInfoComponent,
+    TotalsComponent,
   ],
   imports: [ CartRoutingModule,CoreModule],
 })

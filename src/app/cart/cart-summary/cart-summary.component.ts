@@ -16,7 +16,7 @@ export class CartSummaryComponent implements OnInit {
   }
   @Input() sum: number = 0;
   subtotal = 0;
-  rate = 0.17
+  rate = 0.18
   tax = 0
   calculateSubTotal(){
     if(this.sum && this.sum > 0 ){

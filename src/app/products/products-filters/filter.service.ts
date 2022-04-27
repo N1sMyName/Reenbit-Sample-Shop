@@ -80,8 +80,9 @@ export class FilterService {
 
       res = res.filter((p) => p.price <= price[1] && p.price >= price[0]);
     } 
-
+    console.log(brands)
     if (brands && Object.entries(brands).filter((b) => b[1] === true).length) {
+      console.log(Object.entries(brands).filter((b) => b[1] === true).length)
       const brandsArray = Object.entries(brands).filter((b) => b[1] === true);
       res = brandsArray.flatMap((b) => res.filter((p) => p.brand === b[0]));
     } 

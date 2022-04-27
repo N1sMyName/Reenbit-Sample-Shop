@@ -13,7 +13,7 @@ export class NavCategoriesBarComponent  {
 
  
 
-  constructor(private api: MimicrestService,private loading:LoadingService) {}
+  constructor(private api: MimicrestService) {}
 
   
   ngOnInit(): void {

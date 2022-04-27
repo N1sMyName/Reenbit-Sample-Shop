@@ -1,7 +1,6 @@
 <form class="cart-form-left" formGroupName="billing">
   <div class="left">
-    <!--  -->
-
+   
     <div class="first-name-container input-container">
       <label for="first-name"
         >First name
@@ -62,7 +61,7 @@
             "
             class="err"
           >
-          *required field
+            *required field
           </div>
           <div
             *ngIf="
@@ -144,7 +143,7 @@
           *ngIf=" country?.invalid && countryErrors?.['required']"
           class="err"
         >
-           *required field
+          *required field
         </div>
         <div
           *ngIf=" country?.invalid && countryErrors?.['countryErr']"
@@ -221,7 +220,6 @@
           placeholder="Phone number"
           id="phone"
           class="form-item phone"
-          
         />
       </label>
       <div class="relative-wrapper" style="position: absolute">

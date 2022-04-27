@@ -35,7 +35,6 @@ export class CartService {
 
   populateCartStore(product: Product): void {
     const cartItem = { product: product, count: this.descCounter };
-    console.log(cartItem);
     // let duplicateDetected = false
 
     if (this.cartStore) {
@@ -47,7 +46,6 @@ export class CartService {
         JSON.stringify(this.cartProducts.length)
       );
       this.notifySub.next(false);
-      this.router.navigateByUrl('/cart');
       return;
     }
 
@@ -61,10 +59,4 @@ export class CartService {
     this.notifySub.next(false);
     this.router.navigateByUrl('/cart');
   }
-  //   checkDuplicates(product:CartItem){
-  //     const store = JSON.parse(<string>localStorage.getItem('products'))
-  // for(let i of store){
-  //   console.log(i)
-  // }
-  // }
 }
