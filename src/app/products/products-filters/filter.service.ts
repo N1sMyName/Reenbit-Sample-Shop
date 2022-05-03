@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/Services/db/Product.model';
-import {  countBy, forOwn,uniqBy,forIn } from 'lodash';
-
+import { countBy, forOwn, uniqBy, forIn } from 'lodash';
+type str_num = string | number;
 @Injectable({
   providedIn: 'root',
 })
@@ -9,35 +9,42 @@ export class FilterService {
   constructor() {}
 
   public category: string = 'All Products';
-  private filteredBrands: string[];
-  private filteredRating: number[];
+  private filteredBrands: str_num[];
+  private filteredRating: str_num[];
 
   // PRICE RANGE
   countPriceRange(products: Product[]) {
     // low
-    let high = Math.round(products.reduce(
-      (acc, cur) => (cur.price > acc ? (acc = cur.price) : acc),
-      0
-    ))
+    let high = Math.round(
+      products.reduce(
+        (acc, cur) => (cur.price > acc ? (acc = cur.price) : acc),
+        0
+      )
+    );
     // high
-    let low = Math.floor(products.reduce(
-      (acc, cur) => (cur.price < acc ? (acc = cur.price) : acc),
-      high
-    ))
+    let low = Math.floor(
+      products.reduce(
+        (acc, cur) => (cur.price < acc ? (acc = cur.price) : acc),
+        high
+      )
+    );
     return [low, high];
   }
   // COUNT BRANDS
   countBrands(products: Product[]) {
-    return uniqBy(products,(p)=> p.brand)
-    .map(product => product.brand)
-    .filter(Boolean)
+    return uniqBy(products, (p) => p.brand)
+      .map((product) => product.brand)
+      .filter(Boolean);
   }
 
   // COUNT CATEGORIES
   countCategories(products: Product[]) {
-    let result:{name:string,count:number}[] = []
-    forIn(countBy(products,(p)=> p.category),(v,k)=>result.push({name:k,count:v}))
-  return result
+    let result: { name: string; count: number }[] = [];
+    forIn(
+      countBy(products, (p) => p.category),
+      (v, k) => result.push({ name: k, count: v })
+    );
+    return result;
   }
 
   // MERGING FILTERS
@@ -55,33 +62,34 @@ export class FilterService {
       res = res.filter((p) => p.category === categoryName);
     }
     // PRICE FILTER
-    // price is a tuple[minVal,maxVal] 
+    // price is a tuple[minVal,maxVal]
     // trigger when price defined and have both values(min and max)
     if (price && price[0] && price[1]) {
-      res = res.filter((product) => product.price <= price[1] && product.price >= price[0]);
+      res = res.filter(
+        (product) => product.price <= price[1] && product.price >= price[0]
+      );
     }
     // BRANDS FILTER
     // function transform [key:string]:boolean to sting[] where value is key if value was true
-    this.filteredBrands = this.handleBrands(brands);
-    if (this.filteredBrands && this.filteredBrands.length) {
+    this.filteredBrands = this.handleCheckboxes(brands);
+    this.handleCheckboxes(brands);
+    if (this.filteredBrands?.length) {
       res = this.filteredBrands.flatMap((b) =>
         res.filter((p) => p.brand === b)
       );
     }
     // RATING FILTER
     // function transform [key:number]:boolean to number[] where value is key if value was true
-    this.filteredRating = this.handleRating(ratings);
-    if (this.filteredRating && this.filteredRating.length) {
+    this.filteredRating = this.handleCheckboxes(ratings);
+    if (this.filteredRating?.length) {
       res = this.filteredRating.flatMap((b) =>
         res.filter((p) => p.rating === +b)
       );
     }
     return res;
   }
-// searching checkboxes with value true
-// return string[] of brand names that were true
-  handleBrands(obj: { [key: string]: boolean }) {
-    let checked: string[] = [];
+  handleCheckboxes(obj: { [key: str_num]: boolean }) {
+    let checked: str_num[] = [];
     forOwn(obj, (value, key) => {
       if (value) {
         checked.push(key);
@@ -89,18 +97,7 @@ export class FilterService {
     });
     return checked;
   }
-  // searching checkboxes with value true
-  // return number[] of rating numbers that were true
-  handleRating(obj: { [key: number]: boolean }) {
-    let checked: number[] = [];
-    forOwn(obj, (value, key) => {
-      if (value) {
-        checked.push(+key);
-      }
-    });
-    return checked;
-  }
-// SORT
+  // SORT
   sortBy(method: string, products: Product[]): Product[] {
     const sortHelper = (key: keyof Product) => {
       const p = products.sort((a: Product, b: Product) => {
