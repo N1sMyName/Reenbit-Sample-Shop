@@ -25,7 +25,7 @@
           Price can change depending on shipment method and taxes of your state
         </h3>
         <div class="cart-items-wrapper">
-          <div class="empty" *ngIf="!cart.cartProducts.length">
+          <div class="empty" *ngIf="!cart.cartProducts?.length">
             Shopping cart is empty
           </div>
           <div class="cart-item-container">
