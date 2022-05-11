@@ -7,7 +7,7 @@ const routes: Routes = [
   {path:'',component:StaticNavTopComponent,outlet:'header',resolve:{'product':ProductResolver}},
   {path:'',component:StaticNavBotComponent,outlet:'footer'},
   {
-    path: 'products',
+    path: 'products',data:{breadCrumb:'products'},
     loadChildren: () =>
       import('./products/products.module').then((m) => m.ProductsModule),
   },

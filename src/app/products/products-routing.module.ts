@@ -12,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
+    data:{breadCrumb:(data:any)=> `${data.product[0].title}`},
     loadChildren: () =>
       import('../description/description.module').then(
         (m) => m.DescriptionModule

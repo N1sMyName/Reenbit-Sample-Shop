@@ -1,45 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { BreadCrumb } from 'src/app/Services/db/breadCrumb.model';
+import { BreadCrumbsService } from './bread-crumbs.service';
 
 @Component({
   selector: 'app-bread-crumbs',
   templateUrl: './bread-crumbs.component.html',
   styleUrls: ['./bread-crumbs.component.sass'],
 })
-export class BreadCrumbsComponent {
-  constructor(public router: Router, public activeR: ActivatedRoute) {
-    this.router.events.subscribe(e => {
-     this.breadCrumbs = this.breadCrumbsParser(this.router.url)
-    })
-  }
-  breadCrumbs: string[] = [];
+export class BreadCrumbsComponent implements OnInit {
+  constructor(
+    public router: Router,
+    public activeR: ActivatedRoute,
+    public breadCrumb: BreadCrumbsService
+  ) {}
+  breadCrumbs: BreadCrumb[] = [];
   counter: number = 0;
-  // ngDoCheck(): void {
-  //   if (
-  //     this.breadCrumbs.toString() !==
-  //     this.breadCrumbsParser(this.router.url).toString()
-  //   ) {
-  //     this.breadCrumbs = this.breadCrumbsParser(this.router.url);
-  //   }
-  // }
-  breadCrumbsParser(url: string) {
-    const urlParsed = url.split('/').filter((item) => item !== '');
-    return urlParsed;
+  id: number;
+  
+  unsubscribeAll = new Subject();
+  ngOnInit() {
+    this.breadCrumbsListener();
+  }
+  ngOnDestroy() {
+    this.unsubscribeAll.next('');
+    this.unsubscribeAll.complete();
   }
 
-  followCrumb(chunk: string = 'products'): void {
-    let route: string;
-    if (Number.isNaN(+chunk)) {
-      route = `/${chunk}`;
-    } else {
-      route = `/products/${chunk}`;
-    }
-    this.router.navigateByUrl(route);
-
-    // this.router.navigateByUrl(route)
+  followCrumb(path: string ): void {
+    this.router.navigateByUrl(path);
   }
-  ngOnInit(){
-    this.breadCrumbs = this.breadCrumbsParser(this.router.url);
+  breadCrumbsListener() {
+    this.breadCrumb.breadcrumbs$
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe((r) => (this.breadCrumbs = r));
   }
-
 }
