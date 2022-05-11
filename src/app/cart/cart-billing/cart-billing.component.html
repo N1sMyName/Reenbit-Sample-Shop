@@ -137,6 +137,7 @@
           id="first-name"
           class="form-item state"
         />
+       
       </label>
       <div class="relative-wrapper" style="position: absolute">
         <div
@@ -151,7 +152,7 @@
         >
           {{ "chose country from list" }}
         </div>
-        <ul [ngClass]="styles" style="position: absolute">
+        <ul [ngClass]="styles" style="position: absolute" (scroll)="setCountryListVisible()">
           <li
             (click)="setCountry(country, countryRef)"
             style="list-style: none; white-space: nowrap"
@@ -214,7 +215,7 @@
         >Phone number
         <input
           #phoneRef
-          (input)="preventInputWrongValue(phoneRef, 9)"
+          (input)="cart.preventInputWrongValue(phoneRef, 9)"
           formControlName="phone"
           type="number"
           placeholder="Phone number"
@@ -299,7 +300,7 @@
         >ZIP/Postal code
         <input
           #zipRef
-          (input)="preventInputWrongValue(zipRef, 5)"
+          (input)="cart.preventInputWrongValue(zipRef, 5)"
           formControlName="zip"
           type="number"
           placeholder="Postal code or zip"

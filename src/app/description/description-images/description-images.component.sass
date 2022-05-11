@@ -1,3 +1,5 @@
+
+
 .desc-container
     background-color: #A9A9A9
     border-radius: 10px
@@ -7,7 +9,6 @@
     grid-template-columns: 1fr 1fr
     grid-template-rows: 1fr auto
     gap: 20px
-    justify-items: center
 .desc-container-small
     width: 265px
     height: 218px
@@ -18,10 +19,12 @@
     grid-column: 1 / 3
     grid-row: 1
 .first-small
+    justify-self: flex-start
     grid-column: 1 / 2
     grid-row: 2 / 3
 
 .second-small
+    justify-self: flex-end
     grid-column: 2 / 3
     grid-row: 2 / 3
 
@@ -37,4 +40,45 @@
     font-family: 'Poppins'
     font-size: 14px
     font-weight: 500
-    padding: 5px 
+    padding: 5px
+.product-gallery
+    display: none
+.navigation-wrapper
+    display: flex
+    align-items: center
+
+.prev,.next
+    display: none
+.prev
+    transform: rotate(180deg)
+
+@media screen and (max-width:1200px)
+    .desc-container-small
+        width: 200px
+        height: 170px
+    .desc-container-large
+        width: 450px
+        height: 370px
+
+@media screen and (max-width:1000px)
+    .product-gallery
+        display: block
+    .description-images-container
+        display: none
+    
+@media screen and (max-width:600px)
+
+    .prev>img,.next>img
+        width: 32px
+        height: 32px
+    .desc-container
+        width: 200px
+        height: 200px
+    .description-images-container
+        width: 200px
+@media screen and (max-width:500px)
+    .desc-container
+        width: 150px
+        height: 150px
+    .description-images-container
+        width: 150px

@@ -3,9 +3,31 @@
     <span class="discount-item">-36%</span>
     <span class="discount-item">Free Shipping</span>
   </div>
+
   <div class="description-images-container">
-    <div class="desc-container desc-container-large first"></div>
-    <div class="desc-container desc-container-small first-small"></div>
-    <div class="desc-container desc-container-small second-small"></div>
+    <img
+      [src]="product.imgURL"
+      class="desc-container desc-container-large first"
+    />
+    <img
+      [src]="product.imgURL"
+      class="desc-container desc-container-small first-small"
+    />
+    <img
+      [src]="product.imgURL"
+      class="desc-container desc-container-small second-small"
+    />
+
   </div>
+
+  <gallery
+    class="product-gallery"
+    imageSize="contain"
+    [thumb]="false"
+    counterPosition="top"
+    style="background-color: #fff"
+    [items]="images"
+    styles="height: 300px;"
+  >
+  </gallery>
 </div>

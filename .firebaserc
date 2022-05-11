@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "reenbitsampleshop": {
+      "hosting": {
+        "Reenbit-Sample-Shop": [
+          "reenbitsampleshop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "reenbitsampleshop"
+  }
+}

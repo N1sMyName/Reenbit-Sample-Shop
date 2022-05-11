@@ -25,20 +25,19 @@
           Price can change depending on shipment method and taxes of your state
         </h3>
         <div class="cart-items-wrapper">
-          <div class="empty" *ngIf="!products || !products.length">
+          <div class="empty" *ngIf="!cart.cartProducts.length">
             Shopping cart is empty
           </div>
           <div class="cart-item-container">
             <app-cart-product
             class="app-cart-product"
-              *ngFor="let prod of products"
+              *ngFor="let prod of cart.cartProducts"
               [product]="prod.product"
-              [products]="products"
+              [products]="cart.cartProducts"
             ></app-cart-product>
           </div>
         </div>
       </div>
-  
       <app-cart-summary [sum]="sum"></app-cart-summary>
     </div>
   </section>

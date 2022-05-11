@@ -21,7 +21,7 @@
 
       Wishlist
     </div>
-    <div class="remove img-alt" (click)="removeProduct(product.id)">
+    <div class="remove img-alt" (click)="removeProduct(product.id);">
       <svg
         width="12"
         height="12"
@@ -100,17 +100,24 @@
       </div>
     </div>
     <h3 class="amout-calc">
-      {{ this.form.controls[product.id].value }}X {{ product.price }} USD
+      {{ this.form.controls[product.id]?.value  }}X {{ product.price }} USD
     </h3>
   </div>
 
   <div class="amount">
     <input
+      #cartProductRef
+      (input)="cart.preventInputWrongValue(cartProductRef,3)"
       type="number"
-      placeholder="1pcs"
-      min="1"
+      placeholder="1"
       [formControlName]="product.id"
     />
+    <div class="amountError" *ngIf="oneProductError?.['required']">
+        min amount 1
+    </div>
+    <div class="amountError" *ngIf="oneProductError?.['max']">
+        max amount {{oneProductError?.['max'].max}}
+    </div>
     <div style="height: min-content">|</div>
     <ul>
       {{

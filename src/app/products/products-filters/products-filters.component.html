@@ -1,4 +1,22 @@
-<aside [formGroup]="form" class="filters" >
+<!-- trigger filters window  -->
+<ng-container>
+  <div class="filters-mobile-indicator">
+    <img
+      src="../../../assets/doubleRight.png"
+      alt=""
+      *ngIf="!this._mobileFiltersToggler"
+      (click)="setFilterStyles()"
+    />
+    <img
+      src="../../../assets/doubleLeft.png"
+      alt=""
+      *ngIf="this._mobileFiltersToggler"
+      (click)="setFilterStyles()"
+    />
+  </div>
+</ng-container>
+
+<aside [formGroup]="form" [ngClass]="mainContainerFilterStyles">
   <app-categories-filter [categories]="categories"></app-categories-filter>
   <app-brand-filter [brands]="brands"></app-brand-filter>
   <app-rating-filter></app-rating-filter>

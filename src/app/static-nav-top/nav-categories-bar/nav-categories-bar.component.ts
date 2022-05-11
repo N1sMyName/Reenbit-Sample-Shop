@@ -17,7 +17,7 @@ export class NavCategoriesBarComponent  {
 
   
   ngOnInit(): void {
-    this.api.getCategories().subscribe((res) => {
+    this.api.categories().subscribe((res) => {
       this.categories = res;
     });
     

@@ -9,7 +9,8 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { CoreModule } from '../core.module';
 import { ProductsFiltersModule } from './products-filters/products-filters.module';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { DxFormModule,DxButtonModule,DxValidatorModule } from 'devextreme-angular';
+import { EditProductComponent } from './edit-product/edit-product.component';
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -17,12 +18,23 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ProductsNavTopComponent,
     ProductsNavBotComponent,
     ProductComponent,
+    EditProductComponent,
+    
+    
+    
+    
   ],
   imports: [
     ProductsRoutingModule,
     CoreModule,
     ProductsFiltersModule,
     NgxPaginationModule,
+    DxFormModule,
+    DxButtonModule,
+    DxValidatorModule
+    
+    
+    
   ],
   exports: [],
   providers: [],

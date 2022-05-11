@@ -4,7 +4,12 @@ import { ProductsResolver } from '../products/products.resolver';
 import { DescriptionComponent } from './description.component';
 
 const routes: Routes = [
-  { path: '', component: DescriptionComponent, resolve: {'relevant':ProductsResolver} },
+  {
+    path: '',
+    component: DescriptionComponent,
+    resolve: { relevant: ProductsResolver },
+  },
+ 
 ];
 
 @NgModule({

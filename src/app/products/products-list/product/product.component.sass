@@ -1,6 +1,7 @@
 // general
 
 .product-container
+    position: relative
     font-family: 'Open Sans',sans-serif
     font-size: 14px
     display: flex
@@ -25,7 +26,6 @@
     width: 268px
     height: 280px
     border-radius: 12px
-    
 
 // info container
 
@@ -45,7 +45,10 @@
     margin-bottom: 4px
 
 .product-description
-    white-space: pre-wrap
+    white-space: nowrap
+    text-overflow: ellipsis
+    width: 50%
+    overflow: hidden
     font-size: 12px
     color: #575757
     font-weight: 400
@@ -133,7 +136,7 @@
 
 .show-product-details-btn:hover
     color: black
-
+// buttons
 .whishlist-btn
     cursor: pointer
     display: flex
@@ -147,7 +150,6 @@
     padding: 6px 12px
     transition: all .25s ease-in-out
 
-
 .whishlist-btn:hover
     cursor: pointer
 
@@ -155,14 +157,65 @@
     transition: all .1s ease-in-out
     animation-name: heart
     animation-duration: 1s
-    
+
+    // edit modal
+        // button
+.editProduct
+    position: absolute
+    right: 10px
+    top: 10px
+    cursor: pointer
+    transition: all .25s ease
+    img
+        width: 30px
+        height: 30px
+        background-color: #d1d1d1
+        border-radius: 11px
+.editProduct:hover
+    transform: scale(110%)
+    transition: all .25s ease
+        // modal
+.editModal
+    z-index: 2
+    position: fixed
+    width: 75vw
+    height: 75vh
+    left: 50%
+    top: 50%
+    padding: 30px
+    transform: translate(-50%,-50%)
+    background-color: #fff
+    border-radius: 10px
+    border: 2px solid #D1D1D1
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.1 )
+    font-family: 'Open Sans'
+    font-size: 14px
+    opacity: 100
+
+.close-button
+    position: absolute
+    right: 5px
+    top: 5px
+    img
+        width: 30px
+        height: 30px
+        transition: all .5s ease
+        cursor: pointer
+
+    img:hover
+        transition: all .5s ease
+        transform: scale(110%,110%)
+
+.isClosed
+    opacity: 0
+    z-index: -1
+// animation
 @keyframes heart
     0%
         transform: scale(1)
-        
+
     100%
         transform: scale(1.1)
-        
 
 .wishlist-desc
     font-family: 'Poppins',bold
@@ -175,3 +228,63 @@
 .whishlist-btn:hover
     box-shadow: 1px 3px 2px 0 rgba(0, 0, 0, .1 )
     transition: all .25s ease-in-out
+
+@media screen and (max-width: 1260px)
+    .editModal
+        overflow-y: scroll
+        scroll-behavior: smooth
+    // img
+    .product-image-container,.image
+        width: 240px
+        height: 240px
+        margin: 0
+    .product-image-container,.image
+        margin: 0
+    .product-image-container
+        width: 100%
+    .image
+        width: 100%
+    // buttons
+    .show-product-details-btn
+        width: 150px
+    .whishlist-btn
+        width: 150px
+        margin-bottom: 10px
+    // containers
+    .product-container
+        max-width: 869px
+        width: auto
+        height: auto
+        font-size: 12px
+        flex-direction: column
+        align-items: center
+
+    .price-main,product-title
+        font-size: 16px
+
+    .product-info-left
+        width: auto
+        max-width: 269px
+        margin-right: 40px
+
+    .description-left,.description-right
+        display: none
+
+    .product-image-container,.image
+        width: 200px
+        height: 200px
+
+    .product-info-left
+        margin-right: 0
+        width: 200px
+    .product-info
+        flex-direction: column
+        align-items: center
+@media screen and (max-width: 1000px)
+    .editProduct
+        top: 50%
+
+@media screen and (max-width: 600px)
+    .product-container
+        flex-direction: column
+        align-items: center

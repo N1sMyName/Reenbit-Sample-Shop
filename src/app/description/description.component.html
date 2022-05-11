@@ -1,7 +1,7 @@
 <div class="description-main" >
   <div *ngIf="!this.loading.isLoading">
     <div class="description-flex-container">
-      <app-description-images></app-description-images>
+      <app-description-images [product]="product"></app-description-images>
       <app-redirect-modal [style]="style"></app-redirect-modal>
       <div class="description-body">
         <div class="body-head">
@@ -25,7 +25,7 @@
                 />
               </svg>
               <svg
-                *ngFor="let start of [].constructor(5 - product.rating)"
+                *ngFor="let start of [].constructor(5 - product.rating )"
                 width="19"
                 height="18"
                 viewBox="0 0 19 18"
@@ -97,13 +97,14 @@
           </div>
           <div class="amount-desc">
             <input
+              #amountRef
+              (input)="cart.preventInputWrongValue(amountRef,2)"
               [formControl]="form"
               type="number"
-              style="width: 40px"
-              min="1"
-              placeholder="1`"
+              minlength="1"
+              placeholder="1"
             />
-            <div>|</div>
+            <hr />
 
             <ul>
               {{
@@ -121,7 +122,7 @@
             </ul>
           </div>
           <div class="add-btn" (click)="addItemToCart(product)">
-            <div [ngClass]="stylePresent">Product already in cart</div>
+            <div *ngIf="amountError" class="amoutError">select amount</div>
             <svg
               class="plus"
               width="14"
@@ -145,7 +146,7 @@
                 stroke-linejoin="bevel"
               />
             </svg>
-            <span>Add to cart</span>
+            <span >toCart </span>
           </div>
         </div>
 
@@ -168,7 +169,7 @@
             />
           </svg>
 
-          <span>Add to my wishlist</span>
+          <span>toWishlist</span>
         </div>
         <!--  -->
         <app-description-info></app-description-info>

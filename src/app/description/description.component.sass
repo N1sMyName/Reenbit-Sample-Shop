@@ -44,6 +44,8 @@
     display: flex
     justify-content: space-between
     margin-bottom: 40px
+    ul>li:not(:first-child)
+        margin-top: 12px
 
 .item-container
     list-style: none
@@ -61,43 +63,59 @@
     color: #151515
     font-size: 14px
 // purchase info
-
+.amoutError
+    color: red
+    position: absolute
+    font-size: 12px
+    bottom: -20px
+    white-space: nowrap
 .purchase-info
+    min-width: 100px
     display: flex
     justify-content: space-between
     align-items: center
     margin-bottom: 30px
 
     .amount-desc
+        position: relative
+        width: 100px
         padding: 10px
         display: flex
         align-items: center
+        justify-content: space-around
         background-color: #F9F9F9
         border-radius: 10px
         border: 1px solid #d1d1d1
-
+        input,ul
+            width: 60px
         *
             border: none
             background-color: #F9F9F9
 
         input
-            width: 2rem
+            width: 20px
             outline: none
             text-align: center
 
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button
+            -webkit-appearance: none
+            margin: 0
+
         ul
-            width: 2rem
             cursor: pointer
             position: relative
             border-radius: 10px
             text-align: center
 
-
         ul>ul
             opacity: 0
             position: absolute
-           
+            border: 1px solid #D1D1D1
             border-radius: 10px
+
+        ul>ul>li:not(:first-child)
+            margin-top: 12px
 
         ul:hover > ul
             opacity: 100
@@ -110,9 +128,13 @@
 
         li
             list-style: none
-            padding: 0 5px
+            padding:  3px
             border-radius: 10px
-            margin-top: 12px
+        hr
+            width: 25%
+            height: 1px
+            background-color: #D1D1D1
+            transform: rotate(90deg)
 .cost
     font-size: 26px
     font-family: 'Poppins'
@@ -139,6 +161,7 @@
         font-family: 'Poppins'
         font-weight: 700
         font-size: 15px
+        margin-left: 8px
 .add-btn:hover > span
     color: black
 .wishlist-btn
@@ -152,7 +175,6 @@
         font-weight: 700
         font-size: 15px
 
-
 .present
     font-family: 'Open Sans'
     font-size: 14px
@@ -163,6 +185,19 @@
     white-space: nowrap
 
 .hiddenP
-
     opacity: 0
+
+@media screen and (max-width: 1000px)
+    .description-flex-container
+        flex-direction: column
+    .description-body
+        margin-left: 0
+@media screen and (max-width: 600px)
+    .item-data,.item-category
+        width: 60px
+    .cost
+        font-size: 18px
+    
+
+    
 

@@ -8,9 +8,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, debounce, defer, throttle } from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
 import { CartValidationService } from '../cart-validation.service';
+import { CartService } from '../cart.service';
 import { countryList } from './countries.model';
 import {
   countryValidator,
@@ -31,7 +32,8 @@ export class CartBillingComponent implements OnInit {
   constructor(
     public parent: FormGroupDirective,
     private cartValidation: CartValidationService,
-    private router: Router
+    private router: Router,
+    public cart: CartService
   ) {}
   public styles = {
     countryVisible: false,
@@ -41,7 +43,8 @@ export class CartBillingComponent implements OnInit {
   public form: FormGroup;
   public childForm: FormGroup;
   public unsubscribeAll = new Subject();
-  orderIsFinished = false
+  orderIsFinished = false;
+  timeout = setTimeout(() => {}, 0);
 
   ngOnDestroy() {
     this.unsubscribeAll.next('');
@@ -93,6 +96,16 @@ export class CartBillingComponent implements OnInit {
         });
     }
   }
+  bounce() {
+    setTimeout(() => {
+      let counter = 0;
+      console.log(`run ${counter}`);
+      counter++;
+    }, 1000);
+  }
+  test() {
+    const d = defer(this.bounce, 1000);
+  }
 
   filterCountries() {
     this.countryListFiltered = cloneDeep(this.countryListOriginal);
@@ -117,21 +130,37 @@ export class CartBillingComponent implements OnInit {
   //   this.childForm.get(fcn)?.updateValueAndValidity()
   // }
   setCountryListVisible() {
+    console.log(`runs`)
     this.styles.countryVisible = true;
-    setTimeout(() => (this.styles.countryVisible = false), 3000);
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(() => {
+        this.styles.countryVisible = false;
+      }, 3000);
+      return;
+    }
+    this.timeout = setTimeout(() => {
+      this.styles.countryVisible = false;
+    }, 3000);
+
+    // if(this.timeout){
+    //   clearTimeout(t)
+    //   t = setTimeout(() => (this.styles.countryVisible = false), 3000);
+    //   return
+    // }
+    // t = setTimeout(() => (this.styles.countryVisible = false), 3000);
   }
   setCountry(c: string, ref: HTMLInputElement) {
     this.childForm.get('country')?.setValue(c);
     ref.value = c;
   }
 
-  preventInputWrongValue(ref: HTMLInputElement, l: number) {
+  preventInputWrongValue(ref: HTMLInputElement, l: number, min?: number) {
     if (ref.value.length > l) {
       ref.value = ref.value.slice(0, l);
     }
   }
   isValidBilling() {
-  
     this.firstName?.addValidators([
       Validators.required,
       stringValidator(),
@@ -177,8 +206,6 @@ export class CartBillingComponent implements OnInit {
 
     this.zip?.addValidators([Validators.required, minLengthPattern(5)]);
     this.zip?.updateValueAndValidity();
-   
-    
   }
 
   // GETTERS
@@ -242,5 +269,4 @@ export class CartBillingComponent implements OnInit {
   get zipErrors() {
     return this.zip?.errors;
   }
-
 }

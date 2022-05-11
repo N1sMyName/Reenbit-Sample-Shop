@@ -1,3 +1,5 @@
+
+
 .relevant-titles
     display: flex
     justify-content: space-between
@@ -35,6 +37,10 @@
 .desc-grey
     font-size: .75rem
     color: #575757
+    text-overflow: ellipsis
+    white-space: nowrap
+    width: 251px
+    overflow: hidden
 
 .relevant-price
     display: flex
@@ -49,7 +55,6 @@
         letter-spacing: 0em
         text-align: left
 
-
     button
         padding: .5rem
         border-radius: 10px
@@ -61,10 +66,23 @@
 
 .relevant-flex-container
     display: flex
-    justify-content: space-between
+    justify-content: space-around
+    overflow-x: scroll
+
+.relevant-flex-container::-webkit-scrollbar
+    position: relative
+    height: 2px
+    padding-top: 2px
+.relevant-flex-container::-webkit-scrollbar-thumb
+    background-color: #A9A9A9
+
+    border-radius: 5px
+.relevant-flex-container::-webkit-scrollbar-track
+    background-color: #F4F8EC
 
     .relevant-item
         margin: 0 16px
+        max-width: 251px
 
 .relevant-short-description
     margin-bottom: 16px
@@ -86,4 +104,20 @@
         text-align: left
         color: #a9a9a9
 
-// image
+@media screen and (max-width: 1260px)
+
+@media screen and (max-width: 1100px)
+    .relevant-flex-container
+        justify-content: normal
+        overflow-x: scroll
+    .relevant-image
+        width: 220px
+    .relevant-item
+        width: 220px
+    .relevant-flex-container > .relevant-item:not(:first-child)
+        margin-left: 16px
+
+
+    
+
+@media screen and (max-width: 750px)

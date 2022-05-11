@@ -9,7 +9,7 @@
 .input-container
     position: relative
     margin-top: 32px
-    width: 319px
+   
 
 .cart-form-left label
     font-family: 'Poppins'
@@ -54,27 +54,25 @@
     border-radius: 7px
 
 .country-container ul
-    backdrop-filter: blur(1px)
+    background-color: #fff
+    border-radius: 10px
+    border: 1px solid #d1d1d1
     max-height: 245px
     overflow-y: scroll
     overflow-x: hidden
     opacity: 0
     z-index: -1
+    cursor: pointer
 
     li
-        margin: 10px 0
         margin-right: 2px
         border-radius: 7px
         border: 1px solid #D1D1D1
         width: 319px
         background-color: #F9F9F9
-
-        transition: all .25s ease !important
         color: #6A983C
 
     li:hover
-        transition: all .25s ease !important
-        color: #46760A
         font-weight: 600
         cursor: pointer
 
@@ -100,4 +98,26 @@
 .error-container
     position: absolute
 
+@media screen and (max-width:700px)
+    .cart-form-left
+        width: 500px
+        justify-content: space-around
+    .cart-form-left input
+        width: 200px
+    .input-container
+        width: 200px
+@media screen and (max-width:600px)
+    .cart-form-left
+        flex-direction: column
+        width: 50vw
+    .cart-left
+        margin-right: 10px
+
+
+
+        
+       
+    
+    
+    
 

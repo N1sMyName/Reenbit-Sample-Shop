@@ -1,6 +1,20 @@
-<div class="product-container">
+<div class="product-container" > 
+  <!-- edit modal -->
+  <div class="editProduct" *ngIf="auth.user" (click)="profile.toggleEditModal()">
+    <img src="../../../../assets/edit.png" alt="" />
+  </div>
+  <div [ngClass]="profile.styles.edit">
+    <div class="close-button" (click)="profile.toggleEditModal()">
+      <img src="https://static.thenounproject.com/png/1042915-200.png" alt="" />
+    </div>
+    <!-- devExpModule -->
+    <app-edit-product [product]="product">
+
+    </app-edit-product>
+  </div>
+  <!-- edit modal -->
   <div class="product-image-container">
-    <div class="image"></div>
+    <img [src]="product.imgURL" alt="" class="image" />
   </div>
 
   <div class="product-info">
@@ -72,7 +86,7 @@
       <div class="product-info-right-price">
         <div class="price">
           <h2 class="price-main">{{ product.price }} USD</h2>
-          <p class="price-secondary">{{ product.price }} </p>
+          <p class="price-secondary">{{ product.price }}</p>
         </div>
         <div class="shipping">
           <div class="shipping-info">Free shipping</div>
