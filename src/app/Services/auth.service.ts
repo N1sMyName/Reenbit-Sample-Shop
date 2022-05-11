@@ -41,7 +41,6 @@ export class AuthService {
     this.auth.getRedirectResult().then(
       // resolve
       (result) => {
-        console.log(result.user)
         if (result.user) {
           // const credential = result.credential;
           // const operationType = result.operationType;
@@ -51,7 +50,7 @@ export class AuthService {
       },
       // reject
       (err) => {
-        console.log(err);
+        console.error(err);
         
       }
     );

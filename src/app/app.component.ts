@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { transform } from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
 import { CartItem } from './cart/cart-item.model';
 import { CartService } from './cart/cart.service';
 import { AuthService } from './Services/auth.service';
 
-
 import { LoadingService } from './Services/loading.service';
-import { MimicrestService } from './Services/mimicrest.service';
 import { StoreService } from './Services/store.service';
 
 @Component({
@@ -20,7 +18,6 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     public loading: LoadingService,
-    private api: MimicrestService,
     public auth: AuthService,
     public store: StoreService,
     public cart: CartService
@@ -61,12 +58,8 @@ export class AppComponent implements OnInit {
             });
         } else {
           // 1
-          this.cart.cartProducts = JSON.parse(
-            <string>localStorage.getItem('products')
-          );
-          this.cart.cartProducts = JSON.parse(
-            <string>localStorage.getItem('products')
-          );
+          this.cart.cartProducts =
+            JSON.parse(<string>localStorage.getItem('products')) || [];
         }
       });
     this.loading.loadingObs.subscribe((res) => (this.loading.isLoading = res));
