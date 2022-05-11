@@ -2,13 +2,19 @@
   *ngIf="this.loading.isLoading"
   src="../../assets/loading.gif"
   alt="loading-spinner"
-  style="
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  "
+  style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%)"
 />
+
 <router-outlet name="header"></router-outlet>
+
+<!-- <div
+  class="debug"
+  style="position: fixed; left: 0; display: flex; flex-direction: column"
+>
+  <button (click)="auth.loginGitHub()">login</button>
+  <button (click)="auth.logout()">logout</button>
+  <button (click)="auth.checkUser()">showUserCred</button>
+  
+</div> -->
 <router-outlet></router-outlet>
 <router-outlet name="footer"></router-outlet>

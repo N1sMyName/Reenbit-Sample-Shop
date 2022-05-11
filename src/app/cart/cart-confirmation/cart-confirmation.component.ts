@@ -9,6 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
+import { StoreService } from 'src/app/Services/store.service';
 import { CartValidationService } from '../cart-validation.service';
 
 @Component({
@@ -27,7 +29,9 @@ export class CartConfirmationComponent implements OnInit {
     public parent: FormGroupDirective,
     private fb: FormBuilder,
     private cartValidator: CartValidationService,
-    private router: Router
+    private router: Router,
+    public store:StoreService,
+    public auth:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +67,7 @@ export class CartConfirmationComponent implements OnInit {
   checkValidity(){
     if (this.parent.form.valid && this.parent.form.dirty) {
       this.isReady = true
+      this.store.updateHistory(this.auth.user,[])
     }
   }
 

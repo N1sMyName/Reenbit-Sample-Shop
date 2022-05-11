@@ -3,7 +3,7 @@ $searchbox-bg: #F9F9F9
 // general
 .search-bar
     background-color: #FDFDFD
-    width: 1259px
+    max-width: 1259px
     display: flex
     justify-content: space-between
     align-items: center
@@ -36,8 +36,7 @@ $searchbox-bg: #F9F9F9
     font-weight: 700
 // title
 .search-bar-title
-    width: 178px
-    height: 18px
+    max-width: 178px
     margin-left: 62px
     margin-top: 29px
     margin-bottom: 26px
@@ -111,9 +110,12 @@ $searchbox-bg: #F9F9F9
     display: flex
     align-items: center
     margin-right: 27px
+    p
+        font-size: 14px
 
 .user
     margin-right: 42.06px
+    margin-left: 10px
 
 .cart-container
     height: 1.5rem
@@ -146,9 +148,14 @@ $searchbox-bg: #F9F9F9
     cursor: pointer
     transition: all .5s ease-in-out
 
-.profile>*:hover
-    transition: all .5s ease-in-out
-    color: #6A983C
+.profile-user
+    display: flex
+    position: relative
+
+.userName
+    position: absolute
+    left: -100%
+
 
 .search-button
     margin: 13px 0
@@ -170,3 +177,151 @@ $searchbox-bg: #F9F9F9
     opacity: 100
     transition: opacity .25s ease
     color: red
+
+// login modal
+.userProfileModal
+    z-index: 2
+    position: fixed
+    width: 75vw
+    height: 75vh
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
+    background-color: #fff
+    border-radius: 10px
+    border: 2px solid #D1D1D1
+    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.1 )
+    font-family: 'Open Sans'
+    font-size: 14px
+
+.buttons-wrapper
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    text-align: center
+    h1
+        width: 100%
+        font-family: 'Poppins'
+        font-weight: 600
+        font-size: 40px
+        margin-bottom: 20px
+
+.buttons
+    width: 50%
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+
+    div
+        display: flex
+        flex-direction: column
+        align-items: center
+        font-family: 'Poppins'
+        font-weight: 600
+        cursor: pointer
+
+    div:hover
+        color: #6A983C
+
+    img
+        width: 50px
+        height: 50px
+        border-radius: 10px
+
+.logout-button
+    position: absolute
+    right: 5px
+    bottom: 5px
+    img
+        width: 30px
+        height: 30px
+        transition: all .5s ease
+        cursor: pointer
+        border: 50px
+
+    img:hover
+        transition: all .5s ease
+        transform: scale(110%,110%)
+.close-button
+    position: absolute
+    right: 5px
+    top: 5px
+    img
+        width: 30px
+        height: 30px
+        transition: all .5s ease
+        cursor: pointer
+
+    img:hover
+        transition: all .5s ease
+        transform: scale(110%,110%)
+
+.isClosed
+    opacity: 0
+    z-index: -1
+
+// user profile modal
+.profile-modal-wrapper
+    display: flex
+    margin: 0 auto
+    height: 100%
+    width: 40%
+    justify-content: space-around
+    align-items: center
+
+.photo
+    img
+        width: 100px
+        height: 100px
+        border-radius: 50px
+        box-shadow: 3px 3px 2px 0 rgba(0, 0, 0, 0.1 )
+
+.content
+    font-family: "Open Sans"
+    span
+        margin-right: 10px
+        font-weight: 600
+        font-family: "Poppins"
+
+.burger
+    display: none
+    width: 25px
+    height: 25px
+// responsive
+
+@media screen and (max-width: 1000px)
+    .search-input
+        padding-left: 5px
+    .search-bar-title
+        margin-left: 45px
+    .logo
+        display: none
+    .burger
+        display: block
+        margin-right: 10px
+        // searchField
+    .search-box-wrapper
+        width: 100%
+        
+    .batton-wraper
+        display: none
+    .search-box-container
+        position: static
+        width: auto
+    .search-result-container
+        width: 100%
+
+    .search-button-wrapper
+        display: none
+        
+        // cart/user
+    .userName
+        display: none
+    .user
+        margin-right: 10px
+
+@media screen and (max-width: 600px)
+    .profile-modal-wrapper
+        flex-direction: column

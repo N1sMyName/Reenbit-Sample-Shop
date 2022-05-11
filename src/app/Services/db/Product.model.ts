@@ -19,6 +19,7 @@ export interface Product {
   deliveryArea: string;
   deliveryTime: number;
   buyBy:string[];
+  imgURL:string
 }
 
 export interface Review {

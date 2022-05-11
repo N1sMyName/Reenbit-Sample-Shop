@@ -9,7 +9,7 @@ import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angula
 export class BreadCrumbsComponent {
   constructor(public router: Router, public activeR: ActivatedRoute) {
     this.router.events.subscribe(e => {
-      console.log(e)
+     this.breadCrumbs = this.breadCrumbsParser(this.router.url)
     })
   }
   breadCrumbs: string[] = [];
@@ -24,7 +24,6 @@ export class BreadCrumbsComponent {
   // }
   breadCrumbsParser(url: string) {
     const urlParsed = url.split('/').filter((item) => item !== '');
-    console.log(urlParsed);
     return urlParsed;
   }
 
@@ -32,7 +31,6 @@ export class BreadCrumbsComponent {
     let route: string;
     if (Number.isNaN(+chunk)) {
       route = `/${chunk}`;
-      console.log(this.router.url);
     } else {
       route = `/products/${chunk}`;
     }
@@ -43,7 +41,5 @@ export class BreadCrumbsComponent {
   ngOnInit(){
     this.breadCrumbs = this.breadCrumbsParser(this.router.url);
   }
-  ngOnChange(){
-    console.log(`change`)
-  }
+
 }

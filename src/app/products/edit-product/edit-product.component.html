@@ -1,0 +1,205 @@
+<form class="form" (submit)="submit($event)">
+  <dx-form
+    id="form"
+    [(formData)]="mockProduct"
+    labelLocation="left"
+    labelMode="static"
+    [showColonAfterLabel]="true"
+    [showValidationSummary]="true"
+    validationGroup="customerData"
+  >
+    <dxi-item itemType="group" colCount="auto" [caption]="product.title">
+      <dxi-item dataField="id" [disabled]="true"></dxi-item>
+      <dxi-item dataField="title">
+        <dxi-validation-rule type="required" message="title is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="2"
+          message="min length 2"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+          message="max length 10"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="inStock">
+        <dxi-validation-rule type="required" message="title is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="2"
+          message="min length 2"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+          message="max length 10"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="freshness">
+        <dxi-validation-rule type="required" message="title is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="2"
+          message="min length 2"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+          message="max length 10"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="farm">
+        <dxi-validation-rule type="required" message="farm is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="2"
+          message="min length 2"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+          message="max length 10"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="size">
+        <dxi-validation-rule type="required" message="title is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="2"
+          message="min length 2"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="10"
+          message="max length 10"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="description">
+        <dxi-validation-rule type="required" message="description is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="10"
+          message="min length 10"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="100"
+          message="max length 100"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="category" [disabled]="true"></dxi-item>
+      <dxi-item dataField="subCategory" [disabled]="true"></dxi-item>
+      <dxi-item dataField="brand" [disabled]="true"></dxi-item>
+      <dxi-item dataField="descriptionSmall">
+        <dxi-validation-rule
+          type="required"
+          message="descriptionSmall is required"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="10"
+          message="min length 10"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="20"
+          message="max length 20"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="rating">
+        <dxi-validation-rule type="required" message="rating required">
+        </dxi-validation-rule>
+        <dxi-validation-rule type="numeric" message="input must be numeric">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [min]="1"
+          [max]="5"
+          message="value must be in range between 1 and 5"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="country"></dxi-item>
+
+      <dxi-item dataField="price">
+        <dxi-validation-rule type="required" message="price required">
+        </dxi-validation-rule>
+        <dxi-validation-rule type="numeric" message="input must be numeric">
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="delivery">
+        <dxi-validation-rule type="required" message="delivery is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="5"
+          message="min length 5"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="15"
+          message="max length 15"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="deliveryArea">
+        <dxi-validation-rule type="required" message="deliveryArea is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="5"
+          message="min length 5"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="15"
+          message="max length 15"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- DTime -->
+      <dxi-item dataField="deliveryTime">
+        <dxi-validation-rule type="required" message="rating required">
+        </dxi-validation-rule>
+        <dxi-validation-rule type="numeric" message="input must be numeric">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [min]="1"
+          [max]="5"
+          message="value must be in range between 1 and 5"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="buyBy" [disabled]="true"></dxi-item>
+      <dxi-item dataField="imgURL"></dxi-item>
+    </dxi-item>
+  </dx-form>
+  <dx-button class="submitButton" text="Submit" [useSubmitBehavior]="true"></dx-button>
+</form>

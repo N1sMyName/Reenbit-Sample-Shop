@@ -21,19 +21,16 @@
     </div>
   </div>
 
-  <div class="relevant-flex-container">
-    <div class="relevant-item" *ngFor="let item of relevantProducts">
-      <div class="relevant-image"></div>
+  <div class="relevant-flex-container" >
+    <div  class="relevant-item" *ngFor="let item of relevantProducts">
+      <div class="relevant-image">
+        <img [src]="item.imgURL" alt="" class="relevant-image" />
+      </div>
       <div class="relevant-short-description">
         <h1>{{ item.title }}</h1>
         <p
           class="desc-grey"
-          style="
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            width: 251px;
-            overflow: hidden;
-          "
+         
         >
           {{ item.description }}
         </p>
@@ -44,4 +41,8 @@
       </div>
     </div>
   </div>
+  
+ 
+
+
 </div>

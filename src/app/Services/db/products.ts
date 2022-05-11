@@ -18,7 +18,7 @@ export const products = [
     deliveryArea: 'Global',
     price: 600,
     deliveryTime: 10,
-    buyBy: ['-'],
+    buyBy: ['-']
   },
   {
     id: 1,

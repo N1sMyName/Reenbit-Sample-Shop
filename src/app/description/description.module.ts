@@ -7,6 +7,10 @@ import { DescriptionComponent } from './description.component';
 import { DescriptionRoutingModule } from './description-routing.module';
 import { CoreModule } from '../core.module';
 import { RedirectModalComponent } from './redirect-modal/redirect-modal.component';
+import { GalleryModule} from 'ng-gallery';
+
+
+
 
 @NgModule({
   declarations: [
@@ -15,7 +19,18 @@ import { RedirectModalComponent } from './redirect-modal/redirect-modal.componen
     DescriptionRelevantTabComponent,
     DescriptionComponent,
     RedirectModalComponent,
+    
   ],
-  imports: [CommonModule,DescriptionRoutingModule,CoreModule],
+  imports: [
+    CommonModule,
+    DescriptionRoutingModule,
+    CoreModule,
+    GalleryModule,
+   
+    
+    
+    
+   
+  ],
 })
 export class DescriptionModule {}

@@ -3,7 +3,6 @@
     justify-content: space-between
 
 .cart-left
-    width: 670px
     margin-left: 45px
     margin-right: 32px
 .cart-right
@@ -20,7 +19,7 @@
 
 .cart-items-wrapper::-webkit-scrollbar
     position: relative
-    width: 10px
+    width: 2px
 .cart-items-wrapper::-webkit-scrollbar-thumb
     background-color: #A9A9A9
     outline: 1px solid #D1D1D1
@@ -43,3 +42,15 @@
 
 .save-height-cart
     min-height: 1130px
+
+@media screen and (max-width: 1260px)
+    .cart
+        flex-direction: column
+        flex-flow: column-reverse
+        align-items: center
+@media screen and (max-width: 500px)
+    
+    .cart-items-wrapper
+        width: auto
+        
+    

@@ -2,16 +2,16 @@
 // container
 
 .nav-top
-    background-color:#FDFDFD
-        position: relative
-        top: 0
+    background-color: #FDFDFD
+    position: relative
+    top: 0
 .contacts
     box-sizing: border-box
     display: flex
     justify-content: space-between
 
     border-bottom: 1px solid rgba(21, 21, 21, 10%)
-    font-family: "Open Sans", regular
+    font-family: "Open Sans", regular 
 
     font-size: 12px
     margin: 0 45px
@@ -19,7 +19,7 @@
     font-weight: 400
     line-height: 16px
     border-bottom: 1px solid rgba(21, 21, 21, 10%)
-    
+
 // info
 .info
     width: 375px
@@ -57,3 +57,7 @@
 .about-elem:hover
     transition: all 0.5s ease-in-out
     text-decoration: underline
+
+@media screen and (max-width: 1260px)
+    .contacts
+       display: none

@@ -8,6 +8,8 @@ import {
   Router,
 } from '@angular/router';
 import { LoadingService } from '../Services/loading.service';
+import { StoreService } from '../Services/store.service';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -15,33 +17,33 @@ import { LoadingService } from '../Services/loading.service';
   styleUrls: ['./products.component.sass'],
 })
 export class ProductsComponent implements OnInit {
-  // generic variables
-
-  // products instances
-  public filteredProducts: Product[];
-  public originalProducts: Product[];
-  // filters stack
-  public filters: Form;
-
-  // pagination
-  lastPagData: { page: number; stack: number } = { page: 1, stack: 5 };
-  paginationData: { page: number; stack: number } = { page: 1, stack: 5 };
-
-  // sort method instance
-  sortBy: string = '';
-  
   constructor(
     private f: FilterService,
     private aRoute: ActivatedRoute,
-    public loading:LoadingService
-  ) {
+    public loading:LoadingService,
+    public store:StoreService,
+    public auth:AuthService
+    ) {}
+    // generic variables
+  
+    // products instances
+    public filteredProducts: Product[];
+    public originalProducts: Product[];
+    // filters stack
+    public filters: Form;
+  
+    // pagination
+    lastPagData: { page: number; stack: number } = { page: 1, stack: 5 };
+    paginationData: { page: number; stack: number } = { page: 1, stack: 5 };
+  
+    // sort method instance
+    sortBy: string = '';
     
-  }
+    
+  
   // METHODS
   // lifecycle
   ngOnInit(): void {
-
-    this.aRoute.snapshot.data['products'];
     this.getProducts();
   }
 
@@ -55,6 +57,7 @@ export class ProductsComponent implements OnInit {
 
   getProducts() {
     const data = this.aRoute.snapshot.data['products'];
+  //  this.store.test(this.auth.user,data)
     this.originalProducts = data;
     this.filteredProducts = data;
   }

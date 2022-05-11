@@ -13,7 +13,7 @@ export class CategoriesDropDownComponent implements OnInit {
   @ViewChild('dropDownRef') dropDownRef:ElementRef; 
   public categories:Category[]
   ngOnInit(): void {
-    this.api.getCategories().subscribe(res => this.categories = res)
+    this.api.categories().subscribe(res => this.categories = res)
   }
   showMenu(){
     this.dropDownRef.nativeElement.classList.toggle('invis')

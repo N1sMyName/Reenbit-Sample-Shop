@@ -23,15 +23,14 @@ export class CartSummaryComponent implements OnInit {
       this.tax = Math.floor(this.sum * this.rate)
       console.log(this.tax)
     this.subtotal = this.sum - this.tax
+  } else{
+     this.subtotal = 0
+     this.tax = 0
   }
   }
   ngOnChanges(c: SimpleChange) {
-    console.log(`change`)
    this.calculateSubTotal()
   }
-  preventInputWrongValue(ref: HTMLInputElement, l: number) {
-    if (ref.value.length > l) {
-      ref.value = ref.value.slice(0, l);
-    }
-  }
+
+  
 }

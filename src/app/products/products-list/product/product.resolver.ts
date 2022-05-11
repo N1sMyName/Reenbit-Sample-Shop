@@ -6,22 +6,20 @@ import {
   ActivatedRouteSnapshot,
   ActivatedRoute,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { first, Observable, of } from 'rxjs';
 import { Product } from 'src/app/Services/db/Product.model';
 import { MimicrestService } from 'src/app/Services/mimicrest.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductResolver implements Resolve<Product> {
-  constructor(private memApi: MimicrestService) {}
+export class ProductResolver implements Resolve<Product[]> {
+  constructor(private api: MimicrestService) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<Product> {
-    
+  ): Observable<Product[]> {
     const id = route.paramMap.get('id')
-    console.log(id)
-    return this.memApi.getProduct(Number(id));
+    return this.api.product(Number(id)).pipe(first());
   }
 }

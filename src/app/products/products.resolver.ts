@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { first, Observable } from 'rxjs';
 import { Product } from '../Services/db/Product.model';
 import { MimicrestService } from '../Services/mimicrest.service';
 
@@ -12,8 +12,8 @@ import { MimicrestService } from '../Services/mimicrest.service';
   providedIn: 'root'
 })
 export class ProductsResolver implements Resolve<Product[]> {
-  constructor(private memApi:MimicrestService){}
+  constructor(private api:MimicrestService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product[]> {
-    return this.memApi.getProducts()
+    return this.api.products().pipe(first()) as Observable<Product[]>
   }
 }

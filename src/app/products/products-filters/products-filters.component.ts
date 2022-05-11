@@ -21,6 +21,11 @@ export class ProductsFiltersComponent {
   priceRange: number[];
   brands: string[];
   categories: { name: string; count: number }[];
+  _mobileFiltersToggler = false;
+  mainContainerFilterStyles = {
+    filters: true,
+    isMobileVisible: this._mobileFiltersToggler,
+  };
 
   constructor(private formBuilder: FormBuilder, private f: FilterService) {}
 
@@ -34,6 +39,11 @@ export class ProductsFiltersComponent {
   ngOnDestroy() {
     this.unsubscribeAll.next('end');
     this.unsubscribeAll.complete();
+  }
+  setFilterStyles() {
+    this.mainContainerFilterStyles.isMobileVisible =
+      !this.mainContainerFilterStyles.isMobileVisible;
+    this._mobileFiltersToggler = !this._mobileFiltersToggler;
   }
 
   buildForm() {

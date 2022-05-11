@@ -1,10 +1,20 @@
 import { Component, OnInit, SimpleChange } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  ResolveEnd,
+  Router,
+} from '@angular/router';
+import { debounce, transform } from 'lodash';
+import { GALLERY_CONFIG } from 'ng-gallery';
+import { Subject, takeUntil } from 'rxjs';
 import { CartItem } from '../cart/cart-item.model';
 import { CartService } from '../cart/cart.service';
+import { AuthService } from '../Services/auth.service';
 import { Product } from '../Services/db/Product.model';
 import { LoadingService } from '../Services/loading.service';
+import { StoreService } from '../Services/store.service';
 
 @Component({
   selector: 'app-description',
@@ -16,18 +26,25 @@ export class DescriptionComponent implements OnInit {
     private aRoute: ActivatedRoute,
     public cart: CartService,
     public router: Router,
-    public loading: LoadingService
+    public loading: LoadingService,
+    public store: StoreService,
+    public auth: AuthService
   ) {
-    this.router.events.subscribe((e) => {
+    this.router.events.pipe(takeUntil(this.unsubscribeAll)).subscribe((e) => {
       this.loading.checkLoadingState(e);
-      this.product = this.aRoute.snapshot.data['product']
-      if(e instanceof NavigationEnd) {
-        this.calculateSubTotal()
+      // if(e instanceof ResolveEnd)
+
+      if (e instanceof NavigationEnd) {
+        this.product = this.aRoute.snapshot.data['product'][0];
+
+        this.calculateSubTotal();
+        this.getRelevantProducts();
       }
     });
   }
-  style={'modal':false,'hidden':true}
-  stylePresent ={'present':true,'hiddenP':true}
+  amountError = false;
+  style = { modal: false, hidden: true };
+  stylePresent = { present: true, hiddenP: true };
   relevantProducts: Product[];
   form: FormControl;
   product: Product;
@@ -36,6 +53,7 @@ export class DescriptionComponent implements OnInit {
   rate = 0.18;
   tax = 0;
   currentAmount: string;
+  unsubscribeAll = new Subject();
   calculateSubTotal() {
     if (this.price && this.price > 0) {
       this.tax = Math.floor(this.price * this.rate);
@@ -47,33 +65,53 @@ export class DescriptionComponent implements OnInit {
   }
   getRelevantProducts() {
     const data = this.aRoute.snapshot.data['relevant'];
-    console.log(this.product.category);
+
     this.relevantProducts = data
       .filter((e: Product) => e.category === this.product.category)
       .slice(0, 4);
   }
 
   ngOnInit(): void {
-    this.product = this.aRoute.snapshot.data['product'];
+    this.store
+      .getHistory(this.auth.user)
+      .pipe(takeUntil(this.unsubscribeAll))
+      .subscribe((h) => {
+        const res = transform(
+          h,
+          (res: CartItem[], v) => {
+            res.push(v);
+          },
+          []
+        );
+        this.cart.cartProducts = res;
+      });
+    this.product = this.aRoute.snapshot.data['product'][0];
     this.currentAmount = this.product.buyBy[0];
-    this.form = new FormControl(1, [Validators.required]);
+    this.form = new FormControl(1, [
+      Validators.required,
+      Validators.min(1),
+      Validators.max(99),
+    ]);
     this.isValid();
     this.calculateSubTotal();
     this.getRelevantProducts();
   }
-  addItemToCart(product:Product){
-    const local =  JSON.parse(<string>localStorage.getItem('products'))
-    const sameProduct =  local?.find((e:CartItem) => e.product.id === product.id)
-    if(sameProduct){
-      this.stylePresent.hiddenP = !this.stylePresent.hiddenP
-      setTimeout(()=>this.stylePresent.hiddenP = !this.stylePresent.hiddenP,3000)
-      return
+  addItemToCart(product: Product) {
+    if (this.form.invalid) {
+      this.amountError = !this.amountError;
+      setTimeout(() => (this.amountError = !this.amountError), 2000);
+      return;
     }
-    this.style.modal = !this.style.modal
-    this.style.hidden = !this.style.hidden
-    this.cart.populateCartStore(product)
+    if (this.auth.user) {
+      this.cart.addRemote(product);
+      this.style.modal = !this.style.modal;
+      this.style.hidden = !this.style.hidden;
+    } else {
+      this.cart.addLocal(product);
+      this.style.modal = !this.style.modal;
+      this.style.hidden = !this.style.hidden;
+    }
   }
-
 
   isValid() {
     this.form.valueChanges.subscribe((v) => {
@@ -82,5 +120,9 @@ export class DescriptionComponent implements OnInit {
   }
   setCurrentBuyBy(item: string) {
     this.currentAmount = item;
+  }
+  ngOnDestroy() {
+    this.unsubscribeAll.next('');
+    this.unsubscribeAll.complete();
   }
 }
