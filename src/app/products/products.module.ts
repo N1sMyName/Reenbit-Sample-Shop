@@ -10,7 +10,6 @@ import { CoreModule } from '../core.module';
 import { ProductsFiltersModule } from './products-filters/products-filters.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DxFormModule,DxButtonModule,DxValidatorModule } from 'devextreme-angular';
-import { EditProductComponent } from './edit-product/edit-product.component';
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -18,7 +17,6 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     ProductsNavTopComponent,
     ProductsNavBotComponent,
     ProductComponent,
-    EditProductComponent,
     
     
     

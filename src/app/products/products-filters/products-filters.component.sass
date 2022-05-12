@@ -29,9 +29,8 @@
 .filters-mobile-indicator
     opacity: 75%
     display: none
-    position: fixed
+    position: relative
     z-index: 2
-    left: 10px
 
 .filters-mobile-indicator:hover
     opacity: 100%
@@ -50,11 +49,17 @@
         padding: 5px
     .filters-mobile-indicator
         display: block
+        position: absolute
+        top: 50%
+        left: 10px
         animation-name: shuffleIdicator
         animation-duration: 2s
         animation-iteration-count: infinite
         animation-direction: alternate
 
+@media screen and (max-width: 1260px)
+    .filters
+        margin-right: 10px
 @keyframes shuffleIdicator
     0%
         transform: scale(100%)

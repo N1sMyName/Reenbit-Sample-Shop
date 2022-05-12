@@ -47,16 +47,9 @@ export class ProfileService {
       isClosed: true,
       userProfileModal: true,
     },
-    edit:{
-      editModal:true,
-      isClosed:true
-    }
   };
  
   toggleProfileModal() {
     this.styles.modal.isClosed = !this.styles.modal.isClosed;
-  }
-  toggleEditModal() {
-    this.styles.edit.isClosed = !this.styles.edit.isClosed;
   }
 }
