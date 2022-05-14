@@ -18,25 +18,25 @@ export const  tags : string[] = [
     'Fresh food',
     'Lemons',
   ];
-  export const  inTouchInfo : string[] = [
+  export const  inTouch : string[] = [
     'About Us',
     'Careers',
     'Press Releases',
     'Blog',
   ];
-  export const  conntectionsInfo : string[] = [
+  export const  connections : string[] = [
     'FaceBook',
     'Twitter',
     'Instagram',
     'Youtube',
     'LinkedIn',
   ];
-  export const  earningInfo : string[] = [
+  export const  earning : string[] = [
     'Become an Affiliate',
     'Advertise youre product',
     'Sell on Market',
   ];
-  export const  accountInfo : string[] = [
+  export const  account : string[] = [
     'Your account',
     'Returns Centre',
     '100 % purchase protection',

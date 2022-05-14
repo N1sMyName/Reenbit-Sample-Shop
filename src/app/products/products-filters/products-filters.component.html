@@ -1,18 +1,13 @@
 <!-- trigger filters window  -->
 <ng-container>
-  <div class="filters-mobile-indicator">
+  <div class="filters-mobile-indicator filterToggler">
     <img
       src="../../../assets/doubleRight.png"
       alt=""
       *ngIf="!this._mobileFiltersToggler"
       (click)="setFilterStyles()"
     />
-    <img
-      src="../../../assets/doubleLeft.png"
-      alt=""
-      *ngIf="this._mobileFiltersToggler"
-      (click)="setFilterStyles()"
-    />
+   
   </div>
 </ng-container>
 
@@ -23,5 +18,13 @@
   <app-price-filter [priceRange]="priceRange"></app-price-filter>
   <div class="control-buttons">
     <span class="filter-button reset" (click)="resetForm()">Reset</span>
+  </div>
+  <div class="closeFiltersMobile filterToggler">
+    <img
+    src="../../../assets/doubleLeft.png"
+    alt=""
+    *ngIf="this._mobileFiltersToggler"
+    (click)="setFilterStyles()"
+  />
   </div>
 </aside>
