@@ -156,7 +156,6 @@ $searchbox-bg: #F9F9F9
     position: absolute
     left: -100%
 
-
 .search-button
     margin: 13px 0
     margin-right: 16px
@@ -180,7 +179,7 @@ $searchbox-bg: #F9F9F9
 
 // login modal
 .userProfileModal
-    z-index: 2
+    z-index: 3
     position: fixed
     width: 75vw
     height: 75vh
@@ -258,6 +257,19 @@ $searchbox-bg: #F9F9F9
         transition: all .5s ease
         transform: scale(110%,110%)
 
+.admin-button
+    position: absolute
+    left: 5px
+    top: 5px
+    img
+        width: 30px
+        height: 30px
+        transition: all .5s ease
+        cursor: pointer
+
+    img:hover
+        transition: all .5s ease
+        transform: scale(110%,110%)
 .isClosed
     opacity: 0
     z-index: -1
@@ -305,7 +317,7 @@ $searchbox-bg: #F9F9F9
         // searchField
     .search-box-wrapper
         width: 100%
-        
+
     .batton-wraper
         display: none
     .search-box-container
@@ -316,7 +328,7 @@ $searchbox-bg: #F9F9F9
 
     .search-button-wrapper
         display: none
-        
+
         // cart/user
     .userName
         display: none

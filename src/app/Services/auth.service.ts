@@ -1,15 +1,29 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router, UrlTree } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: AngularFireAuth) {}
-
+  constructor(private auth: AngularFireAuth, private router: Router) {
+    this.userGuard$ = this.auth.authState.pipe(
+      switchMap((user) => {
+        if (user) {
+          this.user = user
+          return of(true);
+        } else {
+          this.router.navigate(['/products']);
+          return of(false);
+        }
+      })
+    );
+  }
+  userGuard$: Observable<boolean | UrlTree>;
   user: firebase.User | null;
-  test() {}
+
   show() {
     console.log(this.user);
   }
@@ -44,14 +58,12 @@ export class AuthService {
         if (result.user) {
           // const credential = result.credential;
           // const operationType = result.operationType;
-          console.log(result)
           this.user = result.user;
         }
       },
       // reject
       (err) => {
         console.error(err);
-        
       }
     );
   }
