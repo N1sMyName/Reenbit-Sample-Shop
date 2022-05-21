@@ -1,0 +1,259 @@
+.shopping-history
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    min-height: 500px
+    
+// fonts
+.wrapper
+    font-size: 12px
+.annotation
+    font-size: 14px
+    font-weight: 600
+    font-family: 'Poppins'
+.total
+    font-weight: 600
+    font-family: 'Poppins'
+    font-size: 20px
+
+.product
+    font-size: 14px
+.productName
+    font-size: 16px
+    word-wrap: break-word
+
+// WRAPPER
+.wrapper
+    font-family: 'Open Sans'
+    padding-top: 16px
+    display: flex
+    position: relative
+    font-size: 12px
+
+    h2,h3
+        font-family: 'Poppins'
+        font-weight: 600
+
+// ORDER-INFO
+.orderinfo
+    padding-right: 5px
+    display: flex
+    width: 100%
+    align-items: center
+    border-right: 1px solid #d1d1d1
+.first
+    margin-right: 5px
+.orderInfoItem
+    display: flex
+.annotation
+    margin-right: 10px
+    min-width: 130px
+.description
+    min-width: 130px
+.addInfo
+    flex-direction: column
+    p.annotation
+        margin-bottom: 5px
+
+.orderProducts
+    margin-left: 5px
+
+.orderInfoList
+    list-style-type: none
+.orderInfoList>li:not(:last-child)
+    margin-bottom: 10px
+.orderProductsList>li:not(:last-child)
+    margin-bottom: 10px
+
+    // preview
+.orderPreviewTotal >.imgPreviewContainer:not(:last-child)
+    margin-right: 5px
+
+.totalPreview
+    margin-right: 10px
+    width: max-content
+//PRODUCTS-INFO
+
+.orderProductsItem
+    display: flex
+    align-items: center
+    list-style: none
+    div
+        text-align: center
+        p
+            margin-bottom: 10px
+// DESCRIPTION
+.productDescription
+    display: flex
+    align-items: center
+    margin-right: 10px
+
+// PRODUCT-IMAGE's
+.imagesWrapper
+    display: flex
+.imgPreview
+    // metrics
+    min-width: 10px
+    min-height: 10px
+    max-height: 40px
+    max-width: 40px
+    // 
+    border-radius: 50px
+
+.boughtProductImage
+    // metrics
+    // min-width: 30px
+    // min-height: auto
+    // max-height: auto
+
+    max-width: 70px
+    height: auto
+    object-fit: cover
+    // 
+    border-radius: 10px
+// count / price / name
+.product
+    min-width: 120px
+.productInfoContainer
+    display: flex
+    text-align: center
+.productName
+    font-size: 14px
+    word-wrap: break-word
+    margin-right: 10px
+.productsCount
+    text-align: center
+    margin-right: 10px
+.total
+    position: absolute
+    right: 0
+    bottom: 0
+// matterial
+.mat-expansion-panel
+    background-color: #A9A9A9
+.mat-expansion-panel-header-description
+    min-width: 580px !important
+.mat-expanded > .mat-expansion-panel-header
+    display: none
+// NO HISTORY
+
+.noHistoryWrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    font-family: 'Poppins'
+
+.noHistory
+    background-repeat: no-repeat
+    background-image: url('https://icon-library.com/images/order-history-icon/order-history-icon-15.jpg')
+    background-position: center
+    min-width: 300px
+    min-height: 300px
+    background-size: cover
+    margin: 10px auto
+
+@media screen and ( max-width:1000px )
+    .mat-expansion-panel-header-title
+        min-width: 150px !important
+    .orderProductsList
+        padding-top: 20px
+        border-top: 1px solid #d1d1d1
+    .orderProducts
+        margin-left: 0
+    .wrapper
+        flex-direction: column
+    .orderinfo
+        padding-right: 0
+        border-right: none
+    .total
+        position: static
+        margin-top: 10px
+@media screen and ( max-width:700px )
+    // MATERIAL
+    .mat-expansion-panel-header-description
+        align-items: flex-start !important
+        flex-direction: column !important
+    .mat-content
+        flex-direction: column !important
+    .mat-expansion-panel-header
+        padding-top: 12px !important
+        padding-bottom: 12px !important
+        font-size: 12px
+        height: 100% !important
+    .totalPreview
+        margin: 10px 0
+    // .imgPreviewContainer
+    //     display: non
+    .orderProductsList
+        display: grid
+        gap: 10px
+        grid-template-columns: 1fr 1fr
+    .productInfoContainer
+        margin-top: 10px
+        justify-content: center
+        align-items: center
+    .orderProductsItem
+        align-items: flex-start
+        flex-direction: column
+    .product
+        min-width: max-content
+        margin: 0
+    .productInfoContainer>.product:not(:last-child)
+        margin-right: 10px
+@media screen and ( max-width:600px )
+    .orderProductsList>li:not(:last-child)
+        margin-bottom: 0
+    .mat-expansion-panel-header
+        font-size: 12px
+
+    .orderinfo
+        justify-content: center
+    // .orderInfoList
+    //     display: grid
+    //     grid-template-columns: 1fr 1fr
+    //     grid-gap: 5px
+    //     justify-items: flex-start
+    .customerName
+        text-align: center
+    .addInfo
+        grid-column: 1/ span 2
+    .orderInfoItem
+        flex-direction: column
+        align-items: center
+    .description
+        word-break: break-word
+    .productInfoContainer
+        min-width: 130px
+        border: 1px solid #d1d1d1
+        border-radius: 10px
+        padding: 5px
+        flex-direction: column
+    .productInfoContainer>.product:not(:last-child)
+        margin-right: 0
+
+    .orderProductsItem
+        align-items: center
+        div
+            p
+                margin-bottom: 0
+    .productName
+        border-bottom: 1px solid #d1d1d1
+
+    .product
+        margin-bottom: 2px
+        padding-bottom: 2px
+        border-bottom: 1px solid #d1d1d1
+    .annotation
+        min-width: max-content
+        margin-right: 3px
+    .description
+        min-width: max-content
+    .addInfo
+        text-align: center
+    .orderInfoItem .description,.annotaion
+        min-width: auto
+    .total
+        text-align: center
+        font-size: 18px

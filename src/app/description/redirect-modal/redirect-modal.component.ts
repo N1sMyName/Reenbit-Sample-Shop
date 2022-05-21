@@ -27,7 +27,7 @@ export class RedirectModalComponent  {
     if (this.auth.user) {
      const takeLatestProductsFromDB = this.store
         .getHistory(this.auth.user)
-        .pipe()
+        .pipe(takeUntil(this.unsubscribeAll))
         .subscribe((h) => {
           if (this.auth.user) {
             const res = transform(
@@ -55,6 +55,10 @@ export class RedirectModalComponent  {
   }
   toCart() {
     this.router.navigate(['/cart']);
+  }
+  ngOnDestroy(){
+    this.unsubscribeAll.next('')
+    this.unsubscribeAll.complete()
   }
 
 }

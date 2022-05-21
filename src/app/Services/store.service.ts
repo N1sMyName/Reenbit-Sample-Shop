@@ -8,13 +8,16 @@ import { AuthService } from './auth.service';
 import firebase from 'firebase/compat/app';
 import { CartItem } from '../cart/cart-item.model';
 import { Product } from './db/Product.model';
-import { products } from './db/products';
+import { OrderRecord } from './db/orderRecord.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
-  constructor(private store: AngularFirestore, private auth: AuthService) {}
+  constructor(private store: AngularFirestore, private auth: AuthService) {
+  
+  }
+  userShoppingHistory:OrderRecord[] = []
   itemDoc: AngularFirestoreDocument;
   setUser(user: firebase.User | null) {
     if (user) {
@@ -28,15 +31,6 @@ export class StoreService {
       });
     }
   }
-  // test(user: firebase.User | null, prod: Product[]) {
-  //   for (let p of prod) {
-  //     fetch('https://picsum.photos/500').then((res) => {
-  //       const id = 'product' + p.id;
-  //       p.imgURL = res.url;
-  //       this.store.collection('/products').doc(id).set(p);
-  //     });
-  //   }
-  // }
   getHistory(user: firebase.User | null) {
     const id = user?.uid;
     return this.store
@@ -49,14 +43,6 @@ export class StoreService {
     this.itemDoc = this.store.doc(`/history/${id}`);
     if (user) {
       this.itemDoc.set({ ...history });
-    }
-  }
-  deleteOne(user: firebase.User | null, history: CartItem[], uid: number) {
-    const id = user?.uid;
-    this.itemDoc = this.store.doc(`/history/${id}`);
-    if (user) {
-      const updated = history?.filter((i) => i.product.id !== uid);
-      this.itemDoc.set({ ...updated });
     }
   }
   rewriteProduct(user: firebase.User | null, modProd: Product) {
@@ -74,11 +60,27 @@ export class StoreService {
       this.itemDoc.set({ ...product });
     }
   }
-  removeProductPermanently(id:number){
-    const docId = 'product' + id
-    this.itemDoc = this.store.doc(`/products/${docId}`)
-    if(this.auth.user) {
-      this.itemDoc.delete()
+  removeProductPermanently(id: number) {
+    const docId = 'product' + id;
+    this.itemDoc = this.store.doc(`/products/${docId}`);
+    if (this.auth.user) {
+      this.itemDoc.delete();
     }
   }
+  // shopping history
+  getShoppingHistory(user: firebase.User | null) {
+    const id = user?.uid;
+    return this.store
+      .collection('/shoppingHistory/')
+      .doc(id)
+      .valueChanges() as Observable<OrderRecord[]>;
+  }
+  updateShoppingHistory(user: firebase.User | null, records?: OrderRecord[]) {
+    const id = user?.uid;
+    this.itemDoc = this.store.doc(`/shoppingHistory/${id}`);
+    if (user) {  
+      this.itemDoc.set({ ...records });
+    }
+  }
+  
 }

@@ -1,6 +1,6 @@
 <form class="cart-form-left" formGroupName="billing">
   <div class="left">
-   
+    
     <div class="first-name-container input-container">
       <label for="first-name"
         >First name
@@ -137,7 +137,7 @@
           id="first-name"
           class="form-item state"
         />
-       
+        
       </label>
       <div class="relative-wrapper" style="position: absolute">
         <div
@@ -152,7 +152,11 @@
         >
           {{ "chose country from list" }}
         </div>
-        <ul [ngClass]="styles" style="position: absolute" (scroll)="setCountryListVisible()">
+        <ul
+          [ngClass]="styles"
+          style="position: absolute"
+          (scroll)="setCountryListVisible()"
+        >
           <li
             (click)="setCountry(country, countryRef)"
             style="list-style: none; white-space: nowrap"
@@ -215,7 +219,6 @@
         >Phone number
         <input
           #phoneRef
-          (input)="cart.preventInputWrongValue(phoneRef, 9)"
           formControlName="phone"
           type="number"
           placeholder="Phone number"
@@ -237,12 +240,11 @@
           *ngIf="
           phone?.dirty &&
           phone?.invalid &&
-          phoneErrors?.['lengthErr']
+          phoneErrors?.['pattern']
           "
           class="err"
         >
-          required length {{ this.phoneErrors?.['lengthErr'].required }} your
-          {{ phoneRef.value.length }}
+          required 9 digit phone number excluding country code
         </div>
       </div>
       <!-- <div *ngIf="phone?.dirty && phone?.invalid" class="err">
@@ -300,7 +302,6 @@
         >ZIP/Postal code
         <input
           #zipRef
-          (input)="cart.preventInputWrongValue(zipRef, 5)"
           formControlName="zip"
           type="number"
           placeholder="Postal code or zip"
@@ -314,11 +315,10 @@
           *required field
         </div>
         <div
-          *ngIf="zip?.dirty && zip?.invalid && zipErrors?.['lengthErr']"
+          *ngIf="zip?.dirty && zip?.invalid && zipErrors?.['pattern']"
           class="err"
         >
-          required {{ zipErrors?.['lengthErr'].required }} your
-          {{ zipRef.value.length }}
+          required 5 digit zip code
         </div>
       </div>
     </div>

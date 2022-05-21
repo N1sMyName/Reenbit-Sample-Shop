@@ -149,4 +149,8 @@ export class SearchBarComponent implements OnInit {
   toAdminPanel() {
     this.router.navigate(['/admin']);
   }
+  toShoppingHistoryPanel(){
+    this.router.navigate(['/shoppingHistory']);
+
+  }
 }

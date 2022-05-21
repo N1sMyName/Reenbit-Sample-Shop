@@ -12,8 +12,7 @@ import { Product } from 'src/app/Services/db/Product.model';
 import { StoreService } from 'src/app/Services/store.service';
 import { CartItem } from '../cart-item.model';
 import { CartService } from '../cart.service';
-import firebase from 'firebase/compat';
-import { toPairs } from 'lodash';
+
 
 @Component({
   selector: 'app-cart-product',
@@ -60,17 +59,13 @@ export class CartProductComponent implements OnInit {
     const res = this.products.filter((e) => e.product.id !== id);
     this.products = res;
     if (this.auth.user) {
-      console.log(`remove prod if`);
       this.store.updateHistory(this.auth.user, res);
     } else {
-      console.log(`remove prod else`);
-      console.log(this.products);
       const count = +JSON.parse(<string>localStorage.getItem('productsCount'));
       localStorage.setItem('productsCount', JSON.stringify(count - 1));
       localStorage.setItem('products', JSON.stringify(this.products));
       this.cart.cartProducts = res;
     }
-    console.log(this.products);
     this.form.removeControl(id.toString());
     this.cart.notifySub.next(false);
   }
@@ -96,8 +91,7 @@ export class CartProductComponent implements OnInit {
     this.oneProduct.valueChanges
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe((v) => {
-      this.recalculateCount(this.product.id,v)
-      
+      this.recalculateCount(this.product.id,v) 
       })
 
   }
