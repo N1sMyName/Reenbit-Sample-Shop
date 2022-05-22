@@ -33,10 +33,10 @@ export class CreateProductComponent implements OnInit {
   }
 
   assembleConfigProperties() {
-    this.admin.config.categories.items = this.admin.countCategories(
-      this.products
+    this.admin.config.categories.items = this.admin.counterUtility(
+      this.products,'category'
     );
-    this.admin.config.brands.items = this.admin.countBrands(this.products);
+    this.admin.config.brands.items = this.admin.counterUtility(this.products,'brand');
     this.admin.lastIndex = this.admin.findLatestID(this.products);
   }
 

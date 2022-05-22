@@ -21,7 +21,7 @@ export class AuthService {
       })
     );
   }
-  userGuard$: Observable<boolean | UrlTree>;
+  userGuard$: Observable<boolean>;
   user: firebase.User | null;
 
   show() {

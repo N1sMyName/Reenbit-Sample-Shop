@@ -3,8 +3,7 @@ import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
-  RouterStateSnapshot,
-  UrlTree,
+  RouterStateSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../Services/auth.service';
@@ -17,11 +16,7 @@ export class AdminGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  ): Observable<boolean> {
     return this.auth.userGuard$;
   }
 }
