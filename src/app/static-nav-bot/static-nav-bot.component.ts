@@ -22,7 +22,7 @@ export class StaticNavBotComponent implements OnInit {
   tags = staticData.tags;
   footerInfoData: FooterInfoDataset[] = [];
   styles: FooterInfoStyle[] = [];
-  previousTab: number;
+  previousTab: number | null;
 
   ngOnInit(): void {
     this.generateStyles();
@@ -34,10 +34,11 @@ export class StaticNavBotComponent implements OnInit {
     console.log(this.previousTab)
     console.log(id)
     if ((this.previousTab === id)) {
-      this.footerInfoData[id].styles.active = false;
+      this.footerInfoData[id].styles.active = !this.footerInfoData[id].styles.active;
       return;
     }
     if (typeof this.previousTab === 'number') {
+      console.log(`prev number`)
       this.shrinkTab(this.previousTab);
     }
     this.footerInfoData[id].styles.active = true;
