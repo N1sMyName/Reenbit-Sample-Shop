@@ -1,0 +1,102 @@
+<section class="shopping-history">
+  <div class="noHistoryWrapper" *ngIf="!this.orders?.length">
+    <h1>You have not any shopping history yet...</h1>
+    <div class="noHistory">
+    </div>
+    <button mat-raised-button (click)="toProducts()">Make One</button>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of orders" >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="orderPreviewDate"> Order from {{ item.orderDate | date:('short') }} </mat-panel-title>
+        <mat-panel-description class="orderPreviewTotal">
+          <div class="totalPreview">
+            Order Total {{item.orderProducts | summary}}$
+          </div>
+          <div class="imagesWrapper">
+            <div class="imgPreviewContainer" *ngFor="let p of item.orderProducts | slice:0:5">
+              <img class="imgPreview" [src]="p.product.imgURL" alt="">
+            </div>
+          </div>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- <p>Order info:</p> -->
+      <div class="wrapper">
+        <div class="orderinfo">
+          <ul class="orderInfoList">
+            <li class="orderInfoItem customerName">
+              <p class="annotation">CustomerName:</p>
+              <p class="description">
+                <span class="name">{{ item.orderInfo.firstName + ' ' + item.orderInfo.lastName }}</span>
+                
+              </p>
+            </li>
+            <li class="orderInfoItem email">
+              <p class="annotation">Email: </p>
+              <p class="description">{{ item.orderInfo.email }}</p>
+            </li>
+            <li class="orderInfoItem phoneNumber">
+              <p class="annotation">Phone: </p>
+              <p class="description">{{ item.orderInfo.phoneNumber }}</p>
+            </li>
+            <li class="orderInfoItem address">
+              <p class="annotation">Address: </p>
+              <p class="description">{{ item.orderInfo.address }}</p>
+            </li>
+            <li class="orderInfoItem city">
+              <p class="annotation">City: </p>
+              <p class="description">{{ item.orderInfo.city }}</p>
+            </li>
+            <li class="orderInfoItem country>">
+              <p class="annotation">Country: </p>
+              <p class="description">{{ item.orderInfo.country }}</p>
+            </li>
+            <li class="orderInfoItem zip">
+              <p class="annotation">ZipCode: </p>
+              <p class="description">{{ item.orderInfo.zip }}</p>
+            </li>
+            <li class="orderInfoItem date">
+              <p class="annotation">Date: </p>
+              <p class="description">{{ item.orderDate | date:('medium') }}</p>
+            </li>
+            <li
+              class="orderInfoItem addInfo"
+              *ngIf="item.orderInfo.addInfo?.length"
+            >
+              <p class="annotation">Customer message: </p>
+              <p class="description">{{ item.orderInfo.addInfo }}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="orderProducts">
+          <ul class="orderProductsList">
+            <li
+              class="orderProductsItem"
+              *ngFor="let product of item.orderProducts"
+            >
+              <div class="productDescription">
+                <img class="boughtProductImage" [src]="product.product.imgURL" alt="product image" />
+              </div>
+              <div class="productInfoContainer">
+                <h3 class="product productName">{{ product.product.title }}</h3>
+                <div class="product productsCount">
+                  <p>Count</p>
+                  {{ product.count }}
+                </div>
+                <div class="product productPrice">
+                  <p>Price</p>
+                  {{ product.product.price }}$
+                </div>
+                <div class="product productTotal">
+                  <p>Total</p>
+                  {{ product.product | multiply:product.count }}$
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <h3 class="total">Order Total {{item.orderProducts | summary}} $</h3>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

@@ -19,11 +19,3 @@ export function stringValidator(): ValidatorFn {
     return /\d/.test(control.value) ? { nonValidInput: 'only strings' } : null;
   };
 }
-export function minLengthPattern(l: number): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const regExp = '^.{' + l + ',}$'
-    return new RegExp(regExp).test(control.value)
-      ? null
-      : { lengthErr: { current: control.value, required: l } };
-  };
-}

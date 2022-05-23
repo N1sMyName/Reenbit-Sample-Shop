@@ -1,21 +1,19 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   ControlContainer,
-  FormBuilder,
   FormControl,
   FormGroup,
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { cloneDeep, debounce, defer, throttle } from 'lodash';
+import { cloneDeep } from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
 import { CartValidationService } from '../cart-validation.service';
 import { CartService } from '../cart.service';
 import { countryList } from '../../Services/db/countries.model';
 import {
   countryValidator,
-  minLengthPattern,
   stringValidator,
 } from './validators.directive';
 
@@ -69,42 +67,9 @@ export class CartBillingComponent implements OnInit {
       })
     );
     this.childForm = <FormGroup>this.form.get('billing');
-    this.localValueChanges();
-    this.localStateChanges();
     this.cartValidation.formObs
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe(() => this.isValidBilling());
-    // this.childForm.valueChanges.subscribe((v) => console.log(v.zip));
-  }
-  localValueChanges() {
-    const controls = this.childForm.controls;
-    for (let c in controls) {
-      this.childForm
-        .get(c)!
-        .valueChanges.pipe(takeUntil(this.unsubscribeAll))
-        .subscribe((v) => console.log(this.childForm.controls[c]));
-    }
-  }
-  localStateChanges() {
-    const controls = this.childForm.controls;
-    for (let c in controls) {
-      this.childForm
-        .get(c)!
-        .statusChanges.pipe(takeUntil(this.unsubscribeAll))
-        .subscribe((v) => {
-          console.log(v);
-        });
-    }
-  }
-  bounce() {
-    setTimeout(() => {
-      let counter = 0;
-      console.log(`run ${counter}`);
-      counter++;
-    }, 1000);
-  }
-  test() {
-    const d = defer(this.bounce, 1000);
   }
 
   filterCountries() {
@@ -126,11 +91,8 @@ export class CartBillingComponent implements OnInit {
       this.countryListFiltered = ['no such country!!!'];
     }
   }
-  // isValid(fcn:string){
-  //   this.childForm.get(fcn)?.updateValueAndValidity()
-  // }
+
   setCountryListVisible() {
-    console.log(`runs`)
     this.styles.countryVisible = true;
     if (this.timeout) {
       clearTimeout(this.timeout);
@@ -142,13 +104,6 @@ export class CartBillingComponent implements OnInit {
     this.timeout = setTimeout(() => {
       this.styles.countryVisible = false;
     }, 3000);
-
-    // if(this.timeout){
-    //   clearTimeout(t)
-    //   t = setTimeout(() => (this.styles.countryVisible = false), 3000);
-    //   return
-    // }
-    // t = setTimeout(() => (this.styles.countryVisible = false), 3000);
   }
   setCountry(c: string, ref: HTMLInputElement) {
     this.childForm.get('country')?.setValue(c);
@@ -194,7 +149,10 @@ export class CartBillingComponent implements OnInit {
     ]);
     this.country?.updateValueAndValidity();
 
-    this.phone?.addValidators([Validators.required, minLengthPattern(9)]);
+    this.phone?.addValidators([
+      Validators.required,
+      Validators.pattern('^[0-9]{9}$'),
+    ]);
     this.phone?.updateValueAndValidity();
 
     this.city?.addValidators([
@@ -204,7 +162,10 @@ export class CartBillingComponent implements OnInit {
     ]);
     this.city?.updateValueAndValidity();
 
-    this.zip?.addValidators([Validators.required, minLengthPattern(5)]);
+    this.zip?.addValidators([
+      Validators.required,
+      Validators.pattern('^[0-9]{5}$'),
+    ]);
     this.zip?.updateValueAndValidity();
   }
 
