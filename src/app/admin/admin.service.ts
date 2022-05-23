@@ -13,8 +13,9 @@ export class AdminService {
     updatedModal: true,
     hidden: true,
   };
+  validationStatus:string;
   emptyFormMessage = 'Chose product to edit';
-  selectedRowData: any;
+  selectedRowData: Product | null;
   imageURLPattern = /(https):?(\/\/[^"']*\.(?:png|jpg|jpeg))/;
   lastIndex: number;
   labelMode = 'static';

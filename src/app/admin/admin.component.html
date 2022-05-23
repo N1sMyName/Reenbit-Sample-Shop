@@ -30,8 +30,9 @@
 
   <!-- form -->
 
+  
   <form
-    *ngIf="admin.selectedRowData; else notSelected"
+    *ngIf="admin.selectedRowData"
     (submit)="updateOldProduct($event)"
   >
     <dx-form
@@ -62,8 +63,8 @@
         </dxi-validation-rule>
         <dxi-validation-rule
           type="stringLength"
-          [min]="4"
-          message="Title min length 10"
+          [min]="2"
+          message="Title min length 2"
         >
         </dxi-validation-rule>
         <dxi-validation-rule
@@ -132,8 +133,8 @@
         </dxi-validation-rule>
         <dxi-validation-rule
           type="stringLength"
-          [max]="500"
-          message="Description max message length 500"
+          [max]="1000"
+          message="Description max message length 1000"
         >
         </dxi-validation-rule>
       </dxi-item>
@@ -189,7 +190,7 @@
         <dxi-validation-rule
           type="range"
           [max]="5000000"
-          message="Price available max 5000"
+          message="Price available max 5000000"
         >
         </dxi-validation-rule>
         <dxi-validation-rule
@@ -256,11 +257,11 @@
     </dx-form>
   </form>
 <!-- empty form placeholder -->
-  <ng-template #notSelected>
-    <div class="form-create emptyForm">
+  
+    <div *ngIf="!admin.selectedRowData" class="form-create emptyForm">
       <p>{{ admin.emptyFormMessage }}</p>
     </div>
-  </ng-template>
+  
 <!-- modal that pop up after success action -->
   <app-confirmation-modal [msg]="this.message">
   </app-confirmation-modal>

@@ -4,18 +4,9 @@
   alt="loading-spinner"
   style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;"
 />
-<app-static-nav-top></app-static-nav-top>
 
+  <app-static-nav-top *ngIf="!this.loading.isLoading"></app-static-nav-top >
+  <router-outlet></router-outlet>
+  <app-static-nav-bot *ngIf="!this.loading.isLoading"></app-static-nav-bot>
 
-<!-- <div
-  class="debug"
-  style="position: fixed; left: 0; display: flex; flex-direction: column"
->
-  <button (click)="auth.loginFacebook()">login</button>
-  <button (click)="auth.logout()">logout</button>
-  <button (click)="auth.checkUser()">showUserCred</button>
-  
-</div> -->
-<router-outlet></router-outlet>
-<app-static-nav-bot></app-static-nav-bot>
 

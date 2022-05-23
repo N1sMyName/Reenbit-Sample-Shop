@@ -15,6 +15,7 @@ import { AuthService } from '../Services/auth.service';
 import { Product } from '../Services/db/Product.model';
 import { LoadingService } from '../Services/loading.service';
 import { StoreService } from '../Services/store.service';
+import { DescriptionService } from './description.service';
 
 @Component({
   selector: 'app-description',
@@ -28,7 +29,8 @@ export class DescriptionComponent implements OnInit {
     public router: Router,
     public loading: LoadingService,
     public store: StoreService,
-    public auth: AuthService
+    public auth: AuthService,
+    private description: DescriptionService
   ) {
     this.router.events.pipe(takeUntil(this.unsubscribeAll)).subscribe((e) => {
       this.loading.checkLoadingState(e);
@@ -56,8 +58,8 @@ export class DescriptionComponent implements OnInit {
   unsubscribeAll = new Subject();
   calculateSubTotal() {
     if (this.price && this.price > 0) {
-      this.tax = Math.floor(this.price * this.rate);
-      this.noTaxPrice = this.price - this.tax;
+      this.description.tax = Math.floor(this.price * this.description.rate);
+      this.noTaxPrice = this.price - this.description.tax;
     }
   }
   get price() {

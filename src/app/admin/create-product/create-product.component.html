@@ -1,3 +1,4 @@
+
 <form (submit)="addNewProduct($event)">
   <dx-form
     (onFieldDataChanged)="updateProduct($event)"
@@ -8,7 +9,8 @@
     [showRequiredMark]="true"
     validationGroup="productForm"
     class="form-create update-form"
-    [showValidationSummary]="true"
+    
+    style="background-color: #f1f1f1;padding: 5px;"
     
    
     [alignItemLabels]="true"
@@ -16,7 +18,7 @@
   >
     <!-- config -->
     <dxo-col-count-by-screen [xs]="1" [sm]="1" [md]="2"></dxo-col-count-by-screen>
-
+    
     <!-- title -->
     <dxi-item dataField="title" editorType="dxTextBox">
       <dxi-validation-rule type="required" message="Title is required">
@@ -84,8 +86,8 @@
       </dxi-validation-rule>
       <dxi-validation-rule
         type="stringLength"
-        [max]="500"
-        message="Description max message length 500"
+        [max]="1000"
+        message="Description max message length 1000"
       >
       </dxi-validation-rule>
     </dxi-item>
@@ -200,6 +202,7 @@
       itemType="button"
       horizontalAlignment="left"
       [buttonOptions]="admin.buttonOptions"
+      
   
     >
     </dxi-item>

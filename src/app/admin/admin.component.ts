@@ -8,6 +8,7 @@ import { Product } from '../Services/db/Product.model';
 import { StoreService } from '../Services/store.service';
 import { AdminService } from './admin.service';
 import { Subject, takeUntil } from 'rxjs';
+import { DxFormComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'app-admin',
@@ -22,26 +23,27 @@ export class AdminComponent implements OnInit {
     public admin: AdminService,
     public store: StoreService,
     private auth: AuthService
-    ) {
-      this.receiveProducts();
-      }
-    message:string
-    products: Product[] = [];
-    product: Product;
-    selectedRowData: any;
-    unsubscribeAll = new Subject()
+  ) {
+    this.receiveProducts();
+  }
+  @ViewChild('form', { static: false }) form: DxFormComponent;
+  message: string;
+  products: Product[] = [];
+  product: Product;
+  selectedRowData: any;
+  unsubscribeAll = new Subject();
 
   ngOnInit(): void {
     this.assembleConfigProperties();
-    
   }
-  ngOnDestroy(){
-    this.unsubscribeAll.next('')
-    this.unsubscribeAll.complete()
+  ngOnDestroy() {
+    this.unsubscribeAll.next('');
+    this.unsubscribeAll.complete();
   }
   setSelectedRowData(e: SelectionChangedEvent) {
-    this.admin.selectedRowData = e.selectedRowsData[0]
+    this.admin.selectedRowData = e.selectedRowsData[0];
   }
+  unselect() {}
   redirectToAdminNew() {
     this.router.navigate(['admin', 'create']);
     this.admin.selectedRowData = null;
@@ -59,20 +61,34 @@ export class AdminComponent implements OnInit {
     }
   }
   updateOldProduct(e: SubmitEvent) {
-    this.message = 'Product has been updated'
-    this.store.rewriteProduct(this.auth.user,this.product || this.admin.selectedRowData)
-    this.admin.toggleModal()  
+    this.message = 'Product has been updated';
+    this.store.rewriteProduct(
+      this.auth.user,
+      this.product || this.admin.selectedRowData
+    );
+    this.admin.toggleModal();
+    this.admin.selectedRowData = null
+    this.form.instance.dispose()
+    // this.form.instance.resetValues();
     e.preventDefault();
   }
   assembleConfigProperties() {
-    this.admin.config.categories.items = this.admin.counterUtility(this.products,'category')
-    this.admin.config.brands.items = this.admin.counterUtility(this.products,'brand')
+    this.admin.config.categories.items = this.admin.counterUtility(
+      this.products,
+      'category'
+    );
+    this.admin.config.brands.items = this.admin.counterUtility(
+      this.products,
+      'brand'
+    );
     this.admin.lastIndex = this.admin.findLatestID(this.products);
   }
-  handleDeletion(e:RowRemovingEvent){
-    this.message = `Product with id${e.data.id} has been deleted`
-    this.store.removeProductPermanently(e.data.id)
-    this.admin.toggleModal() 
-  }
+  handleDeletion(e: RowRemovingEvent) {
+    this.message = `Product with id${e.data.id} has been deleted`;
+    this.store.removeProductPermanently(e.data.id);
+    this.admin.toggleModal();
+    this.admin.selectedRowData = null
+    this.form.instance.dispose()
 
+  }
 }

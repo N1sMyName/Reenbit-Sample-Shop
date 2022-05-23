@@ -1,5 +1,4 @@
-<div class="product-container" > 
- 
+<div class="product-container">
   <div class="product-image-container">
     <img [src]="product.imgURL" alt="product-image" class="image" />
   </div>
@@ -72,7 +71,7 @@
     <div class="product-info-right">
       <div class="product-info-right-price">
         <div class="price">
-          <h2 class="price-main">{{ product.price }} USD</h2>
+          <h2 class="price-main">{{ this.noTaxPrice }} USD</h2>
           <p class="price-secondary">{{ product.price }}</p>
         </div>
         <div class="shipping">

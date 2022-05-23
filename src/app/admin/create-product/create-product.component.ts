@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DxFormComponent } from 'devextreme-angular';
-import { TooltipShownEvent } from 'devextreme/viz/chart';
-import { find } from 'lodash';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Product } from 'src/app/Services/db/Product.model';
 import { StoreService } from 'src/app/Services/store.service';
@@ -59,6 +57,7 @@ export class CreateProductComponent implements OnInit {
     this.form.instance.resetValues();
     e.preventDefault();
   }
+  
   handleModal() {
     this.admin.toggleModal();
   }
