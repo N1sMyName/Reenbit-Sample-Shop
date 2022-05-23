@@ -183,7 +183,7 @@ $searchbox-bg: #F9F9F9
 
 // login modal
 .userProfileModal
-    z-index: 2
+    z-index: 3
     position: fixed
     width: 75vw
     height: 75vh
@@ -261,6 +261,19 @@ $searchbox-bg: #F9F9F9
         transition: all .5s ease
         transform: scale(110%,110%)
 
+.admin-button
+    position: absolute
+    left: 5px
+    top: 5px
+    img
+        width: 30px
+        height: 30px
+        transition: all .5s ease
+        cursor: pointer
+
+    img:hover
+        transition: all .5s ease
+        transform: scale(110%,110%)
 .isClosed
     opacity: 0
     z-index: -1

@@ -59,7 +59,6 @@ export class SearchBarComponent implements OnInit {
       });
 
     this.cart.notifyObs.pipe(takeUntil(this.unsubscribeAll)).subscribe(() => {
-      console.log(this.cart.cartProducts)
       this.cart.cartProducts?.length
         ? (this.productsInCart = this.cart.cartProducts.length)
         : (this.productsInCart = 0);
@@ -146,5 +145,8 @@ export class SearchBarComponent implements OnInit {
     this.cart.cartProducts =
       JSON.parse(<string>localStorage.getItem('products')) || [];
     this.cart.notifySub.next(false);
+  }
+  toAdminPanel() {
+    this.router.navigate(['/admin']);
   }
 }

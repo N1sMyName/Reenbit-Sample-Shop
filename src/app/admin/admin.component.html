@@ -1,0 +1,267 @@
+<section class="admin">
+  <!-- table -->
+  <dx-data-grid
+    id="products"
+    [dataSource]="products"
+    [columns]="['id', 'title']"
+    columnWidth="auto"
+    [showBorders]="true"
+    (onSelectionChanged)="setSelectedRowData($event)"
+    (onInitNewRow)="redirectToAdminNew()"
+    (onRowRemoving)="handleDeletion($event)"
+    [focusedRowEnabled]="true"
+    keyExpr="id"
+    class="table"
+    
+  >
+    <dxo-editing [allowAdding]="true" [allowDeleting]="true"></dxo-editing>
+    <dxo-load-panel [enabled]="true"></dxo-load-panel>
+    <dxo-paging [pageSize]="10" [enabled]="false"></dxo-paging>
+    <dxo-scrolling mode="virtual"></dxo-scrolling>
+    <dxo-sorting mode="multiple"></dxo-sorting>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-selection mode="single"></dxo-selection>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxi-column dataField="id" sortOrder="asc"> </dxi-column>
+    <dxi-column dataField="title" sortOrder="asc"> </dxi-column>
+  </dx-data-grid>
+
+  <!-- form -->
+
+  <form
+    *ngIf="admin.selectedRowData; else notSelected"
+    (submit)="updateOldProduct($event)"
+  >
+    <dx-form
+      #form
+      (onFieldDataChanged)="synchronizeForm($event)"
+      id="createForm"
+      colCount="2"
+      [scrollingEnabled]="true"
+      [showRequiredMark]="true"
+      validationGroup="productForm"
+      class="form-create update-form"
+      [showValidationSummary]="true"
+      [formData]="admin.selectedRowData"
+      labelMode="static"
+      width="100%"
+      [scrollingEnabled]="true"
+    >
+      <!-- config -->
+      <dxo-col-count-by-screen
+        [xs]="1"
+        [sm]="1"
+        [md]="2"
+      ></dxo-col-count-by-screen>
+
+      <!-- title -->
+      <dxi-item dataField="title" editorType="dxTextBox" [colSpan]="2">
+        <dxi-validation-rule type="required" message="Title is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [min]="4"
+          message="Title min length 10"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="20"
+          message="Title max length 20"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- inStock -->
+      <dxi-item dataField="inStock" editorType="dxNumberBox">
+        <dxi-validation-rule type="required" message="InStock is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [max]="10000"
+          message="inStock available max 10000"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [min]="100"
+          message="inStock required min 100"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- freshness -->
+      <dxi-item
+        dataField="freshness"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.freshness"
+      >
+        <dxi-validation-rule type="required" message="Freshness is required">
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- farm -->
+      <dxi-item
+        dataField="farm"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.farm"
+      >
+        <dxi-validation-rule type="required" message="Farm is required">
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- size -->
+      <dxi-item
+        dataField="size"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.size"
+      >
+        <dxi-validation-rule type="required" message="Size is required">
+        </dxi-validation-rule
+      ></dxi-item>
+      <!-- description -->
+      <dxi-item
+        dataField="description"
+        [editorOptions]="{
+          autoResizeEnabled: true,
+          minHeight: '100%',
+          maxHeight: '150%'
+        }"
+        [colSpan]="2"
+        editorType="dxTextArea"
+      >
+        <dxi-validation-rule type="required" message="Description is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="stringLength"
+          [max]="500"
+          message="Description max message length 500"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+     
+      <!-- categories -->
+      <dxi-item
+        dataField="category"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.categories"
+      >
+        <dxi-validation-rule type="required" message="Category is required">
+        </dxi-validation-rule>
+      </dxi-item>
+  
+      <!-- brands -->
+      <dxi-item
+        dataField="brand"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.brands"
+      >
+        <dxi-validation-rule type="required" message="Brand is required">
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <!-- rating -->
+      <dxi-item dataField="rating" editorType="dxNumberBox">
+        <dxi-validation-rule
+          type="range"
+          [max]="5"
+          message="Rating available max 5"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [min]="1"
+          message="Rating required min 1"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <!-- country -->
+      <dxi-item
+        dataField="country"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.countries"
+      >
+        <dxi-validation-rule type="required" message="Country is required">
+        </dxi-validation-rule>
+      </dxi-item>
+
+      <!-- price -->
+      <dxi-item dataField="price" editorType="dxNumberBox">
+        <dxi-validation-rule
+          type="range"
+          [max]="5000000"
+          message="Price available max 5000"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="range"
+          [min]="10"
+          message="Price required min 10"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- delivery -->
+      <dxi-item
+        dataField="delivery"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.delivery"
+      >
+        <dxi-validation-rule type="required" message="Delivery is required">
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- deliveryArea -->
+      <dxi-item
+        dataField="deliveryArea"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.deliveryArea"
+      >
+        <dxi-validation-rule type="required" message="DeliveryArea is required">
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- deliveryTime -->
+      <dxi-item
+        dataField="deliveryTime"
+        editorType="dxSelectBox"
+        [editorOptions]="admin.config.deliveryTime"
+      >
+        <dxi-validation-rule type="required" message="DeliveryTime is required">
+        </dxi-validation-rule
+      ></dxi-item>
+      <!-- buyBy -->
+      <dxi-item
+        dataField="buyBy"
+        editorType="dxTagBox"
+        [editorOptions]="admin.config.buyBy"
+      >
+        <dxi-validation-rule type="required" message="BuyBy is required">
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- imgURL -->
+      <dxi-item dataField="imgURL" editorType="dxTextBox">
+        <dxi-validation-rule type="required" message="imgURL is required">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="pattern"
+          [pattern]="admin.imageURLPattern"
+          message="Url is non valid,url example : https://urlstring.png"
+        >
+        </dxi-validation-rule>
+      </dxi-item>
+      <!-- <dxi-item itemType="button"></dxi-item> -->
+      <dxi-item
+        itemType="button"
+        horizontalAlignment="left"
+        [buttonOptions]="admin.buttonOptions"
+      >
+      </dxi-item>
+    </dx-form>
+  </form>
+<!-- empty form placeholder -->
+  <ng-template #notSelected>
+    <div class="form-create emptyForm">
+      <p>{{ admin.emptyFormMessage }}</p>
+    </div>
+  </ng-template>
+<!-- modal that pop up after success action -->
+  <app-confirmation-modal [msg]="this.message">
+  </app-confirmation-modal>
+</section>

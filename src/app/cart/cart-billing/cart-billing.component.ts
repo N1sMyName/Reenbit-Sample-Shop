@@ -12,7 +12,7 @@ import { cloneDeep, debounce, defer, throttle } from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
 import { CartValidationService } from '../cart-validation.service';
 import { CartService } from '../cart.service';
-import { countryList } from './countries.model';
+import { countryList } from '../../Services/db/countries.model';
 import {
   countryValidator,
   minLengthPattern,

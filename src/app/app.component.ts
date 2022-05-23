@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribeAll))
       .subscribe((r) => {
         this.auth.user = r;
-
+        
         if (this.auth.user) {
           this.store
             .getHistory(this.auth.user)
