@@ -37,7 +37,7 @@ export class ProductsComponent implements OnInit {
     paginationData: { page: number; stack: number } = { page: 1, stack: 5 };
   
     // sort method instance
-    sortBy: string = '';
+    sortBy: string = 'Rating';
     
     
   
@@ -57,7 +57,6 @@ export class ProductsComponent implements OnInit {
 
   getProducts() {
     const data = this.aRoute.snapshot.data['products'];
-  //  this.store.test(this.auth.user,data)
     this.originalProducts = data;
     this.filteredProducts = data;
   }
@@ -67,6 +66,7 @@ export class ProductsComponent implements OnInit {
     this.filters = event;
     this.filteredProducts = cloneDeep(this.originalProducts);
     this.filteredProducts = this.filterWrapper(this.filteredProducts);
+    this.setSort(this.sortBy)
     this.receivePaginationData({ page: 1, stack: this.lastPagData.stack });
   }
   filterWrapper(p: Product[]) {

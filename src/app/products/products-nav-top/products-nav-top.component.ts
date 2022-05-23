@@ -11,7 +11,7 @@ export class ProductsNavTopComponent {
   @Input() products: Product[] = [];
   @Output() sortEvent:EventEmitter<string> = new EventEmitter()
 
-  sortMethod = 'All Products';
+  sortMethod = 'Rating';
   sortList = [ 'Rating', 'Price(asc)', 'Price(desc)'];
 
   constructor(public f: FilterService) {}

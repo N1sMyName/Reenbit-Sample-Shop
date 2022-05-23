@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/Services/db/Product.model';
-import { countBy, forOwn, uniqBy, forIn } from 'lodash';
+import { countBy, forOwn, uniqBy, forIn, reverse } from 'lodash';
 type str_num = string | number;
 @Injectable({
   providedIn: 'root',
@@ -103,18 +103,19 @@ export class FilterService {
       const p = products.sort((a: Product, b: Product) => {
         return +a[key] - +b[key];
       });
+      console.log(p);
       return p;
     };
+    console.log(method);
     switch (method) {
       case 'Price(asc)':
         return sortHelper('price');
       case 'Price(desc)':
         return sortHelper('price').reverse();
       case 'Rating':
-        return sortHelper('rating').reverse();
+        return reverse(sortHelper('rating'));
       default:
-        return products;
+        return reverse(sortHelper('rating'));
     }
   }
 }
-
