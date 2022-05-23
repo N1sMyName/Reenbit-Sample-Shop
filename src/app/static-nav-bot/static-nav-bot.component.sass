@@ -6,6 +6,10 @@
     display: flex
     justify-content: space-between
 
+// footer lists 
+// .itemsContainer
+.active
+    display: block !important
 .footer-list
     font-family: 'Open Sans'
     font-weight: 400
@@ -72,10 +76,8 @@
     font-size: 14px
     line-height: 19px
 
-
 footer
     margin-bottom: 64px
-
 @media screen and ( max-width:1000px )
     .footer-info > .footer-list:not(:first-child)
         margin-left: 10px
@@ -85,9 +87,32 @@ footer
 
     .footer-list-item
         font-size: 12px
-@media screen and ( max-width: 600px )
-   .footer-info
-       display: none
-    
-        
-    
+@media screen and ( max-width: 650px )
+    .footer-info > .footer-list:not(:first-child)
+        margin-left: 0
+        margin-top: 10px
+    .footer-info
+        flex-direction: column
+        align-items: flex-start
+
+    .footer-list>a
+        transition: all .5s ease
+    .footer-list
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        width: 100%
+        border-radius: 10px
+        border: 1px solid #d1d1d1
+        padding-left: 10px
+
+    .footer-list-heading
+        margin-bottom: 6px
+    .footer-list-heading::after
+        content: ">"
+        color: #d1d1d1
+
+    .footer-list>ul>div
+        display: none
+        margin-bottom: 6px

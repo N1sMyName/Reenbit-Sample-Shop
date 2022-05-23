@@ -7,6 +7,8 @@ $searchbox-bg: #F9F9F9
     display: flex
     justify-content: space-between
     align-items: center
+    margin-left: 45px
+    margin-right: 45px
 
 .search-box-wrapper
     position: relative
@@ -37,7 +39,6 @@ $searchbox-bg: #F9F9F9
 // title
 .search-bar-title
     max-width: 178px
-    margin-left: 62px
     margin-top: 29px
     margin-bottom: 26px
 
@@ -109,7 +110,6 @@ $searchbox-bg: #F9F9F9
 .profile
     display: flex
     align-items: center
-    margin-right: 27px
     p
         font-size: 14px
 
@@ -154,7 +154,11 @@ $searchbox-bg: #F9F9F9
 
 .userName
     position: absolute
-    left: -100%
+    right: 100%
+    max-width: 150px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
 
 .search-button
     margin: 13px 0
@@ -307,8 +311,6 @@ $searchbox-bg: #F9F9F9
     .search-input
         padding-left: 5px
         width: auto
-    .search-bar-title
-        margin-left: 45px
     .logo
         display: none
     .burger
