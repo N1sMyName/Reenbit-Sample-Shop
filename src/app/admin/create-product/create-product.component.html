@@ -1,5 +1,5 @@
 
-<form (submit)="addNewProduct($event)">
+<form (submit)="addNewProduct($event)" class="newProductForm">
   <dx-form
     (onFieldDataChanged)="updateProduct($event)"
     id="createForm"
@@ -8,9 +8,9 @@
     [scrollingEnabled]="true"
     [showRequiredMark]="true"
     validationGroup="productForm"
-    class="form-create update-form"
+    class="form-create update-form "
     
-    style="background-color: #f1f1f1;padding: 5px;"
+    style="background-color: #f1f1f1;padding: 5px;border-radius: 5px;"
     
    
     [alignItemLabels]="true"
@@ -113,6 +113,11 @@
     
     <!-- rating -->
     <dxi-item dataField="rating" editorType="dxNumberBox">
+      <dxi-validation-rule
+      type="required"
+      message="Rating is required"
+    >
+    </dxi-validation-rule>
       <dxi-validation-rule
         type="range"
         [max]="5"

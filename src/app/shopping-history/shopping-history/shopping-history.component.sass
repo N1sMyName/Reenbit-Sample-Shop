@@ -2,7 +2,22 @@
     margin: 0 auto
    
 
-    
+.closeBtn
+    background-image: url(https://static.thenounproject.com/png/1042915-200.png)
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+    position: absolute
+    right: 5px
+    top: 5px
+    width: 30px
+    height: 30px
+    cursor: pointer
+    transition: all .25s ease
+.closeBtn:hover
+    transform: scale(110%,110%)
+    transition: all .25s ease
+    transform: rotate(45deg)
 // fonts
 .annotation
     font-size: 14px
@@ -47,6 +62,7 @@
     min-width: 130px
 .description
     min-width: 130px
+    word-break: break-word
 .addInfo
     flex-direction: column
     p.annotation

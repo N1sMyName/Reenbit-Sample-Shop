@@ -1,7 +1,7 @@
 <section class="cart-product">
   <div class="left">
-    <div class="image-placeholder">
-      <img [src]="product.imgURL" alt="" class="cartImage">
+    <div class="image-placeholder" [ngStyle]="{'background-image':'url('+product.imgURL+')'}">
+      <!-- <img [src]="product.imgURL" alt="" class="cartImage"> -->
     </div>
     <div class="wishlist img-alt" style="margin-bottom: 8px; margin-top: 12px">
       <svg

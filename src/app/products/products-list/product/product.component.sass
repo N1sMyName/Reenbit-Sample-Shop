@@ -13,6 +13,9 @@
 
 // image container
 .product-image-container
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
     display: flex
     position: relative
     background-color: #A9A9A9
@@ -185,8 +188,7 @@
 @media screen and (max-width: 1260px)
     // img
     .product-image-container,.image
-        height: auto
-        width: 100%
+        
         margin: 0
 
     .product-image-container,.image
@@ -202,6 +204,7 @@
         max-width: 869px
         width: auto
         height: auto
+        min-height: 650px
         max-height: 100%
         justify-content: space-between
         font-size: 12px

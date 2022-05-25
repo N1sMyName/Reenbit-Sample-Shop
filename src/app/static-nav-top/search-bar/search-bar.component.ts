@@ -122,7 +122,7 @@ export class SearchBarComponent implements OnInit {
     if (!this.list.length) {
       this.dropDownResult.hidden = true;
       this.errorStyles.isError = true;
-      this.errorMsg = 'Prodcuct not found';
+      this.errorMsg = 'Product not found';
     }
   }
 

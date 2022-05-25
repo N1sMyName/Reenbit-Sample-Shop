@@ -162,15 +162,20 @@
       <!-- rating -->
       <dxi-item dataField="rating" editorType="dxNumberBox">
         <dxi-validation-rule
+          type="required"
+          message="Rating is required"
+        >
+        </dxi-validation-rule>
+        <dxi-validation-rule
           type="range"
           [max]="5"
           message="Rating available max 5"
         >
         </dxi-validation-rule>
         <dxi-validation-rule
-          type="range"
-          [min]="1"
-          message="Rating required min 1"
+        type="range"
+        [min]="1"
+        message="Rating required min 1"
         >
         </dxi-validation-rule>
       </dxi-item>

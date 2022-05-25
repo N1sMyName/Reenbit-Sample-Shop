@@ -1,6 +1,6 @@
 <div class="product-container">
-  <div class="product-image-container">
-    <img [src]="product.imgURL" alt="product-image" class="image" />
+  <div class="product-image-container" [ngStyle]="{'background-image':'url('+product.imgURL+')'}">
+    <!-- <img [src]="product.imgURL" alt="product-image" class="image" /> -->
   </div>
 
   <div class="product-info">

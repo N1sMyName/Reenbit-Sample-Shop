@@ -38,8 +38,11 @@
     
 
 @media screen and (max-width: 900px)
+        
     .filters
-        left: -100vw
+        width: calc( 100% - 90px )
+        left: -150vw
+        grid-gap: 10px
         top: 0
         transition: all .5s ease
         z-index: 1
@@ -48,6 +51,10 @@
         border-radius: 10px
         border: 1px solid #d1d1d1
         padding: 5px
+        display: grid
+        grid-template-columns: 1fr 1fr
+        box-shadow: 2px 3px 4px 0 rgba(0, 0, 0,.1 )
+
     .filters-mobile-indicator
         display: block
         position: fixed
@@ -69,8 +76,19 @@
         align-items: center
         img
             border-radius: 10px
-@media screen and (max-width: 1260px)
-    
+
+    .isMobileVisible
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%)
+        transition: all .5s ease
+@media screen and (max-width: 650px)
+    .filters
+        grid-template-columns: 1fr
+        width: auto
+        height: 75vh
+        overflow-y: scroll
+        overflow-x: hidden
 @keyframes shuffleIdicator
     0%
         transform: scale(100%)
@@ -78,6 +96,3 @@
     100%
         transform: scale(120%)
 
-.isMobileVisible
-    left: 0
-    transition: all .5s ease

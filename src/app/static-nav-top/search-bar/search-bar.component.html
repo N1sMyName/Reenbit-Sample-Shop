@@ -113,20 +113,45 @@
             alt=""
           />
         </div>
-        <div class="admin-button" (click)="toAdminPanel();profile.toggleProfileModal()">
-          <img src="../../../assets/admin.png"  alt="" />
+        <div
+          class="admin-button"
+          (click)="toAdminPanel(); profile.toggleProfileModal()"
+        >
+          <img src="../../../assets/admin.png" alt="" />
         </div>
-        <div class="shopping-history-button" (click)="toShoppingHistoryPanel();profile.toggleProfileModal()">
+        <div
+          class="shopping-history-button"
+          (click)="toShoppingHistoryPanel(); profile.toggleProfileModal()"
+        >
           <img src="../../../assets/shoppingHistory.png" alt="" />
         </div>
 
         <div class="photo">
-          <img [src]="this.auth.user.photoURL" alt="" />
+          <img
+            [src]="
+              this.auth.user.photoURL ||
+              this.auth.user.providerData[0]?.photoURL
+            "
+            alt=""
+          />
         </div>
         <div class="content">
-          <p><span>DisplayName:</span>{{ this.auth.user.displayName }}</p>
-          <p><span>Email:</span>{{ this.auth.user.email }}</p>
-          <p><span>UserId:</span>{{ this.auth.user.uid }}</p>
+          <p>
+            <span>DisplayName:</span
+            >{{
+              this.auth.user.displayName ||
+                this.auth.user.providerData[0]?.displayName ||
+                this.auth.user.uid
+            }}
+          </p>
+          <p>
+            <span>Email:</span
+            >{{ this.auth.user.email || this.auth.user.providerData[0]?.email }}
+          </p>
+          <p>
+            <span>UserId:</span
+            >{{ this.auth.user.uid || this.auth.user.providerData[0]?.uid }}
+          </p>
           <p>
             <span>Provider:</span
             >{{ this.auth.user.providerData[0]?.providerId }}
@@ -138,7 +163,11 @@
   <div class="profile">
     <div class="profile-user" (click)="profile.toggleProfileModal()">
       <p *ngIf="auth.user" class="userName">
-        {{ this.auth.user.displayName || this.auth.user.uid }}
+        {{
+          this.auth.user.displayName ||
+            this.auth.user.providerData[0]?.displayName ||
+            this.auth.user.uid
+        }}
       </p>
       <svg
         class="user"

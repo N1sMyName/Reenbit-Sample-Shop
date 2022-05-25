@@ -74,7 +74,7 @@ $searchbox-bg: #F9F9F9
     text-align: center
     border: 1px solid black
     border-radius: 8px
-    backdrop-filter: blur(2px)
+    background-color: #f1f1f1
     li
         list-style: none
         cursor: pointer
@@ -171,10 +171,12 @@ $searchbox-bg: #F9F9F9
     width: max-content
     padding: .25rem
     border-radius: 10px
-    backdrop-filter: blur(2px)
+    background-color: #f1f1f1
     transition: opacity .5s ease
     color: #6A983C
+    font-size: 12px
 .isError
+    
     opacity: 100
     transition: opacity .25s ease
     color: red
@@ -320,6 +322,8 @@ $searchbox-bg: #F9F9F9
 // responsive
 
 @media screen and (max-width: 1000px)
+    .search-bar-title
+        margin: 0
     .search-input
         padding-left: 5px
         width: auto
@@ -334,6 +338,8 @@ $searchbox-bg: #F9F9F9
 
     .batton-wraper
         display: none
+    .search-result
+        width: 100%
     .search-box-container
         position: static
         width: auto
@@ -349,6 +355,16 @@ $searchbox-bg: #F9F9F9
     .user
         margin-right: 10px
 
+@media screen and (max-width: 1000px)
+    .buttons
+        width: 100%
 @media screen and (max-width: 600px)
     .profile-modal-wrapper
         flex-direction: column
+
+    .content
+        p
+            display: flex
+            flex-direction: column
+            span
+                word-break: break-word

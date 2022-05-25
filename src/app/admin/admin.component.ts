@@ -9,6 +9,7 @@ import { StoreService } from '../Services/store.service';
 import { AdminService } from './admin.service';
 import { Subject, takeUntil } from 'rxjs';
 import { DxFormComponent } from 'devextreme-angular';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-admin',
@@ -22,7 +23,8 @@ export class AdminComponent implements OnInit {
     private router: Router,
     public admin: AdminService,
     public store: StoreService,
-    private auth: AuthService
+    private auth: AuthService,
+    private cart:CartService
   ) {
     this.receiveProducts();
   }
@@ -88,7 +90,13 @@ export class AdminComponent implements OnInit {
     this.store.removeProductPermanently(e.data.id);
     this.admin.toggleModal();
     this.admin.selectedRowData = null
-    this.form.instance.dispose()
+    this.form ? this.form.instance.dispose() : null
+    this.deleteProductGlobal(e.data.id)
 
+  }
+  deleteProductGlobal(id:number){
+    this.cart.cartProducts =  this.cart.cartProducts.filter(p => p.product.id !== id)
+    this.store.updateHistory(this.auth.user, this.cart.cartProducts);
+    this.cart.notifySub.next(false)
   }
 }

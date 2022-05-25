@@ -31,7 +31,6 @@
 
 
 .sort-drop-down
-    position: relative
     box-sizing: border-box
     background-color: #F9F9F9
     display: flex
@@ -43,12 +42,14 @@
     height: 38px
     border: 1px solid #D1D1D1
     white-space: nowrap
+    padding: 0 5px
+
 
 .description
-    position: absolute
-    left: 15px
     font-family: 'Open Sans',sans-serif
     font-size: 14px
+    min-width: 75px
+    text-align: center
     
 
 .middle
@@ -77,9 +78,8 @@
     height: 16px
 
 .select-sort
-    width: 80px
-    position: absolute
-    right: 5px
+    min-width: 75px
+    text-align: center
     ul
         cursor: pointer
         font-family: 'Poppins', semi-bold

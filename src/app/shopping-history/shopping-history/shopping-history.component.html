@@ -5,8 +5,9 @@
     </div>
     <button mat-raised-button (click)="toProducts()">Make One</button>
   </div>
-  <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of orders" >
+  <mat-accordion #accordion>
+    <mat-expansion-panel *ngFor="let item of orders" (opened)="toggleCloseBtn(true)">
+      <div [ngClass]="{'closeBtn':closeBtn}" (click)="closeTabs()"></div>
       <mat-expansion-panel-header>
         <mat-panel-title class="orderPreviewDate"> Order from {{ item.orderDate | date:('short') }} </mat-panel-title>
         <mat-panel-description class="orderPreviewTotal">

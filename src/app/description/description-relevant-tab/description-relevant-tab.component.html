@@ -21,17 +21,16 @@
     </div>
   </div>
 
-  <div class="relevant-flex-container" >
-    <div  class="relevant-item" *ngFor="let item of relevantProducts">
-      <div class="relevant-image">
-        <img [src]="item.imgURL" alt="" class="relevant-image" />
+  <div class="relevant-flex-container">
+    <div class="relevant-item" *ngFor="let item of relevantProducts">
+      <div
+        class="relevant-image"
+        [ngStyle]="{ 'background-image': 'url(' + item.imgURL + ')' }"
+      >
       </div>
       <div class="relevant-short-description">
         <h1>{{ item.title }}</h1>
-        <p
-          class="desc-grey"
-         
-        >
+        <p class="desc-grey">
           {{ item.description }}
         </p>
       </div>
@@ -41,8 +40,4 @@
       </div>
     </div>
   </div>
-  
- 
-
-
 </div>
